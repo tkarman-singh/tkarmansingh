@@ -7,10 +7,10 @@ export function Footer() {
 
   return (
     <footer id="contact" ref={footerRef} className="relative w-full bg-black min-h-[60vh] flex flex-col items-center justify-between overflow-hidden pt-32 pb-12 z-20">
-      {/* Giant Name with Gradient Fade */}
-      <div className="flex-grow flex items-center justify-center w-full px-4">
+      {/* Giant Name with half-black cut-off */}
+      <div className="flex-grow flex items-center justify-center w-full px-2">
         <h1 
-          className="text-[12vw] md:text-[14vw] font-black tracking-tighter leading-none text-center bg-gradient-to-b from-white via-white/80 to-transparent bg-clip-text text-transparent pb-4 md:pb-8"
+          className="text-[11vw] md:text-[13vw] font-black tracking-tighter leading-none text-center bg-gradient-to-b from-white from-[50%] to-black to-[50%] bg-clip-text text-transparent pb-4 md:pb-8 whitespace-nowrap"
         >
           karman singh
         </h1>
