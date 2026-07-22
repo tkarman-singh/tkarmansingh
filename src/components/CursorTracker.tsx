@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const TRAIL_LENGTH = 8;
+const TRAIL_LENGTH = 14;
 
 export function CursorTracker() {
   const [path, setPath] = useState("");
@@ -31,16 +31,16 @@ export function CursorTracker() {
 
     const animate = () => {
       // Head point tightly follows the cursor
-      points[0].x += (target.x - points[0].x) * 0.6;
-      points[0].y += (target.y - points[0].y) * 0.6;
+      points[0].x += (target.x - points[0].x) * 0.55;
+      points[0].y += (target.y - points[0].y) * 0.55;
 
       // Each subsequent point loosely follows the one before it to create a ribbon effect
       for (let i = 1; i < TRAIL_LENGTH; i++) {
         const dx = points[i - 1].x - points[i].x;
         const dy = points[i - 1].y - points[i].y;
         
-        // Dynamic lerp factor: very stiff to keep the maximum length capped to around 200px
-        const spring = 0.55 - (i / TRAIL_LENGTH) * 0.2; 
+        // Dynamic lerp factor: keeps maximum length around 350px
+        const spring = 0.50 - (i / TRAIL_LENGTH) * 0.22; 
         
         points[i].x += dx * spring;
         points[i].y += dy * spring;
