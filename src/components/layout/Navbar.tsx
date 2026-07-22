@@ -126,6 +126,13 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            className="mobile-menu-item text-lg font-medium text-[color:var(--color-primary)] hover:text-white"
+          >
+            Resume
+          </a>
         </div>
       )}
     </header>
