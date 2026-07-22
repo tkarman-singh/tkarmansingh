@@ -114,7 +114,7 @@ export function Projects() {
                   </div>
                 </div>
                 
-                <p className="text-[color:var(--color-muted)] mb-6 text-sm md:text-base md:line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
+                <p className="text-[color:var(--color-muted)] mb-6 text-sm md:text-base line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
                   {project.description}
                 </p>
 
