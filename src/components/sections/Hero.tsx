@@ -42,10 +42,10 @@ export function Hero() {
       <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] rounded-full bg-[--color-accent-1] mix-blend-screen filter blur-[150px] opacity-10 -z-10"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] rounded-full bg-[--color-accent-3] mix-blend-screen filter blur-[150px] opacity-10 -z-10"></div>
 
-      <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center h-[500px] md:h-[600px] z-10 mt-10">
+      <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center h-[400px] sm:h-[500px] md:h-[600px] z-10 mt-10">
         
-        {/* Center Image Container (Increased size by 1.5x) */}
-        <div className="relative w-[210px] h-[210px] md:w-[300px] md:h-[300px] z-0 shadow-2xl">
+        {/* Center Image Container */}
+        <div className="relative w-[150px] h-[150px] sm:w-[210px] sm:h-[210px] md:w-[300px] md:h-[300px] z-0 shadow-2xl">
            <Image 
              src="/profile.jpg" 
              alt="Karman Singh" 
@@ -53,45 +53,50 @@ export function Hero() {
              className="object-cover" 
              priority
            />
-           {/* Color overlay to match the pinkish hue if needed, though image is already pink */}
            <div className="absolute inset-0 bg-[#EC69FA] mix-blend-multiply opacity-20"></div>
         </div>
 
         {/* Left Text */}
-        <h2 className="absolute left-2 md:-left-8 top-[15%] md:top-[25%] text-4xl md:text-6xl font-light text-white tracking-widest z-10">
+        <h2 className="absolute left-2 sm:left-4 md:-left-8 top-[10%] sm:top-[15%] md:top-[25%] text-2xl sm:text-4xl md:text-6xl font-light text-white tracking-widest z-10">
           NAMASTE,
         </h2>
 
         {/* Right Text */}
-        <h2 className="absolute right-4 md:right-16 top-[15%] md:top-[25%] text-4xl md:text-6xl font-light text-white tracking-widest z-10">
+        <h2 className="absolute right-2 sm:right-4 md:right-16 top-[10%] sm:top-[15%] md:top-[25%] text-2xl sm:text-4xl md:text-6xl font-light text-white tracking-widest z-10">
           I'M
         </h2>
 
         {/* Animated Center Name */}
         <h1 
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center text-7xl md:text-[10rem] font-bold tracking-tighter text-white z-20 whitespace-nowrap transition-opacity duration-300 drop-shadow-2xl ${fade ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center text-5xl sm:text-7xl md:text-[10rem] font-bold tracking-tighter text-white z-20 whitespace-nowrap transition-opacity duration-300 drop-shadow-2xl ${fade ? 'opacity-100' : 'opacity-0'}`}
           style={{ textShadow: '0 4px 30px rgba(0,0,0,0.8)' }}
         >
            {names[titleIndex]}
         </h1>
 
         {/* Bottom Right Text */}
-        <h2 className="absolute right-2 md:-right-8 bottom-[10%] md:bottom-[5%] text-5xl md:text-[7rem] font-light text-white tracking-widest leading-none z-10">
+        <h2 className="absolute right-2 sm:right-4 md:-right-8 bottom-[10%] md:bottom-[5%] text-3xl sm:text-5xl md:text-[7rem] font-light text-white tracking-widest leading-none z-10">
           SINGH
         </h2>
 
       </div>
 
-      <div className="mt-8 flex flex-col items-center z-10">
-        <h2 className="text-lg md:text-2xl text-[color:var(--color-muted)] font-medium mb-8">
-          Software Engineer <span className="text-white/30 px-2">|</span> Full Stack Developer <span className="text-white/30 px-2">|</span> DevOps Engineer <span className="text-white/30 px-2">|</span> ML Enthusiast
+      <div className="mt-8 flex flex-col items-center z-10 w-full px-4">
+        <h2 className="text-sm sm:text-lg md:text-2xl text-[color:var(--color-muted)] font-medium mb-8 text-center flex flex-wrap justify-center items-center gap-x-2 gap-y-1">
+          <span>Software Engineer</span>
+          <span className="text-white/30 hidden sm:inline">|</span>
+          <span>Full Stack Developer</span>
+          <span className="text-white/30 hidden lg:inline">|</span>
+          <span>DevOps Engineer</span>
+          <span className="text-white/30 hidden sm:inline">|</span>
+          <span>ML Enthusiast</span>
         </h2>
 
-        <div className="flex flex-col sm:flex-row gap-4 items-center mb-10">
-          <Button magnetic variant="primary" onClick={() => document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})}>
+        <div className="flex flex-col sm:flex-row gap-4 items-center mb-10 w-full sm:w-auto">
+          <Button magnetic variant="primary" onClick={() => document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})} className="w-full sm:w-auto">
             View My Work <ArrowRight size={18} />
           </Button>
-          <Button magnetic variant="outline" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}>
+          <Button magnetic variant="outline" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className="w-full sm:w-auto">
             <Terminal size={18} /> Contact Me
           </Button>
         </div>
