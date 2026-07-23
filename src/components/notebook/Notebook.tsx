@@ -41,19 +41,43 @@ const Page = ({
   const mid = start + step / 2;
   const end = start + step;
 
-  const rotateY = useTransform(scrollYProgress, [start, end], [0, -180]);
+  const isLastPage = index === totalPages - 1;
+
+  // WAAPI requires offsets to be in the [0, 1] range. 
+  // The last page never flips, so we feed it dummy [0, 1] bounds with 0 movement.
+  const safeStart = isLastPage ? 0 : start;
+  const safeMid = isLastPage ? 0.5 : mid;
+  const safeEnd = isLastPage ? 1 : end;
+
+  const rotateY = useTransform(
+    scrollYProgress, 
+    [safeStart, safeEnd], 
+    isLastPage ? [0, 0] : [0, -180]
+  );
   
   // Lifting arc to simulate paper bending towards the camera
-  const translateZ = useTransform(scrollYProgress, [start, mid, end], [0, 150, 0]);
+  const translateZ = useTransform(
+    scrollYProgress, 
+    [safeStart, safeMid, safeEnd], 
+    isLastPage ? [0, 0, 0] : [0, 150, 0]
+  );
 
   // Lighting overlay to simulate the curve of the paper catching light
-  const lightOpacity = useTransform(scrollYProgress, [start, mid, end], [0, 0.3, 0]);
-  const lightPosition = useTransform(scrollYProgress, [start, end], ["100%", "-100%"]);
+  const lightOpacity = useTransform(
+    scrollYProgress, 
+    [safeStart, safeMid, safeEnd], 
+    isLastPage ? [0, 0, 0] : [0, 0.3, 0]
+  );
+  const lightPosition = useTransform(
+    scrollYProgress, 
+    [safeStart, safeEnd], 
+    isLastPage ? ["100%", "100%"] : ["100%", "-100%"]
+  );
 
   const zIndexFloat = useTransform(
     scrollYProgress,
-    mid >= 1 ? [0, 1] : [0, mid - 0.0001, mid, 1],
-    mid >= 1 ? [totalPages - index, totalPages - index] : [totalPages - index, totalPages - index, index, index]
+    isLastPage ? [0, 0.5, 1] : [0, safeMid - 0.0001, safeMid, 1],
+    isLastPage ? [1, 1, 1] : [totalPages - index, totalPages - index, index, index]
   );
   const zIndex = useTransform(zIndexFloat, (val) => Math.round(val));
 
