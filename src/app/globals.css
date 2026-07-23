@@ -1,50 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #1F0822;
-  --color-foreground: #FFF2FF;
-  --color-accent-1: #EC69FA;
-  --color-accent-2: #FFF2FF;
-  --color-accent-3: #EC69FA;
-  --color-muted: #A1A1AA;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --animate-marquee: marquee 20s linear infinite;
-  
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+  --color-background: #2c2621;
+  --color-foreground: #2C2C2C;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-caveat: var(--font-caveat), cursive;
+  --font-playfair: var(--font-playfair), serif;
 }
 
 @layer base {
   :root {
-    --background: #1F0822;
-    --foreground: #FFF2FF;
-    --color-accent-1: #EC69FA;
-    --color-accent-2: #FFF2FF;
-    --color-accent-3: #EC69FA;
+    --background: #2c2621;
+    --foreground: #2C2C2C;
   }
 
-  html {
-    scroll-behavior: smooth;
-    color-scheme: dark;
-  }
-
-  body {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     background-color: var(--background);
     color: var(--foreground);
-    overflow-x: hidden;
+    touch-action: none; /* Prevent browser handling of gestures like pinch zoom or swipe back */
+  }
+
+  /* Custom scrollbar for inside the notebook pages */
+  .notebook-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .notebook-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .notebook-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
-  }
-  .glass-card {
-    @apply bg-[#1F0822]/80 backdrop-blur-lg border border-white/10 rounded-2xl shadow-xl transition-all duration-300;
-  }
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-1 via-accent-2 to-accent-3;
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Caveat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "Karman Singh | Full Stack Developer",
-  description: "Portfolio of Karman Singh, a Software Engineer specializing in MERN, Cloud, and Machine Learning.",
+  title: "Karman Singh | Notebook",
+  description: "Interactive portfolio of Karman Singh.",
 };
 
 export default function RootLayout({
@@ -15,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col selection:bg-accent-1/30 selection:text-white">
+    <html lang="en" className={`${inter.variable} ${caveat.variable} ${playfair.variable}`}>
+      <body className="antialiased h-screen w-screen overflow-hidden bg-[#2c2621] selection:bg-yellow-200/50 selection:text-black">
         {children}
       </body>
     </html>
