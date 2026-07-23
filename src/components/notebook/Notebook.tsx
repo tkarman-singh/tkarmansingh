@@ -24,7 +24,6 @@ const pages = [
   FooterPage,
 ];
 
-// Single Page Component
 const Page = ({ 
   index, 
   totalPages, 
@@ -36,28 +35,26 @@ const Page = ({
   scrollYProgress: MotionValue<number>;
   children: React.ReactNode;
 }) => {
-  // Each flip takes up 1 / (totalPages - 1) of the total scroll
+  const isCover = index === 0;
   const step = 1 / (totalPages - 1);
   const start = index * step;
   const mid = start + step / 2;
   const end = start + step;
 
-  // The rotation interpolates exactly with the scroll position
-  const rotateY = useTransform(
-    scrollYProgress,
-    [start, end],
-    [0, -180]
-  );
+  const rotateY = useTransform(scrollYProgress, [start, end], [0, -180]);
+  
+  // Lifting arc to simulate paper bending towards the camera
+  const translateZ = useTransform(scrollYProgress, [start, mid, end], [0, 150, 0]);
 
-  // Dynamic Z-Index to completely eliminate Z-fighting!
-  // We must ensure the input array is strictly increasing to prevent framer-motion crash.
+  // Lighting overlay to simulate the curve of the paper catching light
+  const lightOpacity = useTransform(scrollYProgress, [start, mid, end], [0, 0.3, 0]);
+  const lightPosition = useTransform(scrollYProgress, [start, end], ["100%", "-100%"]);
+
   const zIndexFloat = useTransform(
     scrollYProgress,
     mid >= 1 ? [0, 1] : [0, mid - 0.0001, mid, 1],
     mid >= 1 ? [totalPages - index, totalPages - index] : [totalPages - index, totalPages - index, index, index]
   );
-  
-  // Ensure z-index is always an integer
   const zIndex = useTransform(zIndexFloat, (val) => Math.round(val));
 
   return (
@@ -65,47 +62,71 @@ const Page = ({
       className="absolute top-0 left-0 w-full h-full origin-left"
       style={{
         rotateY,
+        translateZ,
         zIndex,
         transformStyle: "preserve-3d",
       }}
     >
       {/* FRONT OF PAGE */}
       <div 
-        className="absolute inset-0 bg-[#F9F6EE] border-r border-y border-black/10 shadow-[-5px_0_15px_rgba(0,0,0,0.1)] flex flex-col"
+        className={`absolute inset-0 flex flex-col shadow-[-5px_0_15px_rgba(0,0,0,0.1)] ${
+          isCover 
+            ? "bg-[#1a1a1a] rounded-r-2xl border-2 border-black/30" 
+            : "bg-[#F9F6EE] border-r border-y border-black/10"
+        }`}
         style={{ backfaceVisibility: "hidden" }}
       >
-        {/* SVG Noise Texture */}
-        <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" 
-          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-        ></div>
+        {isCover ? (
+          // Hard cover texture
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-80 mix-blend-multiply rounded-r-2xl pointer-events-none z-0"></div>
+        ) : (
+          <>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+            <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
+          </>
+        )}
 
-        {/* Ruled lines */}
-        <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
+        {/* Dynamic lighting for optical curl illusion */}
+        <motion.div 
+          className="absolute inset-0 pointer-events-none z-[100] mix-blend-overlay"
+          style={{
+            opacity: lightOpacity,
+            background: "linear-gradient(to right, transparent, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 55%, transparent)",
+            backgroundPosition: lightPosition,
+            backgroundSize: "200% 100%"
+          }}
+        />
 
         {/* Content Area */}
-        <div className="relative w-full h-full p-8 md:p-14 pl-12 md:pl-20 overflow-y-auto overflow-x-hidden custom-scrollbar z-10">
+        <div className={`relative w-full h-full p-8 md:p-14 pl-12 md:pl-20 overflow-y-auto overflow-x-hidden custom-scrollbar z-10 ${isCover ? "text-white" : ""}`}>
           {children}
         </div>
         
         {/* Page Number */}
-        <div className="absolute bottom-4 right-6 font-playfair text-black/40 text-sm z-20">
-          {index + 1}
-        </div>
+        {!isCover && (
+          <div className="absolute bottom-4 right-6 font-playfair text-black/40 text-sm z-20">
+            {index + 1}
+          </div>
+        )}
       </div>
 
-      {/* BACK OF PAGE (The blank left side) */}
+      {/* BACK OF PAGE */}
       <div 
-        className="absolute inset-0 bg-[#F4F1E8] border-l border-y border-black/10 shadow-[5px_0_15px_rgba(0,0,0,0.1)] flex flex-col"
+        className={`absolute inset-0 flex flex-col shadow-[5px_0_15px_rgba(0,0,0,0.1)] ${
+          isCover 
+            ? "bg-[#1a1a1a] rounded-l-2xl border-2 border-black/30" 
+            : "bg-[#F4F1E8] border-l border-y border-black/10"
+        }`}
         style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
       >
-        {/* SVG Noise Texture */}
-        <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" 
-          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-        ></div>
-        {/* Ruled lines */}
-        <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
+        {isCover ? (
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-80 mix-blend-multiply rounded-l-2xl pointer-events-none z-0"></div>
+        ) : (
+          <>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+            <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
+          </>
+        )}
       </div>
     </motion.div>
   );
