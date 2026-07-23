@@ -1,32 +1,49 @@
 "use client";
 
-import { User } from "lucide-react";
-
 export function HeroPage() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center font-caveat relative text-white">
-      
-      {/* Name and Tagline */}
-      <div className="text-center z-10 relative">
-        <p className="text-3xl md:text-4xl text-gray-300 mb-2 font-inter tracking-widest uppercase text-sm">
-          Namaste, I'm
-        </p>
-        <h1 className="text-6xl md:text-8xl font-bold mb-4 inline-block drop-shadow-md text-white font-playfair uppercase tracking-tight">
+    <div className="w-full h-full flex flex-col font-caveat text-gray-900 pt-6">
+      <div className="flex-grow flex flex-col justify-center items-start">
+        
+        <div className="mb-4 text-4xl md:text-5xl font-bold bg-yellow-200/50 inline-block px-4 py-1 -rotate-2 transform shadow-sm border border-black/10">
+          Hello! I'm
+        </div>
+        
+        <h1 className="text-7xl md:text-[6rem] font-extrabold leading-none tracking-tight mb-6">
           Karman Singh
         </h1>
-        <div className="w-24 h-1 bg-yellow-600 mx-auto mt-6 mb-8 rounded-full"></div>
-        <p className="text-2xl md:text-3xl text-gray-400 mt-2 font-inter uppercase tracking-[0.2em] text-sm">
-          Software Engineer & IT Undergraduate
+        
+        <p className="text-3xl md:text-4xl max-w-lg mb-8 leading-relaxed font-playfair italic text-gray-600">
+          Software Engineer & IT Undergraduate at NIT Jalandhar
         </p>
+
+        {/* Hand-drawn underline */}
+        <svg className="w-64 h-6 mb-12 -mt-6 opacity-60" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5,15 Q50,5 100,12 T195,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+        </svg>
+        
+        <div className="flex gap-4">
+          <div className="px-6 py-2 border-2 border-black rounded-lg shadow-[4px_4px_0_rgba(0,0,0,1)] text-2xl font-bold transform hover:-translate-y-1 hover:shadow-[6px_6px_0_rgba(0,0,0,1)] transition-all bg-white cursor-pointer">
+            Full-Stack Developer
+          </div>
+          <div className="px-6 py-2 border-2 border-black rounded-lg shadow-[4px_4px_0_rgba(0,0,0,1)] text-2xl font-bold transform hover:-translate-y-1 hover:shadow-[6px_6px_0_rgba(0,0,0,1)] transition-all bg-white cursor-pointer rotate-2">
+            Machine Learning
+          </div>
+        </div>
+      </div>
+      
+      {/* Absolute positioning for a taped polaroid photo or doodle */}
+      <div className="absolute top-12 right-12 w-48 h-56 bg-white p-3 shadow-lg transform rotate-6 border border-gray-200 hidden md:block">
+        <div className="w-full h-40 bg-gray-200 mb-2 overflow-hidden relative">
+          <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-sans text-xs">
+            [Photo placeholder]
+          </div>
+        </div>
+        <p className="text-center text-xl font-bold">Me!</p>
+        {/* Tape */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-20 h-8 bg-white/60 backdrop-blur-sm shadow-sm rotate-3 border border-black/5 mix-blend-overlay"></div>
       </div>
 
-      {/* Decorative arrow pointing to flip */}
-      <div className="absolute bottom-10 right-10 flex flex-col items-center opacity-60 animate-pulse">
-        <span className="text-xl mb-1 font-inter uppercase tracking-widest text-xs">Scroll to Open</span>
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-2">
-          <path d="M12 5v14M19 12l-7 7-7-7" />
-        </svg>
-      </div>
     </div>
   );
 }

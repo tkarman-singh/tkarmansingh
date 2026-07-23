@@ -2,7 +2,7 @@ import { NotebookController } from "@/components/notebook/NotebookController";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen">
+    <main className="w-full h-screen overflow-hidden">
       <NotebookController />
     </main>
   );
