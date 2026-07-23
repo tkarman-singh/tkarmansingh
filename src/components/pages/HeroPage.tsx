@@ -1,47 +1,46 @@
 "use client";
 
-import Image from "next/image";
+import { User } from "lucide-react";
 
 export function HeroPage() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center relative mt-10">
+    <div className="w-full h-full flex flex-col items-center justify-center font-caveat text-gray-900 relative">
       
-      {/* Polaroid photo */}
-      <div className="relative p-3 pb-12 bg-white shadow-lg transform -rotate-3 hover:rotate-0 transition-transform duration-500 max-w-[250px] w-full">
-        <div className="relative w-full aspect-square border border-gray-200">
-          <Image 
-            src="/profile.jpg" 
-            alt="Karman Singh" 
-            fill 
-            className="object-cover grayscale sepia-[.3]" 
-            priority
-          />
-        </div>
-        {/* Handwriting on polaroid */}
-        <div className="absolute bottom-3 left-0 w-full text-center font-caveat text-2xl text-gray-800">
-          Me!
-        </div>
-        {/* Tape at the top */}
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/40 backdrop-blur-sm shadow-sm rotate-2 border border-black/5" style={{ background: "linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.4))" }}></div>
-      </div>
-
-      <div className="mt-12 text-center space-y-4">
-        <h1 className="font-caveat text-6xl md:text-8xl text-black drop-shadow-sm font-bold">
+      {/* Name and Tagline */}
+      <div className="text-center z-10 relative">
+        <h1 className="text-7xl md:text-8xl font-bold mb-4 transform -rotate-2 inline-block drop-shadow-sm text-black">
           Karman Singh
         </h1>
-        <p className="font-playfair italic text-xl md:text-2xl text-black/70">
-          Software Engineer & Builder
+        <p className="text-3xl md:text-4xl text-gray-700 mt-2 font-playfair italic">
+          Software Engineer & IT Undergraduate
         </p>
       </div>
 
-      {/* Hand-drawn arrow */}
-      <div className="absolute bottom-20 right-10 flex flex-col items-center gap-2 opacity-60">
-        <span className="font-caveat text-2xl rotate-12">Swipe to turn</span>
-        <svg width="40" height="40" viewBox="0 0 100 100" className="rotate-90">
-          <path d="M10,50 Q50,90 90,50 M70,30 L90,50 L70,70" fill="none" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+      {/* Taped photo placeholder */}
+      <div className="relative mt-12 transform rotate-3 transition-transform hover:rotate-1 duration-300 group cursor-pointer z-20">
+        {/* Tape */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/40 backdrop-blur-sm border border-white/50 shadow-sm transform -rotate-2 z-10"></div>
+        
+        {/* Photo frame */}
+        <div className="bg-white p-3 pb-12 shadow-md border border-black/10">
+          <div className="w-48 h-48 bg-gray-200 border border-black/5 flex items-center justify-center overflow-hidden relative group">
+            {/* The actual image should go here. For now, a placeholder icon. */}
+            <User size={64} className="text-gray-400 group-hover:scale-110 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xl text-black/70 whitespace-nowrap transform -rotate-2 group-hover:rotate-0 transition-transform">
+            Building scalable systems
+          </p>
+        </div>
+      </div>
+
+      {/* Decorative arrow pointing to flip */}
+      <div className="absolute bottom-10 right-10 flex flex-col items-center opacity-60 animate-pulse">
+        <span className="text-2xl mb-1 transform -rotate-12">Flip me!</span>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform -rotate-45">
+          <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>
       </div>
-      
     </div>
   );
 }

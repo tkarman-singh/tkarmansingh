@@ -1,70 +1,51 @@
 "use client";
 
-import { Send, MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone } from "lucide-react";
 
 export function ContactPage() {
   return (
     <div className="w-full h-full flex flex-col font-caveat text-gray-900 pt-6">
-      <h2 className="text-5xl md:text-6xl font-bold mb-8 border-b-2 border-black/20 pb-4 inline-block w-fit">
+      <h2 className="text-5xl md:text-6xl font-bold mb-8 border-b-2 border-black/20 pb-4 inline-flex items-center gap-4 w-fit">
+        <Mail size={48} className="text-black/60" />
         Let's Connect
       </h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      
+      <div className="flex-grow flex flex-col justify-center items-center">
         
-        {/* Contact Info */}
-        <div className="space-y-6">
-          <p className="text-3xl leading-snug">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
-          </p>
+        {/* Taped Contact Card */}
+        <div className="relative w-full max-w-md bg-white p-8 md:p-12 shadow-[5px_5px_15px_rgba(0,0,0,0.1)] border border-black/10 transform -rotate-1 group hover:rotate-1 transition-transform duration-300">
           
-          <div className="space-y-4 text-2xl pt-4">
-            <div className="flex items-center gap-3 hover:text-blue-700 transition-colors cursor-pointer">
-              <Mail className="rotate-[-10deg]" /> karman.singh.mail@gmail.com
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="rotate-[5deg]" /> Punjab, India
-            </div>
-            <div className="flex items-center gap-3 hover:text-blue-700 transition-colors cursor-pointer">
-              <Phone className="rotate-[-15deg]" /> +91 XXXXXXXXXX
-            </div>
-          </div>
-          
-          {/* Hand drawn arrow pointing to form */}
-          <div className="hidden md:block absolute left-1/2 top-1/2 rotate-[-10deg] opacity-60">
-            <span className="text-xl">Drop a note!</span>
-            <svg width="60" height="40" viewBox="0 0 100 100">
-              <path d="M10,50 Q40,30 90,50 L70,30 M90,50 L70,70" fill="none" stroke="black" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Notepad Form */}
-        <div className="relative">
           {/* Tape */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-white/40 backdrop-blur-sm rotate-[-2deg] border border-black/5 z-20"></div>
-          
-          <form className="bg-yellow-50 p-6 shadow-md border border-yellow-200 rotate-1 relative z-10" onSubmit={(e) => e.preventDefault()}>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-xl font-bold mb-1">Name</label>
-                <input type="text" className="w-full bg-transparent border-b-2 border-black/30 focus:border-black outline-none px-2 py-1 text-2xl font-caveat" placeholder="John Doe" />
-              </div>
-              <div>
-                <label className="block text-xl font-bold mb-1">Email</label>
-                <input type="email" className="w-full bg-transparent border-b-2 border-black/30 focus:border-black outline-none px-2 py-1 text-2xl font-caveat" placeholder="john@example.com" />
-              </div>
-              <div>
-                <label className="block text-xl font-bold mb-1">Message</label>
-                <textarea rows={4} className="w-full bg-transparent border-b-2 border-black/30 focus:border-black outline-none px-2 py-1 text-2xl font-caveat resize-none leading-relaxed" placeholder="Write your message here..."></textarea>
-              </div>
-              
-              <button className="flex items-center gap-2 border-2 border-black/60 px-4 py-2 hover:bg-black/5 transition-colors transform hover:-translate-y-1 text-2xl">
-                Send <Send size={18} />
-              </button>
-            </div>
-          </form>
-        </div>
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-yellow-100/50 backdrop-blur-sm border border-yellow-200/50 shadow-sm transform rotate-2 z-10 mix-blend-multiply"></div>
 
+          <h3 className="text-4xl font-bold mb-8 text-center font-playfair">Reach Out</h3>
+          
+          <div className="space-y-8 text-2xl md:text-3xl">
+            <a href="tel:+918725047467" className="flex items-center gap-4 hover:text-red-500 transition-colors">
+              <Phone size={32} className="text-black/50" />
+              <span>+91 8725047467</span>
+            </a>
+            
+            <a href="mailto:t.karman.singh@gmail.com" className="flex items-center gap-4 hover:text-red-500 transition-colors">
+              <Mail size={32} className="text-black/50" />
+              <span>t.karman.singh@gmail.com</span>
+            </a>
+            
+            <div className="flex items-center gap-4 cursor-default">
+              <MapPin size={32} className="text-black/50" />
+              <span>NIT Jalandhar, Punjab</span>
+            </div>
+          </div>
+          
+          {/* Socials link (simplified for this card, full links in footer) */}
+          <div className="mt-12 pt-6 border-t border-dashed border-black/20 flex flex-col items-center">
+            <p className="text-xl text-gray-500 italic font-playfair mb-2">Connect online</p>
+            <div className="flex gap-6 text-2xl font-bold text-blue-600 underline decoration-wavy decoration-blue-300 underline-offset-4">
+              <a href="https://linkedin.com/in/karman-singh" target="_blank" rel="noreferrer" className="hover:text-blue-800">LinkedIn</a>
+              <a href="https://github.com/tkarman-singh" target="_blank" rel="noreferrer" className="hover:text-blue-800">GitHub</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

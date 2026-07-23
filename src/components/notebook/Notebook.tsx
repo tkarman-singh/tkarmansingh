@@ -8,7 +8,7 @@ import { SkillsPage } from "../pages/SkillsPage";
 import { ExperiencePage } from "../pages/ExperiencePage";
 import { ProjectsPage } from "../pages/ProjectsPage";
 import { EducationPage } from "../pages/EducationPage";
-import { CertificationsPage } from "../pages/CertificationsPage";
+import { LeadershipPage } from "../pages/LeadershipPage";
 import { ContactPage } from "../pages/ContactPage";
 import { FooterPage } from "../pages/FooterPage";
 
@@ -16,10 +16,10 @@ const pages = [
   HeroPage,
   AboutPage,
   SkillsPage,
+  EducationPage,
   ExperiencePage,
   ProjectsPage,
-  EducationPage,
-  CertificationsPage,
+  LeadershipPage,
   ContactPage,
   FooterPage,
 ];
