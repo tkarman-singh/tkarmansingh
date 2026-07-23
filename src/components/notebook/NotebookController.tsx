@@ -35,9 +35,6 @@ export function NotebookController() {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Prevent default scrolling
-      e.preventDefault();
-      
       // Add a small threshold to prevent overly sensitive trackpads
       if (Math.abs(e.deltaY) < 30) return;
       
@@ -56,51 +53,27 @@ export function NotebookController() {
       }
     };
 
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY;
-      touchStartX.current = e.touches[0].clientX;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault(); // Prevent native scroll
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndY = e.changedTouches[0].clientY;
-      const touchEndX = e.changedTouches[0].clientX;
-      
-      const diffY = touchStartY.current - touchEndY;
-      const diffX = touchStartX.current - touchEndX;
-
-      // Prefer horizontal swipe for book, fallback to vertical
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 50) flipNext(); // swipe left -> next page
-        else if (diffX < -50) flipPrev(); // swipe right -> prev page
-      } else {
-        if (diffY > 50) flipNext();
-        else if (diffY < -50) flipPrev();
-      }
-    };
-
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("touchstart", handleTouchStart, { passive: false });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="w-full h-full flex items-center justify-center relative bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] bg-[#2c2621]">
       <div className="absolute inset-0 bg-black/40 mix-blend-multiply pointer-events-none z-0"></div>
-      <Notebook currentPage={currentPage} totalPages={totalPages} />
+      <Notebook 
+        currentPage={currentPage} 
+        totalPages={totalPages} 
+        onPageChange={handlePageChange} 
+      />
       
       {/* Page Indicator */}
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 text-white/50 font-mono text-sm z-50">
