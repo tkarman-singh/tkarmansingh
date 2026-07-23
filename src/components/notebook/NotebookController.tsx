@@ -33,11 +33,73 @@ export function NotebookController() {
     }, FLIP_DURATION);
   };
 
+  const wheelAccumulator = useRef(0);
+  const lastWheelTime = useRef(Date.now());
+  const SCROLL_THRESHOLD = 200; // Resistance threshold before flipping at boundary
+
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Add a small threshold to prevent overly sensitive trackpads
-      if (Math.abs(e.deltaY) < 30) return;
-      
+      // Find closest scrollable parent
+      let target = e.target as HTMLElement | null;
+      let isScrollable = false;
+      let atTop = false;
+      let atBottom = false;
+
+      while (target && target !== document.body) {
+        const style = window.getComputedStyle(target);
+        if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
+          if (target.scrollHeight > target.clientHeight) {
+            isScrollable = true;
+            // Check boundaries with small threshold for rounding errors
+            atTop = target.scrollTop <= 2;
+            atBottom = Math.abs(target.scrollHeight - target.clientHeight - target.scrollTop) <= 2;
+            break;
+          }
+        }
+        target = target.parentElement;
+      }
+
+      // Time-based reset for accumulator to prevent residual scroll buildup over time
+      const now = Date.now();
+      if (now - lastWheelTime.current > 400) {
+        wheelAccumulator.current = 0;
+      }
+      lastWheelTime.current = now;
+
+      if (isScrollable) {
+        if (e.deltaY > 0) { // Scrolling down
+          if (!atBottom) {
+            // Normal scrolling inside the element, DO NOT flip
+            wheelAccumulator.current = 0;
+            return; 
+          }
+          // We are at the bottom, accumulate force to break the boundary
+          wheelAccumulator.current += e.deltaY;
+          
+          if (wheelAccumulator.current < SCROLL_THRESHOLD) {
+            return; // Not enough resistance met, abort flip
+          }
+        } else if (e.deltaY < 0) { // Scrolling up
+          if (!atTop) {
+            // Normal scrolling inside the element, DO NOT flip
+            wheelAccumulator.current = 0;
+            return;
+          }
+          // We are at the top, accumulate force to break the boundary
+          wheelAccumulator.current += e.deltaY;
+          
+          if (wheelAccumulator.current > -SCROLL_THRESHOLD) {
+            return; // Not enough resistance met, abort flip
+          }
+        }
+      } else {
+        // Not a scrollable element, use immediate flip with basic trackpad threshold
+        if (Math.abs(e.deltaY) < 30) return;
+      }
+
+      // Resistance broken or not scrollable, execute flip
+      wheelAccumulator.current = 0;
+
       if (e.deltaY > 0) {
         flipNext();
       } else if (e.deltaY < 0) {
