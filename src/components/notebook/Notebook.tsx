@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useTransform, MotionValue } from "framer-motion";
+import anime from "animejs";
 import { HeroPage } from "../pages/HeroPage";
 import { AboutPage } from "../pages/AboutPage";
 import { SkillsPage } from "../pages/SkillsPage";
@@ -24,71 +24,24 @@ const pages = [
   FooterPage,
 ];
 
-const Page = ({ 
-  index, 
-  totalPages, 
-  scrollYProgress, 
-  children 
-}: { 
-  index: number; 
-  totalPages: number; 
-  scrollYProgress: MotionValue<number>;
-  children: React.ReactNode;
-}) => {
+const Page = React.forwardRef<
+  HTMLDivElement,
+  {
+    index: number;
+    totalPages: number;
+    children: React.ReactNode;
+  }
+>(({ index, totalPages, children }, ref) => {
   const isCover = index === 0;
-  const step = 1 / (totalPages - 1);
-  const start = index * step;
-  const mid = start + step / 2;
-  const end = start + step;
-
   const isLastPage = index === totalPages - 1;
 
-  // WAAPI requires offsets to be in the [0, 1] range. 
-  // The last page never flips, so we feed it dummy [0, 1] bounds with 0 movement.
-  const safeStart = isLastPage ? 0 : start;
-  const safeMid = isLastPage ? 0.5 : mid;
-  const safeEnd = isLastPage ? 1 : end;
-
-  const rotateY = useTransform(
-    scrollYProgress, 
-    [safeStart, safeEnd], 
-    isLastPage ? [0, 0] : [0, -180]
-  );
-  
-  // Lifting arc to simulate paper bending towards the camera
-  const translateZ = useTransform(
-    scrollYProgress, 
-    [safeStart, safeMid, safeEnd], 
-    isLastPage ? [0, 0, 0] : [0, 150, 0]
-  );
-
-  // Lighting overlay to simulate the curve of the paper catching light
-  const lightOpacity = useTransform(
-    scrollYProgress, 
-    [safeStart, safeMid, safeEnd], 
-    isLastPage ? [0, 0, 0] : [0, 0.3, 0]
-  );
-  const lightPosition = useTransform(
-    scrollYProgress, 
-    [safeStart, safeEnd], 
-    isLastPage ? ["100%", "100%"] : ["100%", "-100%"]
-  );
-
-  const zIndexFloat = useTransform(
-    scrollYProgress,
-    isLastPage ? [0, 0.5, 1] : [0, safeMid - 0.0001, safeMid, 1],
-    isLastPage ? [1, 1, 1] : [totalPages - index, totalPages - index, index, index]
-  );
-  const zIndex = useTransform(zIndexFloat, (val) => Math.round(val));
-
   return (
-    <motion.div
+    <div
+      ref={ref}
       className="absolute top-0 left-0 w-full h-full origin-left"
       style={{
-        rotateY,
-        translateZ,
-        zIndex,
         transformStyle: "preserve-3d",
+        zIndex: totalPages - index, // Initial stack order
       }}
     >
       {/* FRONT OF PAGE */}
@@ -101,7 +54,6 @@ const Page = ({
         style={{ backfaceVisibility: "hidden" }}
       >
         {isCover ? (
-          // Hard cover texture
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-80 mix-blend-multiply rounded-r-2xl pointer-events-none z-0"></div>
         ) : (
           <>
@@ -110,16 +62,18 @@ const Page = ({
           </>
         )}
 
-        {/* Dynamic lighting for optical curl illusion */}
-        <motion.div 
-          className="absolute inset-0 pointer-events-none z-[100] mix-blend-overlay"
-          style={{
-            opacity: lightOpacity,
-            background: "linear-gradient(to right, transparent, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 55%, transparent)",
-            backgroundPosition: lightPosition,
-            backgroundSize: "200% 100%"
-          }}
-        />
+        {/* Dynamic lighting overlay for animejs to target */}
+        {!isLastPage && (
+          <div 
+            className="light-overlay absolute inset-0 pointer-events-none z-[100] mix-blend-overlay"
+            style={{
+              opacity: 0,
+              background: "linear-gradient(to right, transparent, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 55%, transparent)",
+              backgroundPosition: "100% 0",
+              backgroundSize: "200% 100%"
+            }}
+          />
+        )}
 
         {/* Content Area */}
         <div className={`relative w-full h-full p-8 md:p-14 pl-12 md:pl-20 overflow-y-auto overflow-x-hidden custom-scrollbar z-10 ${isCover ? "text-white" : ""}`}>
@@ -152,18 +106,22 @@ const Page = ({
           </>
         )}
       </div>
-    </motion.div>
+    </div>
   );
-};
+});
+
+Page.displayName = "Page";
 
 export function Notebook({ 
-  scrollYProgress, 
+  scrollProgress, 
   totalPages 
 }: { 
-  scrollYProgress: MotionValue<number>; 
+  scrollProgress: number; 
   totalPages: number;
 }) {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineRef = useRef<anime.AnimeTimelineInstance | null>(null);
 
   // Handle responsive dimensions for the canvas
   useEffect(() => {
@@ -182,6 +140,83 @@ export function Notebook({
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
+  // Initialize Anime.js timeline
+  useEffect(() => {
+    // Create a master timeline that is paused.
+    // It will be scrubbed manually by scrollProgress.
+    const tl = anime.timeline({
+      autoplay: false,
+      duration: (totalPages - 1) * 1000,
+      easing: 'linear'
+    });
+
+    pageRefs.current.forEach((page, index) => {
+      if (!page || index === totalPages - 1) return; // Skip last page
+
+      const startTime = index * 1000;
+
+      // 1. Rotate the page linearly over 1000ms
+      tl.add({
+        targets: page,
+        rotateY: [0, -180],
+        duration: 1000,
+        easing: 'linear'
+      }, startTime);
+
+      // 2. Add an arching translateZ for optical paper bend
+      tl.add({
+        targets: page,
+        translateZ: [
+          { value: 150, duration: 500, easing: 'easeOutSine' },
+          { value: 0, duration: 500, easing: 'easeInSine' }
+        ]
+      }, startTime);
+
+      // 3. Z-Index swap at exactly 50% of the flip to prevent Z-fighting
+      tl.add({
+        targets: page,
+        zIndex: [
+          { value: totalPages - index, duration: 499, easing: 'linear' },
+          { value: index, duration: 1, easing: 'linear' },
+          { value: index, duration: 500, easing: 'linear' }
+        ]
+      }, startTime);
+
+      // 4. Lighting optical illusion overlay
+      const overlay = page.querySelector('.light-overlay');
+      if (overlay) {
+        tl.add({
+          targets: overlay,
+          opacity: [
+            { value: 0.3, duration: 500, easing: 'easeOutSine' },
+            { value: 0, duration: 500, easing: 'easeInSine' }
+          ]
+        }, startTime);
+
+        // We can use transform translateX to sweep the gradient instead of backgroundPosition to be safe with animejs
+        tl.add({
+          targets: overlay,
+          backgroundPosition: ['100% 0%', '-100% 0%'],
+          duration: 1000,
+          easing: 'linear'
+        }, startTime);
+      }
+    });
+
+    timelineRef.current = tl;
+
+    return () => {
+      tl.pause();
+    };
+  }, [totalPages]);
+
+  // Scrub the timeline when scrollProgress changes
+  useEffect(() => {
+    if (timelineRef.current) {
+      timelineRef.current.seek(timelineRef.current.duration * scrollProgress);
+    }
+  }, [scrollProgress]);
+
   // 3D Spiral Rings
   const spiralRings = Array.from({ length: 24 }).map((_, i) => (
     <div key={`ring-${i}`} className="w-8 md:w-12 h-4 rounded-full absolute -left-4 md:-left-6 border-[3px] border-gray-400 bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600 shadow-[0_2px_8px_rgba(0,0,0,0.6)] z-[999]" style={{ top: `${(i * 100) / 24 + 1.2}%` }}></div>
@@ -194,17 +229,12 @@ export function Notebook({
       className="relative flex justify-end items-center" 
       style={{ 
         perspective: "2500px", 
-        width: dimensions.width * 2, // Container is exactly 2 pages wide
+        width: dimensions.width * 2,
         height: dimensions.height,
         maxWidth: "1600px",
-        marginLeft: `calc(50vw - ${dimensions.width}px)` // Keeps the notebook centered horizontally
+        marginLeft: `calc(50vw - ${dimensions.width}px)`
       }}
     >
-      
-      {/* 
-        The actual book structure sits on the right half of the container. 
-        When pages flip, they rotate into the left half of the container. 
-      */}
       <div 
         className="relative right-0"
         style={{
@@ -213,34 +243,32 @@ export function Notebook({
           transformStyle: "preserve-3d"
         }}
       >
-        
-        {/* Notebook Poly Cover Backing (Right Side) */}
+        {/* Notebook Backings */}
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-[#1a1a1a] rounded-r-3xl shadow-[25px_25px_70px_rgba(0,0,0,0.9)] z-0">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-80 mix-blend-multiply"></div>
         </div>
-
-        {/* Notebook Poly Cover Backing (Left Side) */}
         <div className="absolute top-0 bottom-0 right-full w-full bg-[#1a1a1a] rounded-l-3xl shadow-[-25px_25px_70px_rgba(0,0,0,0.9)] z-0">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-80 mix-blend-multiply"></div>
         </div>
 
-        {/* The Spiral Binding perfectly down the center (Left edge of the right page) */}
+        {/* Spiral Binding */}
         <div className="absolute top-1 bottom-1 left-0 w-2 z-[999] pointer-events-none">
           {spiralRings}
         </div>
 
-        {/* The Pages (Mapped precisely to scroll progress) */}
+        {/* Pages */}
         {pages.map((PageComponent, index) => (
           <Page 
-            key={index} 
+            key={index}
             index={index} 
             totalPages={totalPages} 
-            scrollYProgress={scrollYProgress}
+            ref={(el) => {
+              pageRefs.current[index] = el;
+            }}
           >
             <PageComponent />
           </Page>
         ))}
-        
       </div>
     </div>
   );
