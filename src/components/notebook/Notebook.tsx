@@ -50,13 +50,15 @@ const Page = ({
   );
 
   // Dynamic Z-Index to completely eliminate Z-fighting!
-  // While on the right (rotate > -90), stack lower indices on top.
-  // While on the left (rotate <= -90), stack higher indices on top.
-  const zIndex = useTransform(
+  // We must ensure the input array is strictly increasing to prevent framer-motion crash.
+  const zIndexFloat = useTransform(
     scrollYProgress,
-    [0, mid - 0.001, mid, 1],
-    [totalPages - index, totalPages - index, index, index]
+    mid >= 1 ? [0, 1] : [0, mid - 0.0001, mid, 1],
+    mid >= 1 ? [totalPages - index, totalPages - index] : [totalPages - index, totalPages - index, index, index]
   );
+  
+  // Ensure z-index is always an integer
+  const zIndex = useTransform(zIndexFloat, (val) => Math.round(val));
 
   return (
     <motion.div
