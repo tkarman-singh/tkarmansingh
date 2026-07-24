@@ -12,8 +12,8 @@ export function NotebookController() {
     const handleScroll = () => {
       if (!containerRef.current) return;
       
-      const scrollTop = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       
       // Calculate progress from 0 to 1
       const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
