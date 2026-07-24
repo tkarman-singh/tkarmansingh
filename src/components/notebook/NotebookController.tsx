@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Notebook } from "./Notebook";
 
-export function NotebookController({ totalPages }: { totalPages: number }) {
+export function NotebookController({ totalPages = 9 }: { totalPages?: number }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
