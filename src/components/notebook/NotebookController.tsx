@@ -12,25 +12,31 @@ export function NotebookController() {
     const handleScroll = () => {
       if (!containerRef.current) return;
       
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      // Use getBoundingClientRect for bulletproof scroll calculation
+      // This works regardless of which parent is actually scrolling
+      const rect = containerRef.current.getBoundingClientRect();
+      const maxScroll = rect.height - window.innerHeight;
+      
+      // rect.top starts at 0 and becomes negative as we scroll down
+      const currentScroll = -rect.top;
       
       // Calculate progress from 0 to 1
-      const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
+      const progress = maxScroll > 0 ? currentScroll / maxScroll : 0;
       
-      // Add a slight smoothing/clamping just in case
+      // Clamp between 0 and 1
       const clampedProgress = Math.min(Math.max(progress, 0), 1);
       
       setScrollProgress(clampedProgress);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Use capture: true to catch scroll events even if they occur on a nested element
+    window.addEventListener("scroll", handleScroll, { passive: true, capture: true });
     
     // Initial calculation
     handleScroll();
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll, { capture: true });
     };
   }, []);
 
