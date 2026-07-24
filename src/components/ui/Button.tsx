@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import anime from "animejs";
+import { useRef, useEffect, useState } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
@@ -16,48 +15,52 @@ export function Button({
   ...props 
 }: ButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [ripple, setRipple] = useState<{x: number, y: number, id: number} | null>(null);
 
   useEffect(() => {
     if (!magnetic || !buttonRef.current) return;
 
     const button = buttonRef.current;
+    let reqId: number;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
     
+    const animate = () => {
+      // Smooth lerp for the magnetic effect
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+      
+      if (button) {
+        button.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      }
+      
+      reqId = requestAnimationFrame(animate);
+    };
+    
+    reqId = requestAnimationFrame(animate);
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = button.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
       
-      // Calculate distance from center
       const distance = Math.sqrt(x * x + y * y);
-      const maxDistance = 100; // Activation distance
+      const maxDistance = 100; 
 
       if (distance < maxDistance) {
-        anime({
-          targets: button,
-          translateX: x * 0.3,
-          translateY: y * 0.3,
-          scale: 1.05,
-          duration: 300,
-          easing: "easeOutElastic(1, .5)",
-        });
+        targetX = x * 0.3;
+        targetY = y * 0.3;
       } else {
-        resetPosition();
+        targetX = 0;
+        targetY = 0;
       }
     };
 
     const handleMouseLeave = () => {
-      resetPosition();
-    };
-
-    const resetPosition = () => {
-      anime({
-        targets: button,
-        translateX: 0,
-        translateY: 0,
-        scale: 1,
-        duration: 500,
-        easing: "easeOutElastic(1, .5)",
-      });
+      targetX = 0;
+      targetY = 0;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -66,6 +69,7 @@ export function Button({
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       button.removeEventListener("mouseleave", handleMouseLeave);
+      cancelAnimationFrame(reqId);
     };
   }, [magnetic]);
 
@@ -78,29 +82,12 @@ export function Button({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // Ripple effect
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    const ripple = document.createElement("span");
-    ripple.className = "absolute bg-white/30 rounded-full w-4 h-4 pointer-events-none translate-x-[-50%] translate-y-[-50%]";
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    
-    btn.appendChild(ripple);
-    
-    anime({
-      targets: ripple,
-      scale: 15,
-      opacity: 0,
-      duration: 600,
-      easing: "easeOutSine",
-      complete: () => {
-        ripple.remove();
-      }
-    });
+    setRipple({ x, y, id: Date.now() });
 
     if (props.onClick) {
       props.onClick(e);
@@ -114,6 +101,19 @@ export function Button({
       onClick={handleClick}
       {...props}
     >
+      {ripple && (
+        <span 
+          key={ripple.id}
+          className="absolute bg-white/30 rounded-full w-4 h-4 pointer-events-none -translate-x-1/2 -translate-y-1/2 animate-ping"
+          style={{ 
+            left: ripple.x, 
+            top: ripple.y,
+            animationDuration: '600ms',
+            animationFillMode: 'forwards'
+          }}
+          onAnimationEnd={() => setRipple(null)}
+        />
+      )}
       <span className="relative z-10 flex items-center gap-2">{children}</span>
     </button>
   );

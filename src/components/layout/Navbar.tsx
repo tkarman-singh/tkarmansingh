@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import anime from "animejs";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -43,16 +42,8 @@ export function Navbar() {
   }, [lastScrollY]);
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      anime({
-        targets: '.mobile-menu-item',
-        translateY: [-20, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(100),
-        easing: 'easeOutQuart',
-        duration: 600
-      });
-    }
+    // Replaced animejs stagger with simple state logic if needed, or just let CSS handle it.
+    // CSS transitions will handle the opacity and transform.
   }, [isMobileMenuOpen]);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
