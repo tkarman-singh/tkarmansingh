@@ -51,16 +51,33 @@ export function Notebook({
   const spiralRings = Array.from({ length: 30 }).map((_, i) => (
     <div 
       key={`ring-${i}`} 
-      className="w-3 md:w-4 h-8 md:h-10 rounded-full absolute -top-4 md:-top-5 border-[3px] border-gray-400 bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600 shadow-[2px_4px_4px_rgba(0,0,0,0.5)] z-50" 
-      style={{ left: `${(i * 100) / 30 + 1.5}%` }}
-    ></div>
+      className="absolute z-50 flex justify-between pointer-events-none"
+      style={{ 
+        left: `calc(${(i * 100) / 30 + 1.2}% + 2px)`, 
+        top: '-14px', 
+        height: '32px',
+        width: '16px',
+        transform: 'translateZ(5px)'
+      }}
+    >
+      <div className="w-[5px] h-full rounded-full border border-[#4a2511] bg-gradient-to-r from-[#b56b3e] via-[#f0a975] to-[#804220] shadow-[1px_3px_3px_rgba(0,0,0,0.6)]"></div>
+      <div className="w-[5px] h-full rounded-full border border-[#4a2511] bg-gradient-to-r from-[#b56b3e] via-[#f0a975] to-[#804220] shadow-[1px_3px_3px_rgba(0,0,0,0.6)]"></div>
+    </div>
   ));
 
   const holes = Array.from({ length: 30 }).map((_, i) => (
     <div 
       key={`hole-${i}`} 
-      className="w-4 h-4 md:w-5 md:h-5 rounded-full absolute top-2 bg-[#1a1a1a] shadow-inner z-40 border border-black/20" 
-      style={{ left: `${(i * 100) / 30 + 1.2}%` }}
+      className="w-5 h-5 rounded-full absolute bg-[#1a1a1a] shadow-[inset_0_3px_6px_rgba(0,0,0,0.8)] z-40 border border-black/40" 
+      style={{ left: `${(i * 100) / 30 + 1.2}%`, top: '8px' }}
+    ></div>
+  ));
+
+  const backHoles = Array.from({ length: 30 }).map((_, i) => (
+    <div 
+      key={`back-hole-${i}`} 
+      className="w-5 h-5 rounded-full absolute bg-[#1a1a1a] shadow-[inset_0_3px_6px_rgba(0,0,0,0.8)] z-40 border border-black/40" 
+      style={{ left: `${(i * 100) / 30 + 1.2}%`, bottom: '8px' }}
     ></div>
   ));
 
@@ -121,31 +138,32 @@ export function Notebook({
           const backShadowOpacity = (1 - easedProgress) * 0.8; // Fades out as it lays flat on the back
 
           return (
-            <div
-              id={`page-${index}`}
-              key={index}
-              className="absolute inset-0 origin-top"
-              style={{
-                zIndex: 100 - index,
-                transformStyle: "preserve-3d",
-                pointerEvents: index === activePageIndex ? "auto" : "none",
-                transform: `translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg)`
-              }}
-            >
-              {/* FRONT FACE */}
-              <div 
-                className="absolute inset-0 bg-[#Fdfbf5] rounded-b-lg border-x border-b border-black/10 flex flex-col" 
-                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+              <div
+                id={`page-${index}`}
+                key={index}
+                className="absolute inset-0"
+                style={{
+                  transformOrigin: "50% 18px",
+                  zIndex: 100 - index,
+                  transformStyle: "preserve-3d",
+                  pointerEvents: index === activePageIndex ? "auto" : "none",
+                  transform: `translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg)`
+                }}
               >
-                {/* Dynamic Front Shadow */}
+                {/* FRONT FACE */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-50"
-                  style={{ opacity: frontShadowOpacity }}
-                ></div>
+                  className="absolute inset-0 bg-[#Fdfbf5] rounded-b-lg border-x border-b border-black/10 flex flex-col" 
+                  style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                >
+                  {/* Dynamic Front Shadow */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-50"
+                    style={{ opacity: frontShadowOpacity }}
+                  ></div>
 
-                <div className="absolute left-0 right-0 top-0 h-8 pointer-events-none">
-                  {holes}
-                </div>
+                  <div className="absolute left-0 right-0 top-0 pointer-events-none z-50">
+                    {holes}
+                  </div>
 
                 <div 
                   className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" 
@@ -186,6 +204,10 @@ export function Notebook({
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-50"
                   style={{ opacity: backShadowOpacity }}
                 ></div>
+
+                <div className="absolute left-0 right-0 bottom-0 pointer-events-none z-50">
+                  {backHoles}
+                </div>
 
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0 mix-blend-multiply" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
                 <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
