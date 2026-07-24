@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import anime from "animejs";
+import React, { useState, useEffect } from "react";
 import { HeroPage } from "../pages/HeroPage";
 import { AboutPage } from "../pages/AboutPage";
 import { SkillsPage } from "../pages/SkillsPage";
@@ -32,9 +31,7 @@ export function Notebook({
   totalPages: number; 
 }) {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const tlRef = useRef<anime.AnimeTimelineInstance | null>(null);
 
-  // Handle resizing so the notepad stays perfectly bound to the container
   useEffect(() => {
     const updateDimensions = () => {
       const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -51,65 +48,6 @@ export function Notebook({
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Initialize Anime.js timeline
-  useEffect(() => {
-    // Only build timeline if we have pages
-    if (totalPages === 0) return;
-
-    const tl = anime.timeline({
-      autoplay: false,
-      duration: (totalPages - 1) * 1000,
-      easing: 'linear' 
-    });
-
-    for (let i = 0; i < totalPages - 1; i++) {
-      const pageId = `#page-${i}`;
-      const frontShadowId = `#shadow-front-${i}`;
-      const backShadowId = `#shadow-back-${i}`;
-
-      // Flip the 3D page container up over the spiral
-      tl.add({
-        targets: pageId,
-        rotateX: [0, 175], // Flips almost entirely flat onto the back
-        translateZ: [0, 60, 0], // Arc upwards during flip for fold realism
-        translateY: [0, -20, 0], // Shift up slightly during flip to avoid clipping the spiral
-        duration: 1000,
-        easing: 'easeInOutSine'
-      }, i * 1000);
-
-      // Darken front shadow as it lifts, then fade out
-      tl.add({
-        targets: frontShadowId,
-        opacity: [0, 0.7, 0.2],
-        duration: 1000,
-        easing: 'easeInOutSine'
-      }, i * 1000);
-
-      // Back shadow starts dark (hidden) and gets lighter as it flips fully
-      tl.add({
-        targets: backShadowId,
-        opacity: [0.8, 0],
-        duration: 1000,
-        easing: 'easeInOutSine'
-      }, i * 1000);
-    }
-
-    tlRef.current = tl;
-
-    return () => {
-      // Cleanup timeline if needed
-      tlRef.current = null;
-    };
-  }, [totalPages]);
-
-  // Sync scroll progress with Anime.js timeline
-  useEffect(() => {
-    if (tlRef.current) {
-      tlRef.current.seek(tlRef.current.duration * scrollProgress);
-    }
-  }, [scrollProgress]);
-
-  // Generate top spiral rings
   const spiralRings = Array.from({ length: 30 }).map((_, i) => (
     <div 
       key={`ring-${i}`} 
@@ -118,7 +56,6 @@ export function Notebook({
     ></div>
   ));
 
-  // Generate hole punches
   const holes = Array.from({ length: 30 }).map((_, i) => (
     <div 
       key={`hole-${i}`} 
@@ -129,10 +66,10 @@ export function Notebook({
 
   if (dimensions.width === 0) return null;
 
-  // Determine current active page index to manage pointer-events
+  const numFlips = totalPages - 1;
   const activePageIndex = Math.min(
-    Math.floor(scrollProgress * (totalPages - 1)),
-    totalPages - 1
+    Math.floor(scrollProgress * numFlips),
+    numFlips
   );
 
   return (
@@ -149,7 +86,6 @@ export function Notebook({
         {/* Notebook Cardboard Backing */}
         <div className="absolute inset-0 bg-[#3a2f26] rounded-b-xl rounded-t-sm shadow-inner z-0 border-x border-b border-black/40">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cardboard.png')] opacity-60 mix-blend-multiply"></div>
-          {/* Faux paper stack shadow */}
           <div className="absolute -left-1 -bottom-1 right-0 h-full bg-[#f4ebd0] -z-10 rounded-b-xl border border-black/20"></div>
           <div className="absolute -left-2 -bottom-2 right-0 h-full bg-[#ebdcb5] -z-20 rounded-b-xl border border-black/20"></div>
         </div>
@@ -161,6 +97,29 @@ export function Notebook({
 
         {/* The Pages */}
         {pages.map((PageComponent, index) => {
+          // Calculate pure math physics for this specific page
+          // Each page gets a fraction of the total scroll progress
+          const flipStart = index / numFlips;
+          const flipEnd = (index + 1) / numFlips;
+          
+          let pageProgress = 0;
+          if (scrollProgress >= flipEnd) {
+            pageProgress = 1;
+          } else if (scrollProgress > flipStart) {
+            pageProgress = (scrollProgress - flipStart) * numFlips;
+          }
+
+          // Smooth easing using Sine
+          const easedProgress = -(Math.cos(Math.PI * pageProgress) - 1) / 2;
+
+          const rotateX = easedProgress * 175; // Flip up to 175 degrees
+          const translateZ = Math.sin(pageProgress * Math.PI) * 60; // Arc upwards
+          const translateY = Math.sin(pageProgress * Math.PI) * -20; // Shift up
+
+          // Dynamic shadows
+          const frontShadowOpacity = Math.sin(pageProgress * Math.PI) * 0.7; // Darkest in the middle
+          const backShadowOpacity = (1 - easedProgress) * 0.8; // Fades out as it lays flat on the back
+
           return (
             <div
               id={`page-${index}`}
@@ -169,32 +128,30 @@ export function Notebook({
               style={{
                 zIndex: 100 - index,
                 transformStyle: "preserve-3d",
-                pointerEvents: index === activePageIndex ? "auto" : "none" // Only the active top page can be interacted with
+                pointerEvents: index === activePageIndex ? "auto" : "none",
+                transform: `translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg)`
               }}
             >
-              {/* FRONT FACE (The actual content) */}
+              {/* FRONT FACE */}
               <div 
                 className="absolute inset-0 bg-[#Fdfbf5] rounded-b-lg border-x border-b border-black/10 flex flex-col" 
-                style={{ backfaceVisibility: "hidden" }}
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
               >
-                {/* Dynamic Front Shadow for curling realism */}
+                {/* Dynamic Front Shadow */}
                 <div 
-                  id={`shadow-front-${index}`} 
-                  className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-50 opacity-0"
+                  className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-50"
+                  style={{ opacity: frontShadowOpacity }}
                 ></div>
 
-                {/* Hole punches inside the paper */}
                 <div className="absolute left-0 right-0 top-0 h-8 pointer-events-none">
                   {holes}
                 </div>
 
-                {/* High-quality SVG Noise Texture */}
                 <div 
                   className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" 
                   style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
                 ></div>
 
-                {/* Notepad Ruled lines - yellow legal pad style */}
                 <div 
                   className="absolute inset-0 pointer-events-none opacity-20 z-0" 
                   style={{ 
@@ -204,36 +161,30 @@ export function Notebook({
                   }}
                 ></div>
                 
-                {/* Red vertical margin line typical of legal pads */}
                 <div className="absolute top-0 bottom-0 left-12 md:left-20 w-px bg-red-500/30 z-0 pointer-events-none"></div>
                 <div className="absolute top-0 bottom-0 left-[3.25rem] md:left-[5.25rem] w-px bg-red-500/30 z-0 pointer-events-none"></div>
 
-                {/* Content Area */}
                 <div className="relative w-full h-full pt-16 md:pt-20 pb-8 px-6 md:px-10 pl-16 md:pl-28 overflow-y-auto overflow-x-hidden z-10 custom-scrollbar">
                   <PageComponent />
                 </div>
                 
-                {/* Page Number */}
                 <div className="absolute bottom-4 right-6 font-playfair text-black/40 text-sm z-20">
                   {index + 1}
                 </div>
               </div>
 
-              {/* BACK FACE (The blank back of the page seen when flipped) */}
+              {/* BACK FACE */}
               <div 
                 className="absolute inset-0 bg-[#eaddce] rounded-t-lg border-x border-t border-black/10 flex flex-col"
-                style={{ transform: "rotateX(180deg)", backfaceVisibility: "hidden" }}
+                style={{ transform: "rotateX(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
               >
-                {/* Dynamic Back Shadow for curling realism */}
+                {/* Dynamic Back Shadow */}
                 <div 
-                  id={`shadow-back-${index}`} 
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-50 opacity-0"
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-50"
+                  style={{ opacity: backShadowOpacity }}
                 ></div>
 
-                {/* Subtle back paper texture */}
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0 mix-blend-multiply" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-                
-                {/* Faint ruled lines on the back */}
                 <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
                 <div className="absolute top-0 bottom-0 right-12 md:right-20 w-px bg-red-500/20 z-0 pointer-events-none"></div>
                 <div className="absolute top-0 bottom-0 right-[3.25rem] md:right-[5.25rem] w-px bg-red-500/20 z-0 pointer-events-none"></div>

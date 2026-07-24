@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Interactive portfolio of Karman Singh.",
 };
 
+import { ErrorOverlay } from "@/components/ErrorOverlay";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${caveat.variable} ${playfair.variable}`}>
       <body className="antialiased bg-[#2c2621] selection:bg-yellow-200/50 selection:text-black min-h-screen">
+        <ErrorOverlay />
         {children}
       </body>
     </html>
