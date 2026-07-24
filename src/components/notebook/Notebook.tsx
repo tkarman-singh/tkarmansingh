@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import anime from "animejs";
 import { HeroPage } from "../pages/HeroPage";
 import { AboutPage } from "../pages/AboutPage";
 import { SkillsPage } from "../pages/SkillsPage";
@@ -24,20 +25,21 @@ const pages = [
 ];
 
 export function Notebook({ 
-  currentPage
+  scrollProgress,
+  totalPages
 }: { 
-  currentPage: number; 
+  scrollProgress: number;
+  totalPages: number; 
 }) {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const tlRef = useRef<anime.AnimeTimelineInstance | null>(null);
 
   // Handle resizing so the notepad stays perfectly bound to the container
   useEffect(() => {
     const updateDimensions = () => {
-      // Calculate responsive dimensions based on viewport
       const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
       const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
       
-      // Notepad is usually taller than it is wide (e.g. Legal Pad ratio ~ 1:1.3)
       const targetWidth = Math.min(vw * 0.9, 800);
       const targetHeight = Math.min(vh * 0.85, 1050);
       
@@ -48,6 +50,64 @@ export function Notebook({
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
+
+  // Initialize Anime.js timeline
+  useEffect(() => {
+    // Only build timeline if we have pages
+    if (totalPages === 0) return;
+
+    const tl = anime.timeline({
+      autoplay: false,
+      duration: (totalPages - 1) * 1000,
+      easing: 'linear' 
+    });
+
+    for (let i = 0; i < totalPages - 1; i++) {
+      const pageId = `#page-${i}`;
+      const frontShadowId = `#shadow-front-${i}`;
+      const backShadowId = `#shadow-back-${i}`;
+
+      // Flip the 3D page container up over the spiral
+      tl.add({
+        targets: pageId,
+        rotateX: [0, 175], // Flips almost entirely flat onto the back
+        translateZ: [0, 60, 0], // Arc upwards during flip for fold realism
+        translateY: [0, -20, 0], // Shift up slightly during flip to avoid clipping the spiral
+        duration: 1000,
+        easing: 'easeInOutSine'
+      }, i * 1000);
+
+      // Darken front shadow as it lifts, then fade out
+      tl.add({
+        targets: frontShadowId,
+        opacity: [0, 0.7, 0.2],
+        duration: 1000,
+        easing: 'easeInOutSine'
+      }, i * 1000);
+
+      // Back shadow starts dark (hidden) and gets lighter as it flips fully
+      tl.add({
+        targets: backShadowId,
+        opacity: [0.8, 0],
+        duration: 1000,
+        easing: 'easeInOutSine'
+      }, i * 1000);
+    }
+
+    tlRef.current = tl;
+
+    return () => {
+      // Cleanup timeline if needed
+      tlRef.current = null;
+    };
+  }, [totalPages]);
+
+  // Sync scroll progress with Anime.js timeline
+  useEffect(() => {
+    if (tlRef.current) {
+      tlRef.current.seek(tlRef.current.duration * scrollProgress);
+    }
+  }, [scrollProgress]);
 
   // Generate top spiral rings
   const spiralRings = Array.from({ length: 30 }).map((_, i) => (
@@ -69,8 +129,14 @@ export function Notebook({
 
   if (dimensions.width === 0) return null;
 
+  // Determine current active page index to manage pointer-events
+  const activePageIndex = Math.min(
+    Math.floor(scrollProgress * (totalPages - 1)),
+    totalPages - 1
+  );
+
   return (
-    <div className="relative flex justify-center items-center h-full w-full mt-8 md:mt-12" style={{ perspective: "2000px" }}>
+    <div className="relative flex justify-center items-center h-full w-full mt-8 md:mt-12" style={{ perspective: "3000px" }}>
       
       <div 
         className="relative shadow-[0_30px_60px_rgba(0,0,0,0.8)]"
@@ -95,61 +161,84 @@ export function Notebook({
 
         {/* The Pages */}
         {pages.map((PageComponent, index) => {
-          // Determine state of the page
-          const isFlipped = index < currentPage;
-          const isActive = index === currentPage;
-          
-          // Z-index: Active page is highest below flipped pages. Flipped pages have highest Z to animate over.
-          // Underneath pages have decreasing Z.
-          let zIndex = 100 - index;
-          if (isFlipped) zIndex = 200 + index; 
-
           return (
             <div
+              id={`page-${index}`}
               key={index}
-              className={`absolute inset-0 bg-[#Fdfbf5] rounded-b-lg border-x border-b border-black/10 flex flex-col origin-top transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)]`}
+              className="absolute inset-0 origin-top"
               style={{
-                zIndex,
-                transform: isFlipped ? "rotateX(140deg)" : "rotateX(0deg)",
-                opacity: isFlipped ? 0 : 1,
-                pointerEvents: isActive ? "auto" : "none",
-                backfaceVisibility: "hidden"
+                zIndex: 100 - index,
+                transformStyle: "preserve-3d",
+                pointerEvents: index === activePageIndex ? "auto" : "none" // Only the active top page can be interacted with
               }}
             >
-              {/* Hole punches inside the paper */}
-              <div className="absolute left-0 right-0 top-0 h-8 pointer-events-none">
-                {holes}
-              </div>
-
-              {/* High-quality SVG Noise Texture */}
+              {/* FRONT FACE (The actual content) */}
               <div 
-                className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" 
-                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-              ></div>
+                className="absolute inset-0 bg-[#Fdfbf5] rounded-b-lg border-x border-b border-black/10 flex flex-col" 
+                style={{ backfaceVisibility: "hidden" }}
+              >
+                {/* Dynamic Front Shadow for curling realism */}
+                <div 
+                  id={`shadow-front-${index}`} 
+                  className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-50 opacity-0"
+                ></div>
 
-              {/* Notepad Ruled lines - yellow legal pad style */}
+                {/* Hole punches inside the paper */}
+                <div className="absolute left-0 right-0 top-0 h-8 pointer-events-none">
+                  {holes}
+                </div>
+
+                {/* High-quality SVG Noise Texture */}
+                <div 
+                  className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-multiply" 
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+                ></div>
+
+                {/* Notepad Ruled lines - yellow legal pad style */}
+                <div 
+                  className="absolute inset-0 pointer-events-none opacity-20 z-0" 
+                  style={{ 
+                    backgroundImage: "linear-gradient(#000 1px, transparent 1px)", 
+                    backgroundSize: "100% 2.5rem",
+                    backgroundPosition: "0 4rem" 
+                  }}
+                ></div>
+                
+                {/* Red vertical margin line typical of legal pads */}
+                <div className="absolute top-0 bottom-0 left-12 md:left-20 w-px bg-red-500/30 z-0 pointer-events-none"></div>
+                <div className="absolute top-0 bottom-0 left-[3.25rem] md:left-[5.25rem] w-px bg-red-500/30 z-0 pointer-events-none"></div>
+
+                {/* Content Area */}
+                <div className="relative w-full h-full pt-16 md:pt-20 pb-8 px-6 md:px-10 pl-16 md:pl-28 overflow-y-auto overflow-x-hidden z-10 custom-scrollbar">
+                  <PageComponent />
+                </div>
+                
+                {/* Page Number */}
+                <div className="absolute bottom-4 right-6 font-playfair text-black/40 text-sm z-20">
+                  {index + 1}
+                </div>
+              </div>
+
+              {/* BACK FACE (The blank back of the page seen when flipped) */}
               <div 
-                className="absolute inset-0 pointer-events-none opacity-20 z-0" 
-                style={{ 
-                  backgroundImage: "linear-gradient(#000 1px, transparent 1px)", 
-                  backgroundSize: "100% 2.5rem",
-                  backgroundPosition: "0 4rem" 
-                }}
-              ></div>
-              
-              {/* Red vertical margin line typical of legal pads */}
-              <div className="absolute top-0 bottom-0 left-12 md:left-20 w-px bg-red-500/30 z-0 pointer-events-none"></div>
-              <div className="absolute top-0 bottom-0 left-[3.25rem] md:left-[5.25rem] w-px bg-red-500/30 z-0 pointer-events-none"></div>
+                className="absolute inset-0 bg-[#eaddce] rounded-t-lg border-x border-t border-black/10 flex flex-col"
+                style={{ transform: "rotateX(180deg)", backfaceVisibility: "hidden" }}
+              >
+                {/* Dynamic Back Shadow for curling realism */}
+                <div 
+                  id={`shadow-back-${index}`} 
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-50 opacity-0"
+                ></div>
 
-              {/* Content Area */}
-              <div className="relative w-full h-full pt-16 md:pt-20 pb-8 px-6 md:px-10 pl-16 md:pl-28 overflow-y-auto overflow-x-hidden notebook-scroll z-10">
-                <PageComponent />
+                {/* Subtle back paper texture */}
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0 mix-blend-multiply" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+                
+                {/* Faint ruled lines on the back */}
+                <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px)", backgroundSize: "100% 2.5rem" }}></div>
+                <div className="absolute top-0 bottom-0 right-12 md:right-20 w-px bg-red-500/20 z-0 pointer-events-none"></div>
+                <div className="absolute top-0 bottom-0 right-[3.25rem] md:right-[5.25rem] w-px bg-red-500/20 z-0 pointer-events-none"></div>
               </div>
-              
-              {/* Page Number */}
-              <div className="absolute bottom-4 right-6 font-playfair text-black/40 text-sm z-20">
-                {index + 1}
-              </div>
+
             </div>
           );
         })}
