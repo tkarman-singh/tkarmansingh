@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Space_Mono, Fraunces, Great_Vibes } from "next/font/google";
+import { Space_Mono, Fraunces, Great_Vibes, Kalam } from "next/font/google";
 import "./globals.css";
 
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" });
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
 const greatVibes = Great_Vibes({ weight: "400", subsets: ["latin"], variable: "--font-great-vibes" });
+const kalam = Kalam({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-kalam" });
 
 export const metadata: Metadata = {
   title: "Karman Singh | Portfolio",
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceMono.variable} ${fraunces.variable} ${greatVibes.variable}`}>
+    <html lang="en" className={`${spaceMono.variable} ${fraunces.variable} ${greatVibes.variable} ${kalam.variable}`}>
       <body className="antialiased min-h-screen">
         <ErrorOverlay />
         {children}

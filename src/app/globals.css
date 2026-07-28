@@ -20,6 +20,7 @@
   --font-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-fraunces: var(--font-fraunces), serif;
   --font-vibes: var(--font-great-vibes), cursive;
+  --font-kalam: var(--font-kalam), cursive;
 }
 
 @layer base {
