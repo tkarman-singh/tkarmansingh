@@ -17,7 +17,7 @@ export function ProfileSection() {
         />
         
         {/* Content */}
-        <div className="relative z-10 text-left w-full h-full pt-[10px] md:pt-[20px] px-[10px]">
+        <div className="relative z-10 text-left w-full h-full pt-[30px] md:pt-[50px] px-[10px]">
           <h2 className="font-fraunces text-center text-[24px] md:text-[28px] font-semibold text-[#df7a3e] m-0 mb-3 leading-[1.15]">
             About me
           </h2>
