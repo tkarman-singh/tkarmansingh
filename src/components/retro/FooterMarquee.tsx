@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 
 export function FooterMarquee() {
   const [isHovered, setIsHovered] = useState(false);
-  const lyrics = "Almost heaven, West Virginia.\t\t\tBlue Ridge Mountains Shenandoah River.\t\t\tLife is old there.\t\t\tOlder than the trees.\t\t\tYounger than the mountains.\t\t\tGrowin like a breeze Country Roads, take me home.\t\t\tTo the place I belong West Virginia, mountain momma.\t\t\tTake me home, country roads.";
+  const lyrics = "Almost heaven, West Virginia.            Blue Ridge Mountains Shenandoah River.            Life is old there.            Older than the trees.            Younger than the mountains.            Growin like a breeze Country Roads, take me home.            To the place I belong West Virginia, mountain momma.            Take me home, country roads.            ";
 
   return (
     <div 
-      className="w-[90%] md:w-1/2 mx-auto select-none py-[20px] md:py-[30px] flex items-center justify-center gap-[15px] text-[#3f3f2e] relative cursor-pointer"
+      className="w-[90%] md:w-[28%] mx-auto select-none py-[20px] md:py-[30px] flex items-center justify-center gap-[15px] text-[#3f3f2e] relative cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
