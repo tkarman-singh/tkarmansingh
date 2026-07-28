@@ -21,7 +21,7 @@ export function ProfileSection() {
           <h2 className="font-fraunces text-center text-[24px] md:text-[28px] font-semibold text-[#df7a3e] m-0 mb-4 leading-[1.15]">
             About me
           </h2>
-          <p className="font-kalam text-[16px] md:text-[18px] text-[#3f3f2e] leading-[1.6] m-0 font-medium">
+          <p className="font-kalam text-[18px] md:text-[22px] text-[#3f3f2e] leading-[1.6] m-0 font-medium">
             I am a passionate Software and DevOps Engineer with a strong foundation in Computer Science. I specialize in building scalable web applications, designing cloud-native infrastructures, and developing efficient, production-ready solutions. With experience in AI/ML, I enjoy solving complex real-world problems through intelligent systems and clean, maintainable code. I am always eager to learn emerging technologies, embrace new challenges, and create impactful software that delivers exceptional user experiences.
           </p>
         </div>
