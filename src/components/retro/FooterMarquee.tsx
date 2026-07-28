@@ -10,6 +10,7 @@ export function FooterMarquee() {
       className="w-[90%] md:w-[38%] mx-auto select-none py-[20px] md:py-[30px] flex items-center justify-center gap-[15px] text-[#3f3f2e] relative cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => document.getElementById('hero-section')?.scrollIntoView({ behavior: 'smooth' })}
     >
       <span className={`text-[18px] md:text-[22px] shrink-0 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>🎶</span>
       
