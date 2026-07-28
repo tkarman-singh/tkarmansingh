@@ -33,11 +33,11 @@
     padding: 0;
     width: 100%;
     min-height: 100%;
-    /* Notebook lines */
-    background: 
-      linear-gradient(var(--color-grid-line) 1px, transparent 1px),
-      var(--color-cream);
-    background-size: 100% 28px;
+    /* Realistic Notebook Page */
+    background-color: #fdfdfc; /* Off-white paper */
+    background-image: linear-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px); /* Light blue lines */
+    background-size: 100% 32px; /* Line spacing */
+    background-position: 0 32px;
     color: var(--color-ink);
     font-family: var(--font-mono);
     overflow-x: hidden;
@@ -45,7 +45,7 @@
     position: relative;
   }
 
-  /* Red vertical margin */
+  /* Realistic Red Vertical Margin */
   body::before {
     content: '';
     position: absolute;
@@ -53,7 +53,9 @@
     bottom: 0;
     left: 40px;
     width: 2px;
-    background-color: rgba(239, 68, 68, 0.2);
+    background: transparent;
+    border-left: 1px solid rgba(239, 68, 68, 0.4);
+    border-right: 1px solid rgba(239, 68, 68, 0.4);
     z-index: -1;
     pointer-events: none;
   }
@@ -61,6 +63,7 @@
   @media (min-width: 768px) {
     body::before {
       left: 80px;
+      width: 4px;
     }
   }
 }
