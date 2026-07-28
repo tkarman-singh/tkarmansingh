@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/retro/HeroSection";
 import { ProfileSection } from "@/components/retro/ProfileSection";
 import { WorksSection } from "@/components/retro/WorksSection";
 import { ContactSection } from "@/components/retro/ContactSection";
+import { SectionDivider } from "@/components/retro/SectionDivider";
 
 export default function Home() {
   return (
@@ -10,7 +11,9 @@ export default function Home() {
       <Dock />
       <HeroSection />
       <ProfileSection />
+      <SectionDivider />
       <WorksSection />
+      <SectionDivider />
       <ContactSection />
       
       <footer className="text-center pt-[50px] pb-[70px] px-[20px] text-[11px] text-[#6b6a56] tracking-[.08em] font-mono">

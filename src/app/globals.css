@@ -33,15 +33,35 @@
     padding: 0;
     width: 100%;
     min-height: 100%;
+    /* Notebook lines */
     background: 
       linear-gradient(var(--color-grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px),
       var(--color-cream);
-    background-size: 28px 28px, 28px 28px, 100% 100%;
+    background-size: 100% 28px;
     color: var(--color-ink);
     font-family: var(--font-mono);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    position: relative;
+  }
+
+  /* Red vertical margin */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    width: 2px;
+    background-color: rgba(239, 68, 68, 0.2);
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  @media (min-width: 768px) {
+    body::before {
+      left: 80px;
+    }
   }
 }
 
