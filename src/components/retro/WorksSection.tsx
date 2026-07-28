@@ -15,7 +15,7 @@ const skills = [
 export function WorksSection() {
   return (
     <div className="min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative" id="works-section">
-      <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[14px] md:text-[18px] font-semibold tracking-[.3em] uppercase text-[#6b6a56]">
+      <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         02 · works
       </span>
       
