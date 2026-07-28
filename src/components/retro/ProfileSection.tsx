@@ -8,7 +8,7 @@ export function ProfileSection() {
         01 · about
       </span>
       
-      <div className="relative w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[40px] md:p-[60px]">
+      <div className="relative w-full max-w-[620px] flex flex-col justify-center pb-[60px]">
         {/* Sticky Note Background */}
         <img 
           src="/about-note.png" 
@@ -17,7 +17,7 @@ export function ProfileSection() {
         />
         
         {/* Content */}
-        <div className="relative z-10 text-left w-full h-full flex flex-col pt-[40px] md:pt-[50px] px-[20px] md:px-[40px]">
+        <div className="relative z-10 text-left w-full flex flex-col pt-[70px] md:pt-[90px] pb-[40px] md:pb-[60px] px-[30px] md:px-[60px]">
           <h2 className="font-fraunces text-center text-[24px] md:text-[28px] font-semibold text-[#df7a3e] m-0 mb-4 leading-[1.15]">
             About me
           </h2>
