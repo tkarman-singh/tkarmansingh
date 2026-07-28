@@ -7,7 +7,7 @@ export function FooterMarquee() {
 
   return (
     <div 
-      className="w-[90%] md:w-[30%] mx-auto select-none py-[20px] md:py-[30px] flex items-center justify-center gap-[15px] text-[#3f3f2e] relative cursor-pointer"
+      className="w-[90%] md:w-1/3 mx-auto select-none py-[20px] md:py-[30px] flex items-center justify-center gap-[15px] text-[#3f3f2e] relative cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
