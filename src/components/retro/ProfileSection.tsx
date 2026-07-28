@@ -13,11 +13,11 @@ export function ProfileSection() {
         <img 
           src="/about-note.png" 
           alt="Sticky Note" 
-          className="absolute inset-0 w-full h-full object-fill -z-10 drop-shadow-xl"
+          className="absolute inset-0 w-full h-full object-fill z-0 drop-shadow-xl pointer-events-none"
         />
         
         {/* Content */}
-        <div className="text-left w-full h-full flex flex-col pt-[20px] md:pt-[40px] px-[10px] md:px-[20px]">
+        <div className="relative z-10 text-left w-full h-full flex flex-col pt-[20px] md:pt-[40px] px-[10px] md:px-[20px]">
           <h2 className="font-fraunces text-[24px] md:text-[28px] font-semibold text-[#df7a3e] m-0 mb-3 leading-[1.15]">
             About me
           </h2>
