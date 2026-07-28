@@ -9,7 +9,7 @@ interface RetroWindowProps {
 
 export function RetroWindow({ title, children, onClose, className = "" }: RetroWindowProps) {
   return (
-    <div className={`bg-[#f6f1e4] border border-[#c9c2a3] rounded-md w-full max-w-[620px] shadow-[0_18px_40px_rgba(60,58,30,0.18)] overflow-hidden select-none ${className}`}>
+    <div className={`bg-[#f6f1e4] border border-[#c9c2a3] rounded-md w-full max-w-[620px] shadow-[0_18px_40px_rgba(60,58,30,0.18)] overflow-hidden ${className}`}>
       {/* Window Bar */}
       <div className="bg-[#585a38] text-[#ece7d3] text-[13px] tracking-[.03em] px-[14px] py-[10px] flex items-center justify-between cursor-default">
         <span>{title}</span>
