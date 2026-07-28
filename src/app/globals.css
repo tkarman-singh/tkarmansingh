@@ -34,7 +34,7 @@
     width: 100%;
     min-height: 100%;
     /* Realistic Notebook Page */
-    background-color: #FBEEFF; /* Custom page color */
+    background-color: #FDF7FF; /* Custom page color */
     background-image: linear-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px); /* Light blue lines */
     background-size: 100% 32px; /* Line spacing */
     background-position: 0 32px;
@@ -58,26 +58,11 @@
     border-right: 1px solid rgba(239, 68, 68, 0.4);
     pointer-events: none;
   }
-
-  /* Right Red Vertical Margin */
-  body::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 40px;
-    width: 1px;
-    background-color: rgba(239, 68, 68, 0.4);
-    pointer-events: none;
-  }
   
   @media (min-width: 768px) {
     body::before {
       left: 80px;
       width: 4px;
-    }
-    body::after {
-      right: 80px;
     }
   }
 }
