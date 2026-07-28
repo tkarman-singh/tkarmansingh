@@ -56,7 +56,6 @@
     background: transparent;
     border-left: 1px solid rgba(239, 68, 68, 0.4);
     border-right: 1px solid rgba(239, 68, 68, 0.4);
-    z-index: -1;
     pointer-events: none;
   }
 
@@ -69,7 +68,6 @@
     right: 40px;
     width: 1px;
     background-color: rgba(239, 68, 68, 0.4);
-    z-index: -1;
     pointer-events: none;
   }
   
