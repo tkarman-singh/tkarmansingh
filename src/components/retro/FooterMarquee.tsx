@@ -29,7 +29,7 @@ export function FooterMarquee() {
       <div 
         className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
       >
-        <span className="font-kalam font-bold text-[24px] md:text-[32px] uppercase text-[#C43AF2] tracking-wider whitespace-nowrap">
+        <span className="font-kalam font-bold text-[24px] md:text-[32px] uppercase text-[#3f3f2e] tracking-wider whitespace-nowrap">
           TAKE ME HOOOME! COUNTRY ROOOAD!
         </span>
       </div>
