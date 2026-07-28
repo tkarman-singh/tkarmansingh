@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 // SVG paths for the doodles
@@ -137,14 +137,52 @@ const NavItem = ({ label, targetId, isSmiley = false }: { label: string, targetI
 };
 
 export function Navbar() {
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [isNavHovered, setIsNavHovered] = useState(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY < 50);
+      setIsScrolling(true);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+      
+      scrollTimeout.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 1500); // Navbar hides after 1.5 seconds of not scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 pt-[30px] md:pt-[50px] pointer-events-none">
-      <div className="flex items-center justify-center gap-[40px] md:gap-[60px] pointer-events-auto">
+    <motion.nav 
+      className="fixed top-0 left-0 w-full z-50 pointer-events-auto"
+      initial={{ y: 0, backgroundColor: 'rgba(244, 239, 221, 0)' }}
+      animate={{ 
+        y: (!isAtTop && !isScrolling && !isNavHovered) ? "-100%" : 0,
+        backgroundColor: isAtTop ? 'rgba(244, 239, 221, 0)' : 'rgba(244, 239, 221, 0.95)',
+        backdropFilter: isAtTop ? 'blur(0px)' : 'blur(8px)'
+      }}
+      transition={{ duration: 0.3 }}
+      onMouseEnter={() => setIsNavHovered(true)}
+      onMouseLeave={() => setIsNavHovered(false)}
+      style={{ borderBottom: (!isAtTop && (isScrolling || isNavHovered)) ? '1px solid rgba(201, 194, 163, 0.4)' : '1px solid transparent' }}
+    >
+      <div className={`flex items-center justify-center gap-[40px] md:gap-[60px] transition-all duration-300 ${isAtTop ? 'py-[30px] md:py-[50px]' : 'py-[15px] md:py-[20px]'}`}>
         <NavItem label=":)" targetId="hero-section" isSmiley={true} />
         <NavItem label="about" targetId="profile-section" />
         <NavItem label="work" targetId="works-section" />
         <NavItem label="connect" targetId="contact-section" />
       </div>
-    </nav>
+    </motion.nav>
   );
 }
