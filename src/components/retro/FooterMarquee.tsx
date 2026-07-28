@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 export function FooterMarquee() {
   const [isHovered, setIsHovered] = useState(false);
-  const lyrics = "Almost heaven, West Virginia.            Blue Ridge Mountains Shenandoah River.            Life is old there.            Older than the trees.            Younger than the mountains.            Growin like a breeze Country Roads, take me home.            To the place I belong West Virginia, mountain momma.            Take me home, country roads.            ";
+  const lyrics = "Almost heaven, West Virginia.        Blue Ridge Mountains Shenandoah River.        Life is old there.        Older than the trees.        Younger than the mountains.        Growin like a breeze Country Roads, take me home.        To the place I belong West Virginia, mountain momma.        Take me home, country roads.        ";
 
   return (
     <div 
