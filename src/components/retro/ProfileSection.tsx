@@ -14,7 +14,7 @@ export function ProfileSection() {
             About me
           </h2>
           <p className="text-[13px] text-[#3f3f2e] leading-[1.6] m-0">
-            I am a passionate Full Stack Developer with a strong foundation in Computer Science. I specialize in building robust, scalable web architectures and crafting beautiful, intuitive user experiences. I thrive on solving complex problems with clean, efficient code and am always eager to learn and explore new technologies.
+            I am a passionate Software and DevOps Engineer with a strong foundation in Computer Science. I specialize in building scalable web applications, designing cloud-native infrastructures, and developing efficient, production-ready solutions. With experience in AI/ML, I enjoy solving complex real-world problems through intelligent systems and clean, maintainable code. I am always eager to learn emerging technologies, embrace new challenges, and create impactful software that delivers exceptional user experiences.
           </p>
         </div>
       </RetroWindow>
