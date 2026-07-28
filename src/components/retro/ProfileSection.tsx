@@ -1,14 +1,25 @@
+"use client";
+
 import React from 'react';
 import { RetroWindow } from './RetroWindow';
+import { motion } from 'framer-motion';
 
 export function ProfileSection() {
   return (
-    <div className="min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative" id="profile-section">
+    <div className="min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative overflow-hidden" id="profile-section">
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         01 · about
       </span>
       
-      <div className="relative w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px]">
+      <motion.div 
+        className="relative w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px] cursor-grab active:cursor-grabbing"
+        drag
+        dragSnapToOrigin={true}
+        dragElastic={0.6}
+        dragTransition={{ bounceStiffness: 400, bounceDamping: 15 }}
+        whileHover={{ scale: 1.02 }}
+        whileDrag={{ scale: 1.05, zIndex: 50, rotate: 2 }}
+      >
         {/* Sticky Note Background */}
         <img 
           src="/about-note.png" 
@@ -25,7 +36,7 @@ export function ProfileSection() {
             I am a passionate Software and DevOps Engineer with a strong foundation in Computer Science. I specialize in building scalable web applications, designing cloud-native infrastructures, and developing efficient, production-ready solutions. With experience in AI/ML, I enjoy solving complex real-world problems through intelligent systems and clean, maintainable code. I am always eager to learn emerging technologies, embrace new challenges, and create impactful software that delivers exceptional user experiences.
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
