@@ -10,7 +10,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 pt-[20px] md:pt-[40px] pointer-events-none">
       <div className="flex items-center justify-center gap-[30px] md:gap-[50px] pointer-events-auto">
         <button 
-          onClick={() => scrollTo('profile-section')}
+          onClick={() => scrollTo('hero-section')}
           className="text-[#3f3f2e] font-kalam text-[18px] md:text-[22px] font-bold hover:text-[#df7a3e] transition-colors cursor-pointer bg-transparent border-none"
         >
           :)

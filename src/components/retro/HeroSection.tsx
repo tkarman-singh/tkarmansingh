@@ -4,7 +4,7 @@ import { Mail } from "lucide-react";
 export function HeroSection() {
   return (
     <>
-      <section className="min-h-screen flex flex-col items-center justify-center relative px-[58px] md:px-[140px] text-center">
+      <section id="hero-section" className="min-h-screen flex flex-col items-center justify-center relative px-[58px] md:px-[140px] text-center">
         <h1 className="font-fraunces text-[clamp(52px,11vw,128px)] font-light tracking-[0.18em] text-transparent leading-none m-0" style={{ WebkitTextStroke: '1.4px #6b6a56' }}>
           PORTFOLIO
         </h1>
