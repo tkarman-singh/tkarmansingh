@@ -14,7 +14,7 @@ const skills = [
 
 export function WorksSection() {
   return (
-    <div className="min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative" id="works-section">
+    <section className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen flex flex-col items-center justify-center py-[90px] px-[24px] md:px-[150px] relative" id="works-section">
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         02 · works
       </span>
@@ -42,6 +42,6 @@ export function WorksSection() {
           </div>
         </div>
       </RetroWindow>
-    </div>
+    </section>
   );
 }

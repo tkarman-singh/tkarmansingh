@@ -3,7 +3,7 @@ import { RetroWindow } from './RetroWindow';
 
 export function ContactSection() {
   return (
-    <div className="min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative" id="contact-section">
+    <section className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen flex flex-col items-center justify-center py-[90px] px-[24px] md:px-[60px] relative bg-[#f4efdd]" id="contact-section">
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         03 · contact
       </span>
@@ -54,6 +54,6 @@ export function ContactSection() {
           </div>
         </div>
       </RetroWindow>
-    </div>
+    </section>
   );
 }

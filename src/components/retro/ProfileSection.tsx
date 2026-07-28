@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export function ProfileSection() {
   return (
-    <div className="min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative overflow-hidden" id="profile-section">
+    <div className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen flex items-center justify-center py-[90px] px-[24px] md:px-[150px] relative overflow-hidden" id="profile-section">
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         01 · about
       </span>
