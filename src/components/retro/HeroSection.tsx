@@ -22,7 +22,7 @@ export function HeroSection() {
       </section>
 
       {/* Social Stripe */}
-      <div className="bg-[#6b6e45] py-[26px] flex justify-center gap-[22px] relative z-20 flex-wrap px-[10px]">
+      <div className="bg-[#CF57FF] py-[26px] flex justify-center gap-[22px] relative z-20 flex-wrap px-[10px]">
         <a href="https://www.linkedin.com/in/t-karman-singh/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
            className="w-[46px] h-[46px] rounded-[10px] flex items-center justify-center no-underline shadow-[0_3px_0_rgba(0,0,0,0.18)] transition-transform hover:-translate-y-[3px] bg-[#4372a8]">
           <svg fill="#fff" viewBox="0 0 24 24" className="w-[22px] h-[22px]">
