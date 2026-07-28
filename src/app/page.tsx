@@ -1,4 +1,4 @@
-import { Dock } from "@/components/retro/Dock";
+import { Navbar } from "@/components/retro/Navbar";
 import { HeroSection } from "@/components/retro/HeroSection";
 import { ProfileSection } from "@/components/retro/ProfileSection";
 import { WorksSection } from "@/components/retro/WorksSection";
@@ -7,7 +7,7 @@ import { ContactSection } from "@/components/retro/ContactSection";
 export default function Home() {
   return (
     <main className="relative w-full overflow-hidden selection:bg-[#df7a3e] selection:text-white pb-[70px]">
-      <Dock />
+      <Navbar />
       <HeroSection />
       <ProfileSection />
       <WorksSection />
