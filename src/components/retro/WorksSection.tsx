@@ -10,11 +10,11 @@ export function WorksSection() {
       
       <div className="w-full max-w-[780px] mt-[40px] flex justify-center">
         <Image 
-          src="/images/work-paper-new.png" 
+          src="/work-note.png" 
           alt="Works Area" 
           width={600} 
           height={800} 
-          className="w-full h-auto max-w-[500px] mix-blend-screen"
+          className="w-full h-auto max-w-[500px]"
           priority
         />
       </div>
