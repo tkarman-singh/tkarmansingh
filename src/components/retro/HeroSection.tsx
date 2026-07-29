@@ -22,11 +22,11 @@ export function HeroSection() {
       </section>
 
       {/* Plane Separator */}
-      <div className="w-full relative z-20 overflow-hidden mt-[-20px] md:mt-[-40px]">
+      <div className="w-full flex justify-center py-[40px] relative z-20 overflow-hidden px-[10px] md:px-0">
         <img 
           src="/plane.png" 
           alt="Separator" 
-          className="w-full h-auto object-cover pointer-events-none" 
+          className="w-full h-[30px] md:h-[50px] object-fill pointer-events-none" 
         />
       </div>
     </>
