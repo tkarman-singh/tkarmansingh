@@ -10,6 +10,9 @@ export function SideBorders() {
     { src: '/pizza-icon.png', text: 'pizza addict' },
     { src: '/pointer-icon.png', text: 'problem solver ( of life too)' },
     { src: '/mic-icon.png', text: 'might be a rockstar' },
+    { src: '/momo.png', text: 'major momo maniac' },
+    { src: '/birdie.png', text: 'earlybird' },
+    { src: '/blade.png', text: 'Kurogane - never give up' },
   ];
 
   return (
