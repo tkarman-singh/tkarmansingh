@@ -18,16 +18,18 @@ export function WorksSection() {
             className="w-full h-auto transition-all duration-300 group-hover:rotate-[2deg] group-hover:scale-[1.02]"
             priority
           />
-          <div className="absolute inset-0 pt-[22%] px-[12%] flex flex-col pointer-events-none text-left">
-            <div className="flex items-center gap-[10px] mb-[4px] flex-wrap">
-              <h4 className="font-kalam text-[clamp(20px,4vw,28px)] font-bold text-[#1f2328] leading-none m-0">Summer Software Intern</h4>
-              <span className="font-fraunces text-[clamp(11px,2vw,14px)] font-bold text-[#1f2328] bg-[#fdf0bc] px-[6px] py-[2px] rounded-[3px] shadow-sm tracking-wide">
-                IIRS, ISRO
-              </span>
+          <div className="absolute inset-0 pt-[28%] pr-[16%] pb-[15%] pl-[20%] flex flex-col pointer-events-none text-left overflow-hidden">
+            <div className="flex flex-col gap-[6px] mb-[12px]">
+              <h4 className="font-kalam text-[clamp(18px,3.5vw,26px)] font-bold text-[#1f2328] leading-[1.1] m-0">Summer Software Intern</h4>
+              <div className="self-start">
+                <span className="font-fraunces text-[clamp(10px,1.8vw,13px)] font-bold text-[#1f2328] bg-[#fdf0bc] px-[8px] py-[3px] rounded-[3px] shadow-sm tracking-wide">
+                  IIRS, ISRO
+                </span>
+              </div>
             </div>
-            <p className="font-fraunces italic text-[clamp(14px,2.5vw,18px)] text-[#6b6a56] mb-[15px] m-0">June 2026 – July 2026</p>
-            <ul className="list-[circle] pl-[20px] m-0">
-              <li className="font-kalam text-[#3f3f2e] text-[clamp(15px,3vw,20px)] leading-[1.35]">
+            <p className="font-fraunces italic text-[clamp(12px,2vw,16px)] text-[#6b6a56] mb-[12px] m-0">June 2026 – July 2026</p>
+            <ul className="list-[circle] pl-[18px] m-0 pr-[10px]">
+              <li className="font-kalam text-[#3f3f2e] text-[clamp(13px,2.5vw,18px)] leading-[1.4]">
                 Developing a Java 21 application to automate processing of Sentinel-2 Level-2A multispectral satellite imagery for large-scale vegetation analysis.
               </li>
             </ul>
