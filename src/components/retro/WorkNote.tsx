@@ -14,16 +14,16 @@ export function WorkNote({
   company, 
   duration, 
   description,
-  hoverRotationClass = "group-hover:rotate-[2deg]"
+  hoverRotationClass = "hover:rotate-[2deg]"
 }: WorkNoteProps) {
   return (
-    <div className="relative w-[85%] md:w-full max-w-[450px] group cursor-pointer">
+    <div className={`relative w-[85%] md:w-full max-w-[450px] cursor-pointer transition-all duration-300 hover:scale-[1.02] ${hoverRotationClass}`}>
       <Image 
         src="/work-note.png" 
         alt={`${company} Note`} 
         width={600} 
         height={800} 
-        className={`w-full h-auto transition-all duration-300 group-hover:scale-[1.02] ${hoverRotationClass}`}
+        className="w-full h-auto block"
         priority
       />
       <div className="absolute inset-0 pt-[37%] pr-[16%] pb-[15%] pl-[20%] flex flex-col pointer-events-none text-left overflow-hidden">

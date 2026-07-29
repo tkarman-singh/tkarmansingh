@@ -14,7 +14,7 @@ export function WorksSection() {
           company="IIRS, ISRO"
           duration="June 2026 – July 2026"
           description="Developing a Java 21 application to automate processing of Sentinel-2 Level-2A multispectral satellite imagery for large-scale vegetation analysis."
-          hoverRotationClass="group-hover:rotate-[15deg]"
+          hoverRotationClass="hover:rotate-[15deg]"
         />
         
         <WorkNote 
@@ -22,7 +22,7 @@ export function WorksSection() {
           company="Your Company"
           duration="August 2026 – Present"
           description="A placeholder description for the second note. Update this with your next project's details!"
-          hoverRotationClass="group-hover:-rotate-[15deg]"
+          hoverRotationClass="hover:-rotate-[15deg]"
         />
       </div>
     </section>
