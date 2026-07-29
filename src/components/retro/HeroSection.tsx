@@ -26,7 +26,7 @@ export function HeroSection() {
         <img 
           src="/plane.png" 
           alt="Separator" 
-          className="w-[200px] md:w-[300px] h-auto object-contain pointer-events-none" 
+          className="w-[300px] md:w-[450px] h-auto object-contain pointer-events-none" 
         />
       </div>
     </>
