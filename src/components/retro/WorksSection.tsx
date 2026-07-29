@@ -14,7 +14,7 @@ export function WorksSection() {
           alt="Works Area" 
           width={600} 
           height={800} 
-          className="w-full h-auto max-w-[500px]"
+          className="w-full h-auto max-w-[500px] mix-blend-screen"
           priority
         />
       </div>
