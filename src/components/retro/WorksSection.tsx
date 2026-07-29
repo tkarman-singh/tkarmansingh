@@ -14,6 +14,7 @@ export function WorksSection() {
           company="IIRS, ISRO"
           duration="June 2026 – July 2026"
           description="Developing a Java 21 application to automate processing of Sentinel-2 Level-2A multispectral satellite imagery for large-scale vegetation analysis."
+          slideOutImage="/cute-pc.png"
         />
         
         <WorkNote 

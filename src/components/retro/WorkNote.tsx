@@ -6,18 +6,29 @@ interface WorkNoteProps {
   company: string;
   duration: string;
   description: string;
+  slideOutImage?: string;
 }
 
 export function WorkNote({ 
   role, 
   company, 
   duration, 
-  description
+  description,
+  slideOutImage
 }: WorkNoteProps) {
   return (
-    <div className="relative w-[85%] md:w-full max-w-[450px] cursor-pointer group">
+    <div className="relative w-[85%] md:w-full max-w-[450px] cursor-pointer group mt-[40px] md:mt-0">
       {/* Stationary Purple Background Square */}
       <div className="absolute top-1/2 left-1/2 w-[95%] aspect-square bg-[#bf00ff] -translate-x-1/2 -translate-y-[45%] -rotate-[12deg] z-0 pointer-events-none shadow-sm"></div>
+
+      {/* Slide-out image */}
+      {slideOutImage && (
+        <img 
+          src={slideOutImage} 
+          alt="Decoration" 
+          className="absolute -top-[22%] right-[5%] w-[40%] h-auto z-[5] transition-all duration-500 ease-out transform translate-y-[60%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 pointer-events-none drop-shadow-md group-hover:drop-shadow-xl"
+        />
+      )}
 
       {/* Animating Paper & Text */}
       <div className="relative z-10 w-full h-full transition-all duration-300 group-hover:-translate-y-[8px] group-hover:scale-[1.03] drop-shadow-md group-hover:drop-shadow-2xl">
