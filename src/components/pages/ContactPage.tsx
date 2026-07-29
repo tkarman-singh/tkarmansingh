@@ -6,7 +6,7 @@ export function ContactPage() {
   return (
     <div className="w-full h-full flex flex-col font-caveat text-gray-900 pt-6 relative">
       <h2 className="text-5xl md:text-6xl font-bold mb-8 border-b-2 border-black/20 pb-4 w-fit">
-        Let's Connect
+        Let&apos;s Connect
       </h2>
       
       <div className="flex-grow flex flex-col justify-center items-center">

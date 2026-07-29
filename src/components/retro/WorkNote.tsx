@@ -45,6 +45,7 @@ export function WorkNote({
           </li>
         </ul>
       </div>
+      </div>
     </div>
   );
 }

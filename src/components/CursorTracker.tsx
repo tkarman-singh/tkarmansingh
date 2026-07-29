@@ -88,7 +88,7 @@ export function CursorTracker() {
     <svg
       className="pointer-events-none fixed top-0 left-0 w-full h-full z-50"
       style={{ 
-        opacity: isVisible.current ? 1 : 0, 
+        opacity: path ? 1 : 0, 
         transition: 'opacity 0.3s ease',
         filter: 'drop-shadow(0 0 10px rgba(236,105,250,0.6)) drop-shadow(0 0 20px rgba(236,105,250,0.4))'
       }}

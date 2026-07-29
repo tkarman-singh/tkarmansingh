@@ -12,7 +12,7 @@ export function FooterPage() {
         </h2>
         
         <p className="text-3xl max-w-lg mb-12">
-          I appreciate you taking the time to flip through my notebook. Let's build something amazing together.
+          I appreciate you taking the time to flip through my notebook. Let&apos;s build something amazing together.
         </p>
         
         <div className="flex gap-8 mb-16">

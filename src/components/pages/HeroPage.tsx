@@ -6,7 +6,7 @@ export function HeroPage() {
       <div className="flex-grow flex flex-col justify-center items-start">
         
         <div className="mb-4 text-3xl md:text-4xl font-bold bg-yellow-200/50 inline-block px-4 py-1 -rotate-2 transform shadow-sm border border-black/10 uppercase tracking-widest font-sans">
-          NAMASTE, I'M
+          NAMASTE, I&apos;M
         </div>
         
         <h1 className="text-[5.5rem] md:text-[7rem] font-extrabold leading-[0.8] tracking-tight mb-2">

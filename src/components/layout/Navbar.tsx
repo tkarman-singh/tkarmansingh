@@ -56,7 +56,7 @@ export function Navbar() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      window.location.href = href;
+      window.location.assign(href);
     }
   };
 
