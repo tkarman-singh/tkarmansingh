@@ -8,15 +8,28 @@ export function WorksSection() {
         02 · works
       </span>
       
-      <div className="w-full max-w-[780px] mt-[40px] flex justify-center">
-        <Image 
-          src="/work-note.png" 
-          alt="Works Area" 
-          width={600} 
-          height={800} 
-          className="w-full h-auto max-w-[500px]"
-          priority
-        />
+      <div className="w-full max-w-[1000px] mt-[60px] flex flex-col md:flex-row items-center justify-center gap-[80px] md:gap-[60px]">
+        <div className="relative w-[85%] md:w-full max-w-[450px]">
+          <Image 
+            src="/work-note.png" 
+            alt="Works Area Right" 
+            width={600} 
+            height={800} 
+            className="w-full h-auto rotate-[20deg] transition-all duration-300 hover:rotate-[15deg] hover:scale-[1.02]"
+            priority
+          />
+        </div>
+        
+        <div className="relative w-[85%] md:w-full max-w-[450px]">
+          <Image 
+            src="/work-note.png" 
+            alt="Works Area Left" 
+            width={600} 
+            height={800} 
+            className="w-full h-auto -rotate-[20deg] transition-all duration-300 hover:-rotate-[15deg] hover:scale-[1.02]"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
