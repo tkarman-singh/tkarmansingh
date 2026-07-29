@@ -8,7 +8,7 @@ export function SideBorders() {
   const iconData = [
     { src: '/ka-icon.png', text: 'karman' },
     { src: '/pizza-icon.png', text: 'pizza addict' },
-    { src: '/pointer-icon.png', text: 'solving problems (of life)' },
+    { src: '/pointer-icon.png', text: 'problem solver ( of life too)' },
     { src: '/mic-icon.png', text: 'might be a rockstar' },
   ];
 
