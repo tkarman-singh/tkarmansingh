@@ -6,18 +6,16 @@ interface WorkNoteProps {
   company: string;
   duration: string;
   description: string;
-  hoverRotationClass?: string;
 }
 
 export function WorkNote({ 
   role, 
   company, 
   duration, 
-  description,
-  hoverRotationClass = "hover:rotate-[2deg]"
+  description
 }: WorkNoteProps) {
   return (
-    <div className={`relative w-[85%] md:w-full max-w-[450px] cursor-pointer transition-all duration-300 hover:scale-[1.02] ${hoverRotationClass}`}>
+    <div className="relative w-[85%] md:w-full max-w-[450px] cursor-pointer transition-all duration-300 hover:-translate-y-[8px] hover:scale-[1.03] drop-shadow-md hover:drop-shadow-2xl">
       <Image 
         src="/work-note.png" 
         alt={`${company} Note`} 
