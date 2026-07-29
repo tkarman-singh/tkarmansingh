@@ -65,7 +65,7 @@ export function Navbar() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       } ${
-        isScrolled ? "bg-[#09090B]/80 backdrop-blur-lg border-b border-white/10 py-3 shadow-lg" : "bg-transparent py-5"
+        isScrolled ? "bg-[#CF60F7]/80 backdrop-blur-lg border-b border-white/10 py-3 shadow-lg" : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
@@ -106,7 +106,7 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#09090B]/95 backdrop-blur-xl border-b border-white/10 py-6 px-6 flex flex-col gap-6 md:hidden shadow-2xl">
+        <div className="absolute top-full left-0 w-full bg-[#CF60F7]/95 backdrop-blur-xl border-b border-white/10 py-6 px-6 flex flex-col gap-6 md:hidden shadow-2xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
