@@ -169,7 +169,7 @@ export function Navbar() {
       initial={{ y: 0, backgroundColor: 'rgba(244, 239, 221, 0)' }}
       animate={{ 
         y: (!isAtTop && !isScrolling && !isNavHovered) ? "-100%" : 0,
-        backgroundColor: isAtTop ? 'rgba(244, 239, 221, 0)' : 'rgba(244, 239, 221, 0.95)',
+        backgroundColor: isAtTop ? 'rgba(244, 239, 221, 0)' : 'rgba(207, 96, 247, 0.85)',
         backdropFilter: isAtTop ? 'blur(0px)' : 'blur(8px)'
       }}
       transition={{ duration: 0.3 }}
