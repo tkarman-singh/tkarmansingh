@@ -15,7 +15,7 @@ export function WorksSection() {
             alt="Works Area Right" 
             width={600} 
             height={800} 
-            className="w-full h-auto rotate-[20deg] transition-all duration-300 hover:rotate-[15deg] hover:scale-[1.02]"
+            className="w-full h-auto transition-all duration-300 hover:rotate-[15deg] hover:scale-[1.02]"
             priority
           />
         </div>
@@ -26,7 +26,7 @@ export function WorksSection() {
             alt="Works Area Left" 
             width={600} 
             height={800} 
-            className="w-full h-auto -rotate-[20deg] transition-all duration-300 hover:-rotate-[15deg] hover:scale-[1.02]"
+            className="w-full h-auto transition-all duration-300 hover:-rotate-[15deg] hover:scale-[1.02]"
             priority
           />
         </div>
