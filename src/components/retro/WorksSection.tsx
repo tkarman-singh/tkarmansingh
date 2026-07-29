@@ -22,6 +22,7 @@ export function WorksSection() {
           company="Your Company"
           duration="August 2026 – Present"
           description="A placeholder description for the second note. Update this with your next project's details!"
+          slideOutImage="/study-cat.png"
         />
       </div>
     </section>
