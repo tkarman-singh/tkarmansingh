@@ -26,7 +26,7 @@ export function WorkNote({
         <img 
           src={slideOutImage} 
           alt="Decoration" 
-          className="absolute top-[25%] left-[16%] w-[35%] h-auto z-[5] transition-all duration-500 ease-out transform translate-y-0 -scale-x-100 group-hover:-translate-y-[100%] pointer-events-none drop-shadow-md group-hover:drop-shadow-xl"
+          className="absolute top-[25%] left-[16%] w-[35%] h-auto z-[5] transition-all duration-500 ease-out transform translate-y-0 -scale-x-100 group-hover:-translate-y-[135%] pointer-events-none drop-shadow-md group-hover:drop-shadow-xl"
         />
       )}
 
