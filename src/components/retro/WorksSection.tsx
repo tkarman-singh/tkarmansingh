@@ -18,7 +18,7 @@ export function WorksSection() {
             className="w-full h-auto transition-all duration-300 group-hover:rotate-[2deg] group-hover:scale-[1.02]"
             priority
           />
-          <div className="absolute inset-0 pt-[28%] pr-[16%] pb-[15%] pl-[20%] flex flex-col pointer-events-none text-left overflow-hidden">
+          <div className="absolute inset-0 pt-[33%] pr-[16%] pb-[15%] pl-[20%] flex flex-col pointer-events-none text-left overflow-hidden">
             <div className="flex flex-col gap-[6px] mb-[12px]">
               <h4 className="font-kalam text-[clamp(18px,3.5vw,26px)] font-bold text-[#1f2328] leading-[1.1] m-0">Summer Software Intern</h4>
               <div className="self-start">
