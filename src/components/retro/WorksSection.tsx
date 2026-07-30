@@ -18,10 +18,10 @@ export function WorksSection() {
         />
         
         <WorkNote 
-          role="Next Project"
-          company="Your Company"
-          duration="August 2026 – Present"
-          description="A placeholder description for the second note. Update this with your next project's details!"
+          role="Full Stack Developer"
+          company="GDGC, NIT Jalandhar"
+          duration="January 2025 - April 2026"
+          description="Developed and maintained full-stack features for HackMol, the official hackathon platform supporting event registrations, participant management, and live operations."
           slideOutImage="/study-cat.png"
         />
       </div>

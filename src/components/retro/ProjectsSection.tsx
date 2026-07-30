@@ -9,26 +9,18 @@ const projects = [
     title: "Project Alpha",
     summary: "Full-stack authentication app with a real-time database.",
     github: "#",
-    classes: "left-1/2 -ml-[130px] md:left-[3%] md:ml-0 top-[40px] md:top-[10px] z-[11]",
+    classes: "left-1/2 -ml-[130px] md:left-[20%] md:ml-0 top-[40px] md:top-[10px] z-[11]",
     color: "bg-[#fdfdfd]",
     rotation: -4,
   },
   {
-    title: "ML Pipeline",
-    summary: "End-to-end automated machine learning training and deployment.",
+    title: "Coming Soon",
+    summary: "More exciting projects are in the works and coming soon!",
     github: "#",
-    classes: "left-1/2 -ml-[130px] md:left-[35%] md:ml-0 top-[20px] md:top-[5px] z-[12]",
+    classes: "left-1/2 -ml-[130px] md:left-[55%] md:ml-0 top-[20px] md:top-[5px] z-[12]",
     color: "bg-[#fff5e6]",
-    rotation: 2,
-  },
-  {
-    title: "Cloud Infra",
-    summary: "Terraform infrastructure for spinning up Kubernetes clusters.",
-    github: "#",
-    classes: "left-1/2 -ml-[130px] md:left-[68%] md:ml-0 top-[0px] md:top-[15px] z-[13]",
-    color: "bg-[#fdfdfd]",
-    rotation: -6,
-  },
+    rotation: 3,
+  }
 ];
 
 export function ProjectsSection() {
