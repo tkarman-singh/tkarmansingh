@@ -4,10 +4,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
-  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes 
+  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions 
 } from 'react-icons/si';
 import { 
-  FaJava, FaAws, FaSyncAlt 
+  FaJava, FaAws 
 } from 'react-icons/fa';
 
 const techCategories = [
@@ -42,12 +42,14 @@ const techCategories = [
     ]
   },
   {
-    category: "cloud & devops",
+    category: "devops",
     skills: [
-      { name: "AWS (ECS, EKS, Pipelines)", icon: FaAws },
       { name: "Docker", icon: SiDocker },
       { name: "Kubernetes", icon: SiKubernetes },
-      { name: "CI/CD Pipelines", icon: FaSyncAlt },
+      { name: "Jenkins", icon: SiJenkins },
+      { name: "Terraform", icon: SiTerraform },
+      { name: "AWS", icon: FaAws },
+      { name: "GitHub Actions", icon: SiGithubactions },
     ]
   }
 ];
