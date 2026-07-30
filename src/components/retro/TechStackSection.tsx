@@ -5,65 +5,63 @@ import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
   SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions,
-  SiGit, SiGithub, SiLinux, SiPytorch, SiTensorflow
+  SiGit, SiGithub, SiLinux
 } from 'react-icons/si';
 import { 
   FaJava, FaAws, FaBrain, FaSyncAlt
 } from 'react-icons/fa';
 
-const techCategories = [
+const techCategories: { category: string; skills: { name: string; icon: React.ElementType; url?: string }[] }[] = [
   {
     category: "programming languages",
     skills: [
-      { name: "C", icon: SiC },
-      { name: "C++", icon: SiCplusplus },
-      { name: "Python", icon: SiPython },
-      { name: "Java", icon: FaJava },
+      { name: "C", icon: SiC, url: "https://en.cppreference.com/w/c" },
+      { name: "C++", icon: SiCplusplus, url: "https://isocpp.org/" },
+      { name: "Python", icon: SiPython, url: "https://www.python.org/" },
+      { name: "Java", icon: FaJava, url: "https://dev.java/" },
     ]
   },
   {
     category: "frontend",
     skills: [
-      { name: "HTML", icon: SiHtml5 },
-      { name: "CSS", icon: SiCss },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "React.js", icon: SiReact },
-      { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "HTML", icon: SiHtml5, url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+      { name: "CSS", icon: SiCss, url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+      { name: "JavaScript", icon: SiJavascript, url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      { name: "TypeScript", icon: SiTypescript, url: "https://www.typescriptlang.org/" },
+      { name: "React.js", icon: SiReact, url: "https://react.dev/" },
+      { name: "TailwindCSS", icon: SiTailwindcss, url: "https://tailwindcss.com/" },
     ]
   },
   {
     category: "backend",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express.js", icon: SiExpress },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "MySQL", icon: SiMysql },
-      { name: "PostgresSQL", icon: SiPostgresql },
+      { name: "Node.js", icon: SiNodedotjs, url: "https://nodejs.org/" },
+      { name: "Express.js", icon: SiExpress, url: "https://expressjs.com/" },
+      { name: "MongoDB", icon: SiMongodb, url: "https://www.mongodb.com/" },
+      { name: "MySQL", icon: SiMysql, url: "https://www.mysql.com/" },
+      { name: "PostgresSQL", icon: SiPostgresql, url: "https://www.postgresql.org/" },
     ]
   },
   {
     category: "devops",
     skills: [
-      { name: "Docker", icon: SiDocker },
-      { name: "Kubernetes", icon: SiKubernetes },
-      { name: "Jenkins", icon: SiJenkins },
-      { name: "Terraform", icon: SiTerraform },
-      { name: "AWS", icon: FaAws },
-      { name: "GitHub Actions", icon: SiGithubactions },
+      { name: "Docker", icon: SiDocker, url: "https://www.docker.com/" },
+      { name: "Kubernetes", icon: SiKubernetes, url: "https://kubernetes.io/" },
+      { name: "Jenkins", icon: SiJenkins, url: "https://www.jenkins.io/" },
+      { name: "Terraform", icon: SiTerraform, url: "https://www.terraform.io/" },
+      { name: "AWS", icon: FaAws, url: "https://aws.amazon.com/" },
+      { name: "GitHub Actions", icon: SiGithubactions, url: "https://github.com/features/actions" },
     ]
   },
   {
     category: "developer tools",
     skills: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
-      { name: "Linux", icon: SiLinux },
+      { name: "Git", icon: SiGit, url: "https://git-scm.com/" },
+      { name: "GitHub", icon: SiGithub, url: "https://github.com/" },
+      { name: "Linux", icon: SiLinux, url: "https://www.kernel.org/" },
       { name: "Agile", icon: FaSyncAlt },
       { name: "Machine Learning", icon: FaBrain },
       { name: "NLP", icon: FaBrain },
-      { name: "PyTorch", icon: SiPytorch },
-      { name: "TensorFlow", icon: SiTensorflow },
     ]
   }
 ];
@@ -132,15 +130,32 @@ export function TechStackSection() {
                     {group.category}
                   </h3>
                   <div className="flex flex-wrap gap-[10px] md:gap-[14px]">
-                    {group.skills.map((skill) => (
-                      <div 
-                        key={skill.name} 
-                        className="flex items-center gap-[8px] px-[14px] py-[6px] md:px-[18px] md:py-[8px] border-[1.5px] border-[#2a2a2a] rounded-[24px] text-[11px] md:text-[12.5px] tracking-[0.05em] font-medium text-[#2a2a2a] hover:bg-[#2a2a2a] hover:text-[#f8f9fa] transition-colors cursor-default bg-transparent"
-                      >
-                        <skill.icon className="text-[14px] md:text-[16px]" />
-                        <span>{skill.name}</span>
-                      </div>
-                    ))}
+                    {group.skills.map((skill) => {
+                      const content = (
+                        <>
+                          <skill.icon className="text-[14px] md:text-[16px]" />
+                          <span>{skill.name}</span>
+                        </>
+                      );
+                      const baseClass = "flex items-center gap-[8px] px-[14px] py-[6px] md:px-[18px] md:py-[8px] border-[1.5px] border-[#2a2a2a] rounded-[24px] text-[11px] md:text-[12.5px] tracking-[0.05em] font-medium text-[#2a2a2a] hover:bg-[#2a2a2a] hover:text-[#f8f9fa] transition-colors bg-transparent ";
+                      const className = baseClass + (skill.url ? "cursor-pointer" : "cursor-default");
+
+                      return skill.url ? (
+                        <a 
+                          key={skill.name} 
+                          href={skill.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={className}
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        <div key={skill.name} className={className}>
+                          {content}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
