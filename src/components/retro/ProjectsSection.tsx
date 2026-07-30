@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Code } from 'lucide-react';
 
 const projects = [
   {
@@ -64,7 +64,7 @@ export function ProjectsSection() {
             
             <div className="flex gap-[20px] items-center mt-auto pt-[20px] border-t-[1.5px] border-dashed border-[#2a2a2a]/30">
               <a href={project.github} className="text-[#2a2a2a] hover:text-[#d351f7] transition-colors flex items-center gap-[6px] font-sans font-semibold text-[13px]">
-                <Github size={18} /> Code
+                <Code size={18} /> Code
               </a>
               <a href={project.link} className="text-[#2a2a2a] hover:text-[#d351f7] transition-colors flex items-center gap-[6px] font-sans font-semibold text-[13px]">
                 <ExternalLink size={18} /> Live
