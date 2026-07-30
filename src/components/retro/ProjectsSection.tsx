@@ -59,7 +59,7 @@ export function ProjectsSection() {
                 dragElastic={0}
                 dragMomentum={false}
                 whileDrag={{ scale: 1.05, zIndex: 50, cursor: 'grabbing' }}
-                whileHover={{ y: -10 }}
+                whileHover={{ scale: 1.02 }}
                 initial={{ rotate: project.rotation }}
                 className={`pointer-events-auto absolute ${project.classes} ${project.color} w-[260px] h-[320px] border-[2px] border-[#22241a] rounded-[16px] p-[20px] flex flex-col shadow-[4px_4px_0_rgba(0,0,0,1)] cursor-grab`}
               >
