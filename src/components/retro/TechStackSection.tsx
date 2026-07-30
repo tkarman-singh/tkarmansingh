@@ -3,79 +3,62 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  SiC, SiCplusplus, SiPython, SiGo, SiTypescript, SiGnubash,
-  SiJavascript, SiReact, SiNextdotjs, SiHtml5, SiCss, SiTailwindcss,
-  SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiFirebase,
-  SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions,
-  SiPrometheus, SiGrafana, SiOpentelemetry, SiSonarqubeserver,
-  SiGit, SiGithub, SiPrisma, SiPostman
+  SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
+  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes 
 } from 'react-icons/si';
-import { FaShieldAlt, FaChartLine, FaAws } from 'react-icons/fa';
+import { 
+  FaJava, FaDesktop, FaNetworkWired, FaPuzzlePiece, FaServer, FaKey, FaLock, 
+  FaDatabase, FaAws, FaSyncAlt 
+} from 'react-icons/fa';
 
 const techCategories = [
   {
-    category: "languages",
+    category: "programming languages",
     skills: [
       { name: "C", icon: SiC },
       { name: "C++", icon: SiCplusplus },
       { name: "Python", icon: SiPython },
-      { name: "GoLang", icon: SiGo },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "Bash", icon: SiGnubash },
-    ]
-  },
-  {
-    category: "frontend",
-    skills: [
       { name: "JavaScript", icon: SiJavascript },
       { name: "TypeScript", icon: SiTypescript },
-      { name: "React", icon: SiReact },
-      { name: "Next.js", icon: SiNextdotjs },
-      { name: "HTML5", icon: SiHtml5 },
-      { name: "CSS3", icon: SiCss },
-      { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: SiCss },
+      { name: "Java", icon: FaJava },
     ]
   },
   {
-    category: "backend",
+    category: "frontend development",
+    skills: [
+      { name: "React.js", icon: SiReact },
+      { name: "Responsive UI", icon: FaDesktop },
+      { name: "REST API Integration", icon: FaNetworkWired },
+      { name: "Component Design", icon: FaPuzzlePiece },
+    ]
+  },
+  {
+    category: "backend development",
     skills: [
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Express.js", icon: SiExpress },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "MySQL", icon: SiMysql },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "Firebase", icon: SiFirebase },
+      { name: "RESTful APIs", icon: FaServer },
+      { name: "JWT Authentication", icon: FaKey },
+      { name: "AES-256 Encryption", icon: FaLock },
     ]
   },
   {
-    category: "devops",
+    category: "databases",
     skills: [
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "SQL", icon: FaDatabase },
+      { name: "DBMS", icon: FaServer },
+    ]
+  },
+  {
+    category: "cloud & devops",
+    skills: [
+      { name: "AWS (ECS, EKS, Pipelines)", icon: FaAws },
       { name: "Docker", icon: SiDocker },
       { name: "Kubernetes", icon: SiKubernetes },
-      { name: "Jenkins", icon: SiJenkins },
-      { name: "Terraform", icon: SiTerraform },
-      { name: "AWS", icon: FaAws },
-      { name: "GitHub Actions", icon: SiGithubactions },
-    ]
-  },
-  {
-    category: "monitoring & security",
-    skills: [
-      { name: "Prometheus", icon: SiPrometheus },
-      { name: "Grafana", icon: SiGrafana },
-      { name: "SigNoz", icon: FaChartLine },
-      { name: "OpenTelemetry", icon: SiOpentelemetry },
-      { name: "SonarQube", icon: SiSonarqubeserver },
-      { name: "Trivy", icon: FaShieldAlt },
-    ]
-  },
-  {
-    category: "tools",
-    skills: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
-      { name: "Prisma", icon: SiPrisma },
-      { name: "Postman", icon: SiPostman },
+      { name: "CI/CD Pipelines", icon: FaSyncAlt },
     ]
   }
 ];
