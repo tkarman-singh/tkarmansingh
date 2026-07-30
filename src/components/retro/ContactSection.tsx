@@ -57,7 +57,7 @@ export function ContactSection() {
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
               <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">Resume</span>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#d351f7] hover:border-[#d351f7] transition-colors w-fit">
-                Download PDF
+                Have a peek
               </a>
             </div>
           </div>

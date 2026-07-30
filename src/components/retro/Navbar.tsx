@@ -128,7 +128,7 @@ const NavItem = ({ label, targetId, isSmiley = false }: { label: string, targetI
       </AnimatePresence>
       <button 
         onClick={() => scrollTo(targetId)}
-        className={`text-[#3f3f2e] font-kalam ${isSmiley ? 'text-[22px] md:text-[26px] font-bold' : 'text-[16px] md:text-[20px]'} hover:text-[#df7a3e] transition-colors cursor-pointer bg-transparent border-none relative z-10`}
+        className={`text-[#3f3f2e] font-kalam ${isSmiley ? 'text-[22px] md:text-[26px] font-bold' : 'text-[16px] md:text-[20px]'} transition-colors cursor-pointer bg-transparent border-none relative z-10`}
       >
         {label}
       </button>
@@ -180,6 +180,7 @@ export function Navbar() {
       <div className={`flex items-center justify-center gap-[40px] md:gap-[60px] transition-all duration-300 ${isAtTop ? 'py-[30px] md:py-[50px]' : 'py-[15px] md:py-[20px]'}`}>
         <NavItem label=":)" targetId="hero-section" isSmiley={true} />
         <NavItem label="about" targetId="profile-section" />
+        <NavItem label="skills" targetId="tech-stack-section" />
         <NavItem label="work" targetId="works-section" />
         <NavItem label="projects" targetId="projects-section" />
         <NavItem label="connect" targetId="contact-section" />
