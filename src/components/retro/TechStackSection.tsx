@@ -22,7 +22,7 @@ const techCategories = [
     ]
   },
   {
-    category: "frontend development",
+    category: "frontend",
     skills: [
       { name: "HTML", icon: SiHtml5 },
       { name: "CSS", icon: SiCss },
@@ -33,7 +33,7 @@ const techCategories = [
     ]
   },
   {
-    category: "backend development",
+    category: "backend",
     skills: [
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Express.js", icon: SiExpress },
@@ -60,11 +60,6 @@ const techCategories = [
       { name: "GitHub", icon: SiGithub },
       { name: "Linux", icon: SiLinux },
       { name: "Agile", icon: FaSyncAlt },
-    ]
-  },
-  {
-    category: "machine learning",
-    skills: [
       { name: "Machine Learning", icon: FaBrain },
       { name: "NLP", icon: FaBrain },
       { name: "PyTorch", icon: SiPytorch },
