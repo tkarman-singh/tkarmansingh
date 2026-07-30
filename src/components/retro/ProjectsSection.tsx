@@ -55,10 +55,12 @@ export function ProjectsSection() {
               <motion.div 
                 key={idx}
                 drag
-                dragConstraints={containerRef}
+                dragConstraints={{ top: -250, bottom: 0, left: -20, right: 20 }}
+                dragElastic={0.1}
                 whileDrag={{ scale: 1.05, zIndex: 50, cursor: 'grabbing' }}
+                whileHover={{ y: -10 }}
                 initial={{ rotate: project.rotation }}
-                className={`pointer-events-auto absolute ${project.classes} ${project.color} w-[260px] h-[320px] border-[2px] border-[#22241a] rounded-[16px] p-[20px] flex flex-col shadow-[4px_4px_0_rgba(0,0,0,1)] cursor-grab hover:-translate-y-2 transition-transform duration-200`}
+                className={`pointer-events-auto absolute ${project.classes} ${project.color} w-[260px] h-[320px] border-[2px] border-[#22241a] rounded-[16px] p-[20px] flex flex-col shadow-[4px_4px_0_rgba(0,0,0,1)] cursor-grab`}
               >
                 {/* Top Section sticking out */}
                 <div className="h-[120px] flex flex-col justify-between">
