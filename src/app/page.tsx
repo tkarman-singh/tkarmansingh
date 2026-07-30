@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/retro/HeroSection";
 import { ProfileSection } from "@/components/retro/ProfileSection";
 import { TechStackSection } from "@/components/retro/TechStackSection";
 import { WorksSection } from "@/components/retro/WorksSection";
+import { ProjectsSection } from "@/components/retro/ProjectsSection";
 import { ContactSection } from "@/components/retro/ContactSection";
 import { FooterMarquee } from "@/components/retro/FooterMarquee";
 import { SideBorders } from "@/components/retro/SideBorders";
@@ -17,6 +18,7 @@ export default function Home() {
       <ProfileSection />
       <TechStackSection />
       <WorksSection />
+      <ProjectsSection />
       <ContactSection />
       
       <FooterMarquee />
