@@ -1,5 +1,4 @@
 import React from 'react';
-import { RetroWindow } from './RetroWindow';
 
 export function ContactSection() {
   return (
@@ -8,52 +7,63 @@ export function ContactSection() {
         05 · contact
       </span>
       
-      <RetroWindow title="C:\KARMAN\contact">
-        <div className="bg-[#22241a] rounded-[6px] p-[16px] font-mono text-[12px] text-[#9fe1b0] min-h-[160px] mb-[26px]">
-          <div className="whitespace-pre-wrap leading-[1.6] mb-[8px]">
-            Booting communication protocols...<br/>
-            Establishing secure connection...<br/>
-            Ready.
-          </div>
-          <div className="flex items-center gap-[6px]">
-            <span className="text-[#df7a3e]">C:\&gt;</span>
-            <input 
-              type="text" 
-              className="bg-transparent border-none outline-none text-[#f4efdd] font-mono text-[12px] flex-1"
-              value="ping t.karman.singh@gmail.com"
-              readOnly
-            />
-          </div>
+      {/* Postcard Container */}
+      <div className="relative w-full max-w-[600px] mt-[60px]">
+        {/* The Tape */}
+        <div className="absolute -top-[15px] left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-[#e8e4d3]/70 backdrop-blur-[2px] z-20 shadow-[1px_2px_4px_rgba(0,0,0,0.05)] rotate-[-3deg]">
+          {/* Jagged tape edges (simple pseudo-element simulation or just straight cut is fine for retro masking tape) */}
         </div>
 
-        <div className="flex flex-col gap-[16px]">
-          <div className="flex items-center gap-[14px] text-[13px]">
-            <span className="w-[80px] text-[#6b6a56] tracking-[.06em] text-[11px]">EMAIL</span>
-            <a href="mailto:t.karman.singh@gmail.com" className="text-[#3f3f2e] no-underline border-b border-dashed border-[#c9c2a3] hover:text-[#df7a3e] hover:border-[#df7a3e]">
-              t.karman.singh@gmail.com
-            </a>
+        {/* The Card */}
+        <div className="bg-[#fdf9f1] border-[1.5px] border-[#22241a] rounded-[4px] p-[40px] md:p-[60px] relative shadow-[6px_6px_0_rgba(0,0,0,1)] rotate-[1deg] hover:rotate-[0deg] transition-transform duration-300">
+          
+          {/* Decorative Postmark / Stamp */}
+          <div className="absolute top-[30px] right-[40px] w-[60px] h-[60px] rounded-full border-[2px] border-dashed border-[#df7a3e]/40 flex items-center justify-center opacity-70 rotate-[15deg] pointer-events-none hidden md:flex">
+            <span className="font-sans font-bold text-[#df7a3e] text-[10px] uppercase tracking-wider text-center leading-tight">
+              Approved
+            </span>
           </div>
-          <div className="flex items-center gap-[14px] text-[13px]">
-            <span className="w-[80px] text-[#6b6a56] tracking-[.06em] text-[11px]">LINKEDIN</span>
-            <a href="https://www.linkedin.com/in/t-karman-singh/" target="_blank" rel="noopener noreferrer" className="text-[#3f3f2e] no-underline border-b border-dashed border-[#c9c2a3] hover:text-[#df7a3e] hover:border-[#df7a3e]">
-              /in/t-karman-singh
-            </a>
-          </div>
-          <div className="flex items-center gap-[14px] text-[13px]">
-            <span className="w-[80px] text-[#6b6a56] tracking-[.06em] text-[11px]">GITHUB</span>
-            <a href="https://github.com/tkarman-singh" target="_blank" rel="noopener noreferrer" className="text-[#3f3f2e] no-underline border-b border-dashed border-[#c9c2a3] hover:text-[#df7a3e] hover:border-[#df7a3e]">
-              @tkarman-singh
-            </a>
-          </div>
-        </div>
 
-        <div className="flex justify-center mt-[24px]">
-          <div className="inline-flex items-center gap-[8px] bg-[#22241a] rounded-[4px] px-[12px] py-[6px] font-mono">
-            <span className="text-[9px] text-[#9a9a86] tracking-[.08em]">VISITORS</span>
-            <span className="text-[13px] text-[#4ade80] tracking-[.15em]">001337</span>
+          <h2 className="font-great-vibes text-[#d351f7] text-[50px] md:text-[70px] leading-none mb-[20px]">
+            Let&apos;s connect!
+          </h2>
+          
+          <p className="font-kalam text-[#5a5a5a] text-[18px] md:text-[22px] leading-[1.6] mb-[40px] max-w-[85%]">
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Drop me a line!
+          </p>
+
+          <div className="flex flex-col gap-[20px]">
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
+              <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">Email</span>
+              <a href="mailto:t.karman.singh@gmail.com" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#df7a3e] hover:border-[#df7a3e] transition-colors w-fit">
+                t.karman.singh@gmail.com
+              </a>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
+              <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/t-karman-singh/" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#d351f7] hover:border-[#d351f7] transition-colors w-fit">
+                /in/t-karman-singh
+              </a>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
+              <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">GitHub</span>
+              <a href="https://github.com/tkarman-singh" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#df7a3e] hover:border-[#df7a3e] transition-colors w-fit">
+                @tkarman-singh
+              </a>
+            </div>
+          </div>
+
+          {/* Visitors Stamp */}
+          <div className="absolute bottom-[30px] right-[30px] flex flex-col items-center rotate-[-5deg]">
+            <span className="font-sans font-bold text-[#22241a]/40 text-[10px] tracking-widest uppercase mb-1">Visitors</span>
+            <div className="border-[2px] border-[#d351f7]/60 px-[12px] py-[6px] rounded-[4px] font-kalam text-[#d351f7] text-[20px] font-bold">
+              001337
+            </div>
           </div>
         </div>
-      </RetroWindow>
+      </div>
     </section>
   );
 }
