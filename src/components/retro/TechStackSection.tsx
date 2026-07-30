@@ -7,8 +7,7 @@ import {
   SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes 
 } from 'react-icons/si';
 import { 
-  FaJava, FaDesktop, FaNetworkWired, FaPuzzlePiece, FaServer, FaKey, FaLock, 
-  FaDatabase, FaAws, FaSyncAlt 
+  FaJava, FaServer, FaKey, FaDatabase, FaAws, FaSyncAlt 
 } from 'react-icons/fa';
 
 const techCategories = [
@@ -18,21 +17,18 @@ const techCategories = [
       { name: "C", icon: SiC },
       { name: "C++", icon: SiCplusplus },
       { name: "Python", icon: SiPython },
-      { name: "HTML", icon: SiHtml5 },
-      { name: "CSS", icon: SiCss },
       { name: "Java", icon: FaJava },
     ]
   },
   {
     category: "frontend development",
     skills: [
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: SiCss },
       { name: "JavaScript", icon: SiJavascript },
       { name: "TypeScript", icon: SiTypescript },
       { name: "React.js", icon: SiReact },
       { name: "TailwindCSS", icon: SiTailwindcss },
-      { name: "Responsive UI", icon: FaDesktop },
-      { name: "REST API Integration", icon: FaNetworkWired },
-      { name: "Component Design", icon: FaPuzzlePiece },
     ]
   },
   {
