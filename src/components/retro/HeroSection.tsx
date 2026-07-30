@@ -17,14 +17,7 @@ export function HeroSection() {
             karman<span className="text-[#e0e0e0] text-[40px] md:text-[60px] lg:text-[80px] px-[8px] font-bold">x</span>singh.
           </h2>
           
-          <div className="mt-8 md:mt-12 text-[#5a5a5a] max-w-sm ml-[10px] md:ml-[30px] lg:ml-[110px] text-[13px] md:text-[14px] leading-[1.7] font-sans font-medium">
-            <p className="mb-5">
-              I am a DevOps Engineer, a Software Engineer, and a Machine Learning enthusiast.
-            </p>
-            <p>
-              I love building robust systems and daydreaming about scalable architectures, with occasional habits of exploring new tech and automating everything.
-            </p>
-          </div>
+
         </div>
 
         {/* Right Doodle Character */}
