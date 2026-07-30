@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
-  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes, SiTailwindcss 
+  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes 
 } from 'react-icons/si';
 import { 
   FaJava, FaDesktop, FaNetworkWired, FaPuzzlePiece, FaServer, FaKey, FaLock, 
@@ -33,6 +33,15 @@ const techCategories = [
       { name: "Responsive UI", icon: FaDesktop },
       { name: "REST API Integration", icon: FaNetworkWired },
       { name: "Component Design", icon: FaPuzzlePiece },
+    ]
+  },
+  {
+    category: "backend development",
+    skills: [
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Express.js", icon: SiExpress },
+      { name: "RESTful APIs", icon: FaServer },
+      { name: "JWT Authentication", icon: FaKey },
     ]
   },
   {
