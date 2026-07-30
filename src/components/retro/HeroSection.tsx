@@ -5,7 +5,7 @@ import React from 'react';
 export function HeroSection() {
   return (
     <>
-      <section id="hero-section" className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen relative flex items-center overflow-hidden bg-[#fdfdfd]">
+      <section id="hero-section" className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen relative flex items-center overflow-hidden">
         
         {/* Left Content */}
         <div className="flex flex-col text-left px-[24px] md:px-[8%] pt-[20px] md:pt-[0px] relative z-10 w-full md:w-3/5">
@@ -43,7 +43,7 @@ export function HeroSection() {
       </section>
 
       {/* Plane Separator */}
-      <div className="w-full flex justify-center py-[40px] relative z-20 overflow-hidden bg-[#fdfdfd]">
+      <div className="w-full flex justify-center py-[40px] relative z-20 overflow-hidden">
         <img 
           src="/plane.png" 
           alt="Separator" 
