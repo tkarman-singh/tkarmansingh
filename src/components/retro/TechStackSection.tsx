@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
-  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes 
+  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes, SiTailwindcss 
 } from 'react-icons/si';
 import { 
   FaJava, FaDesktop, FaNetworkWired, FaPuzzlePiece, FaServer, FaKey, FaLock, 
@@ -18,8 +18,6 @@ const techCategories = [
       { name: "C", icon: SiC },
       { name: "C++", icon: SiCplusplus },
       { name: "Python", icon: SiPython },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
       { name: "HTML", icon: SiHtml5 },
       { name: "CSS", icon: SiCss },
       { name: "Java", icon: FaJava },
@@ -28,20 +26,13 @@ const techCategories = [
   {
     category: "frontend development",
     skills: [
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
       { name: "React.js", icon: SiReact },
+      { name: "TailwindCSS", icon: SiTailwindcss },
       { name: "Responsive UI", icon: FaDesktop },
       { name: "REST API Integration", icon: FaNetworkWired },
       { name: "Component Design", icon: FaPuzzlePiece },
-    ]
-  },
-  {
-    category: "backend development",
-    skills: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express.js", icon: SiExpress },
-      { name: "RESTful APIs", icon: FaServer },
-      { name: "JWT Authentication", icon: FaKey },
-      { name: "AES-256 Encryption", icon: FaLock },
     ]
   },
   {
