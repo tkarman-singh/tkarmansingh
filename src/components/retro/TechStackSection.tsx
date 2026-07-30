@@ -118,7 +118,7 @@ export function TechStackSection() {
         </div>
 
         {/* Front Grid Paper */}
-        <div className="absolute inset-4 md:inset-6 bg-[#f8f9fa] shadow-md z-20 rounded-sm overflow-hidden flex flex-col min-h-[750px]">
+        <div className="relative m-4 md:m-6 bg-[#f8f9fa] shadow-md z-20 rounded-sm overflow-hidden flex flex-col min-h-[500px]">
           {/* Grid Background */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.5]" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
           
@@ -131,7 +131,7 @@ export function TechStackSection() {
           <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-white/40 backdrop-blur-[2px] shadow-sm rotate-2 z-30 border border-white/50" style={{ clipPath: 'polygon(2% 0, 98% 2%, 100% 100%, 0 98%)' }} />
 
           {/* Content */}
-          <div className="relative z-10 p-[30px] md:p-[50px] pb-[60px] flex-1 overflow-y-auto">
+          <div className="relative z-10 p-[30px] md:p-[50px] pb-[80px] flex-1">
             <h2 className="text-[28px] md:text-[36px] font-bold text-[#1a1a1a] mb-8 tracking-tight lowercase">
               technical stack
             </h2>
