@@ -6,9 +6,9 @@ import { Code } from 'lucide-react';
 
 const projects = [
   {
-    title: "Project Alpha",
-    summary: "Full-stack authentication app with a real-time database.",
-    github: "#",
+    title: "MindMate",
+    summary: "AI mental wellness platform with sentiment analysis and mood tracking.",
+    github: "https://github.com/tkarman-singh/MindMate",
     classes: "left-1/2 -ml-[130px] md:left-[20%] md:ml-0 top-[40px] md:top-[10px] z-[11]",
     color: "bg-[#fdfdfd]",
     rotation: -4,
