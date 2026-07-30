@@ -5,7 +5,7 @@ export function ContactSection() {
   return (
     <section className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen flex flex-col items-center justify-center py-[90px] px-[24px] md:px-[60px] relative" id="contact-section">
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
-        03 · contact
+        04 · contact
       </span>
       
       <RetroWindow title="C:\KARMAN\contact">

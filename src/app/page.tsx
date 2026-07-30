@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/retro/Navbar";
 import { HeroSection } from "@/components/retro/HeroSection";
 import { ProfileSection } from "@/components/retro/ProfileSection";
+import { TechStackSection } from "@/components/retro/TechStackSection";
 import { WorksSection } from "@/components/retro/WorksSection";
 import { ContactSection } from "@/components/retro/ContactSection";
 import { FooterMarquee } from "@/components/retro/FooterMarquee";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ProfileSection />
+      <TechStackSection />
       <WorksSection />
       <ContactSection />
       
