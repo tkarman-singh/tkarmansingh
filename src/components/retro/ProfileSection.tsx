@@ -11,8 +11,15 @@ export function ProfileSection() {
         01 · about
       </span>
       
+      {/* Boo hidden behind the note */}
+      <img 
+        src="/boo.png" 
+        alt="Boo" 
+        className="absolute z-0 w-[150px] md:w-[220px] h-auto object-contain pointer-events-none select-none"
+      />
+      
       <motion.div 
-        className="relative w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px] cursor-grab active:cursor-grabbing"
+        className="relative z-10 w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px] cursor-grab active:cursor-grabbing"
         drag
         dragSnapToOrigin={true}
         dragElastic={0.6}

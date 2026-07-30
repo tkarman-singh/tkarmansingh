@@ -21,7 +21,7 @@ export function HeroSection() {
         
         {/* Left Content */}
         <div className="flex flex-col text-left px-[24px] md:px-[8%] pt-[20px] md:pt-[0px] relative z-10 w-full md:w-3/5">
-          <h1 className="text-[#b0b0b0] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
+          <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
             Namaste,<br/>
             my name is
           </h1>
