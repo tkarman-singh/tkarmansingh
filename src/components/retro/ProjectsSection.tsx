@@ -55,7 +55,7 @@ export function ProjectsSection() {
               <motion.div 
                 key={idx}
                 drag
-                dragConstraints={{ bottom: 0, left: -20, right: 20 }}
+                dragConstraints={{ top: -600, bottom: 0, left: -300, right: 300 }}
                 dragElastic={0}
                 dragMomentum={false}
                 whileDrag={{ scale: 1.05, zIndex: 50, cursor: 'grabbing' }}
