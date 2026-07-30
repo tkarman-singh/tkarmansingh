@@ -4,13 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiGo, SiTypescript, SiGnubash,
-  SiJavascript, SiReact, SiNextdotjs, SiHtml5, SiCss3, SiTailwindcss,
+  SiJavascript, SiReact, SiNextdotjs, SiHtml5, SiCss, SiTailwindcss,
   SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiFirebase,
-  SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiAmazonwebservices, SiGithubactions,
-  SiPrometheus, SiGrafana, SiOpentelemetry, SiSonarqube,
+  SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions,
+  SiPrometheus, SiGrafana, SiOpentelemetry, SiSonarqubeserver,
   SiGit, SiGithub, SiPrisma, SiPostman
 } from 'react-icons/si';
-import { FaShieldAlt, FaChartLine } from 'react-icons/fa';
+import { FaShieldAlt, FaChartLine, FaAws } from 'react-icons/fa';
 
 const techCategories = [
   {
@@ -32,7 +32,7 @@ const techCategories = [
       { name: "React", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "HTML5", icon: SiHtml5 },
-      { name: "CSS3", icon: SiCss3 },
+      { name: "CSS3", icon: SiCss },
       { name: "TailwindCSS", icon: SiTailwindcss },
     ]
   },
@@ -54,7 +54,7 @@ const techCategories = [
       { name: "Kubernetes", icon: SiKubernetes },
       { name: "Jenkins", icon: SiJenkins },
       { name: "Terraform", icon: SiTerraform },
-      { name: "AWS", icon: SiAmazonwebservices },
+      { name: "AWS", icon: FaAws },
       { name: "GitHub Actions", icon: SiGithubactions },
     ]
   },
@@ -65,7 +65,7 @@ const techCategories = [
       { name: "Grafana", icon: SiGrafana },
       { name: "SigNoz", icon: FaChartLine },
       { name: "OpenTelemetry", icon: SiOpentelemetry },
-      { name: "SonarQube", icon: SiSonarqube },
+      { name: "SonarQube", icon: SiSonarqubeserver },
       { name: "Trivy", icon: FaShieldAlt },
     ]
   },
