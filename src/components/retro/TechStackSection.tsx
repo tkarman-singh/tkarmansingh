@@ -4,10 +4,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
-  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiDocker, SiKubernetes 
+  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes 
 } from 'react-icons/si';
 import { 
-  FaJava, FaServer, FaKey, FaDatabase, FaAws, FaSyncAlt 
+  FaJava, FaAws, FaSyncAlt 
 } from 'react-icons/fa';
 
 const techCategories = [
@@ -36,16 +36,9 @@ const techCategories = [
     skills: [
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Express.js", icon: SiExpress },
-      { name: "RESTful APIs", icon: FaServer },
-      { name: "JWT Authentication", icon: FaKey },
-    ]
-  },
-  {
-    category: "databases",
-    skills: [
       { name: "MongoDB", icon: SiMongodb },
-      { name: "SQL", icon: FaDatabase },
-      { name: "DBMS", icon: FaServer },
+      { name: "MySQL", icon: SiMysql },
+      { name: "PostgresSQL", icon: SiPostgresql },
     ]
   },
   {
