@@ -10,7 +10,7 @@ import { SideBorders } from "@/components/retro/SideBorders";
 
 export default function Home() {
   return (
-    <main className="relative w-full overflow-hidden selection:bg-[#df7a3e] selection:text-white pb-[70px]">
+    <main className="relative w-full overflow-x-hidden selection:bg-[#df7a3e] selection:text-white pb-[70px]">
       <SideBorders />
 
       <Navbar />
