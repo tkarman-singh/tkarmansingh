@@ -15,7 +15,7 @@ export function ProfileSection() {
       <img 
         src="/boo.png" 
         alt="Boo" 
-        className="absolute z-0 w-[150px] md:w-[220px] h-auto object-contain pointer-events-none select-none"
+        className="absolute z-0 w-[75px] md:w-[110px] h-auto object-contain pointer-events-none select-none"
       />
       
       <motion.div 
