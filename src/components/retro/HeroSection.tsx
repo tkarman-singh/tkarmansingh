@@ -10,11 +10,12 @@ export function HeroSection() {
         {/* Left Content */}
         <div className="flex flex-col text-left px-[24px] md:px-[8%] pt-[20px] md:pt-[0px] relative z-10 w-full md:w-3/5">
           <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
-            hello,<br/>
-            my name is
+            Namaste,<br/>
+            I&apos;m
           </h1>
           <h2 className="text-[#d351f7] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
-            karman<span className="text-[#e0e0e0] text-[40px] md:text-[60px] lg:text-[80px] px-[8px] font-bold">x</span>singh.
+            Karman<br/>
+            Singh
           </h2>
           
 
