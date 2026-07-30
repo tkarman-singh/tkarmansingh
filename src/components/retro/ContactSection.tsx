@@ -55,13 +55,6 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Visitors Stamp */}
-          <div className="absolute bottom-[30px] right-[30px] flex flex-col items-center rotate-[-5deg]">
-            <span className="font-sans font-bold text-[#22241a]/40 text-[10px] tracking-widest uppercase mb-1">Visitors</span>
-            <div className="border-[2px] border-[#d351f7]/60 px-[12px] py-[6px] rounded-[4px] font-kalam text-[#d351f7] text-[20px] font-bold">
-              001337
-            </div>
-          </div>
         </div>
       </div>
     </section>

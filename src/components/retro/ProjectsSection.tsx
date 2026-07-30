@@ -39,7 +39,7 @@ export function ProjectsSection() {
         <div className="w-full max-w-[950px] h-[380px] relative mt-[100px]">
           
           {/* Back of Envelope */}
-          <div className="absolute bottom-0 left-0 w-full h-[240px] bg-[#354835] rounded-[16px] opacity-40 shadow-inner z-0 border-[2px] border-[#22241a]"></div>
+          <div className="absolute bottom-0 left-0 w-full h-[240px] bg-[#611d73] rounded-[16px] opacity-60 shadow-inner z-0 border-[2px] border-[#22241a]"></div>
 
           {/* Cards Container */}
           <div className="absolute inset-0 z-10 w-full h-full pointer-events-none">
@@ -96,11 +96,11 @@ export function ProjectsSection() {
           </div>
 
           {/* Front of Envelope (The Pocket) */}
-          <div className="absolute bottom-0 left-0 w-full h-[220px] bg-[#4a634a] rounded-b-[16px] rounded-t-[4px] z-20 shadow-[0_-8px_20px_rgba(0,0,0,0.15)] border-[2px] border-[#22241a] flex items-center justify-center pointer-events-none">
+          <div className="absolute bottom-0 left-0 w-full h-[220px] bg-[#9b2caa] rounded-b-[16px] rounded-t-[4px] z-20 shadow-[0_-8px_20px_rgba(0,0,0,0.15)] border-[2px] border-[#22241a] flex items-center justify-center pointer-events-none">
             {/* Stitched inner border */}
-            <div className="absolute inset-[10px] border-[2px] border-dashed border-[#769b76] rounded-b-[10px] rounded-t-[2px]"></div>
+            <div className="absolute inset-[10px] border-[2px] border-dashed border-[#d351f7] rounded-b-[10px] rounded-t-[2px]"></div>
             
-            <h2 className="font-great-vibes text-[#dbe5db] text-[60px] md:text-[80px] opacity-80 -rotate-2 select-none tracking-wide">
+            <h2 className="font-great-vibes text-[#fdf9f1] text-[60px] md:text-[80px] opacity-90 -rotate-2 select-none tracking-wide">
               Ciao
             </h2>
           </div>
