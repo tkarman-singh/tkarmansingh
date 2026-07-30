@@ -4,10 +4,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
-  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions 
+  SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions,
+  SiGit, SiGithub, SiLinux, SiPytorch, SiTensorflow
 } from 'react-icons/si';
 import { 
-  FaJava, FaAws 
+  FaJava, FaAws, FaBrain, FaSyncAlt
 } from 'react-icons/fa';
 
 const techCategories = [
@@ -50,6 +51,24 @@ const techCategories = [
       { name: "Terraform", icon: SiTerraform },
       { name: "AWS", icon: FaAws },
       { name: "GitHub Actions", icon: SiGithubactions },
+    ]
+  },
+  {
+    category: "developer tools",
+    skills: [
+      { name: "Git", icon: SiGit },
+      { name: "GitHub", icon: SiGithub },
+      { name: "Linux", icon: SiLinux },
+      { name: "Agile", icon: FaSyncAlt },
+    ]
+  },
+  {
+    category: "machine learning",
+    skills: [
+      { name: "Machine Learning", icon: FaBrain },
+      { name: "NLP", icon: FaBrain },
+      { name: "PyTorch", icon: SiPytorch },
+      { name: "TensorFlow", icon: SiTensorflow },
     ]
   }
 ];
