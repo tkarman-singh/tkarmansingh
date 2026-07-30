@@ -9,16 +9,24 @@ export function ContactSection() {
       
       {/* Postcard Container */}
       <div className="relative w-full max-w-[600px] mt-[60px]">
-        {/* The Tape */}
-        <div className="absolute -top-[15px] left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-[#e8e4d3]/70 backdrop-blur-[2px] z-20 shadow-[1px_2px_4px_rgba(0,0,0,0.05)] rotate-[-3deg]">
-          {/* Jagged tape edges (simple pseudo-element simulation or just straight cut is fine for retro masking tape) */}
-        </div>
-
-        {/* The Card */}
-        <div className="bg-[#fdf9f1] border-[1.5px] border-[#22241a] rounded-[4px] p-[40px] md:p-[60px] relative shadow-[6px_6px_0_rgba(0,0,0,1)] rotate-[1deg] hover:rotate-[0deg] transition-transform duration-300">
+        {/* The Card - Styled as a Stamp */}
+        <div className="relative rotate-[2deg] hover:rotate-[0deg] transition-transform duration-300 drop-shadow-[6px_6px_0_rgba(0,0,0,1)]">
+          <div 
+            className="bg-[#fdf9f1] p-[40px] md:p-[60px] relative"
+            style={{
+              maskImage: 'radial-gradient(circle at 6px 6px, transparent 6px, black 6.5px)',
+              maskSize: '20px 20px',
+              maskPosition: '-6px -6px',
+              WebkitMaskImage: 'radial-gradient(circle at 6px 6px, transparent 6px, black 6.5px)',
+              WebkitMaskSize: '20px 20px',
+              WebkitMaskPosition: '-6px -6px'
+            }}
+          >
+            {/* Inner Stamp Border */}
+            <div className="absolute inset-[15px] border-[1.5px] border-[#22241a] pointer-events-none rounded-[2px]"></div>
           
-          {/* Decorative Postmark / Stamp */}
-          <div className="absolute top-[30px] right-[40px] w-[60px] h-[60px] rounded-full border-[2px] border-dashed border-[#df7a3e]/40 flex items-center justify-center opacity-70 rotate-[15deg] pointer-events-none hidden md:flex">
+            {/* Decorative Postmark / Stamp */}
+            <div className="absolute top-[30px] right-[40px] w-[60px] h-[60px] rounded-full border-[2px] border-dashed border-[#df7a3e]/40 flex items-center justify-center opacity-70 rotate-[15deg] pointer-events-none hidden md:flex z-10">
             <span className="font-sans font-bold text-[#df7a3e] text-[10px] uppercase tracking-wider text-center leading-tight">
               Approved
             </span>
@@ -55,6 +63,7 @@ export function ContactSection() {
             </div>
           </div>
 
+          </div>
         </div>
       </div>
     </section>
