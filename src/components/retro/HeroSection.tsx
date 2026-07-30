@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const names = ["karman", "करमन", "カルマン", "ਕਰਮਨ", "karman", "കർമ്മൻ", "కర్మన్", "卡曼"];
+const names = ["Karman", "करमन", "カルマン", "ਕਰਮਨ", "Карман", "കർമ്മൻ", "కర్మన్", "卡曼"];
 
 export function HeroSection() {
   const [nameIndex, setNameIndex] = useState(0);
@@ -22,11 +22,11 @@ export function HeroSection() {
         {/* Left Content */}
         <div className="flex flex-col text-left px-[24px] md:px-[8%] pt-[20px] md:pt-[0px] relative z-10 w-full md:w-3/5">
           <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
-            hello,<br/>
+            Namaste,<br/>
             my name is
           </h1>
           <h2 className="text-[#d351f7] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
-            <span className="relative inline-block min-w-[210px] md:min-w-[320px] lg:min-w-[420px]">
+            <span className="relative inline-block min-w-[230px] md:min-w-[350px] lg:min-w-[450px]">
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={nameIndex}
@@ -40,7 +40,7 @@ export function HeroSection() {
                 </motion.span>
               </AnimatePresence>
             </span>
-            <span className="text-[#e0e0e0] text-[40px] md:text-[60px] lg:text-[80px] px-[8px] font-bold">x</span>singh.
+            <span className="ml-[4px] md:ml-[8px]">Singh.</span>
           </h2>
           
 
