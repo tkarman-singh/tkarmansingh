@@ -181,6 +181,7 @@ export function Navbar() {
         <NavItem label=":)" targetId="hero-section" isSmiley={true} />
         <NavItem label="about" targetId="profile-section" />
         <NavItem label="work" targetId="works-section" />
+        <NavItem label="projects" targetId="projects-section" />
         <NavItem label="connect" targetId="contact-section" />
       </div>
     </motion.nav>
