@@ -9,7 +9,7 @@ export function HeroSection() {
           NAMASTE
         </h1>
         <p className="font-vibes text-[clamp(28px,5vw,50px)] text-[#7c1f2b] m-0 mt-[-6px] leading-none">
-          I'm
+          I&apos;m
         </p>
         <p className="font-fraunces font-semibold text-[clamp(24px,5vw,46px)] tracking-[0.02em] text-[#7c1f2b] m-0 mt-[6px] leading-none flex items-baseline justify-center gap-[14px]">
           <span className="font-vibes font-normal tracking-[0.01em] text-[1.5em]">Karman</span>
