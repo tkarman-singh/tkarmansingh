@@ -13,7 +13,7 @@ export function HeroSection() {
             hello,<br/>
             my name is
           </h1>
-          <h2 className="text-[#f11a1a] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
+          <h2 className="text-[#d351f7] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
             karman<span className="text-[#e0e0e0] text-[40px] md:text-[60px] lg:text-[80px] px-[8px] font-bold">x</span>singh.
           </h2>
           
