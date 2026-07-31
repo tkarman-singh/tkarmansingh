@@ -91,7 +91,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[140px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[180px] md:w-[325px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Middle Left Decoration (5) */}
