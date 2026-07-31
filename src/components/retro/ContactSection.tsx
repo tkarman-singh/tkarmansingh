@@ -23,7 +23,7 @@ export function ContactSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[10%] md:bottom-[20%] right-[5%] md:right-[15%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute bottom-[10%] md:bottom-[20%] right-[5%] md:right-[15%] w-[180px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
       
       {/* Postcard Container */}
