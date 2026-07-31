@@ -16,7 +16,7 @@ export function FooterMarquee() {
     >
       <div className={`shrink-0 flex items-center gap-[8px] transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
         <div className="w-[35px] md:w-[50px]">
-          <Image src="/monster-mouth.png" alt="Monster Mouth" width={50} height={50} className="w-full h-auto object-contain" />
+          <Image src="/monster-mouth.png" alt="Monster Mouth" width={50} height={50} className="w-full h-auto object-contain scale-x-[-1]" />
         </div>
         <span className="text-[18px] md:text-[22px]">🎶</span>
       </div>
