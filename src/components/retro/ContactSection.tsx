@@ -21,7 +21,7 @@ export function ContactSection() {
 
         {/* The Polaroid */}
         <motion.div 
-          className="absolute top-[30px] right-[-40px] md:right-[-100px] w-[180px] md:w-[220px] h-[220px] md:h-[260px] bg-[#f8f8f8] p-[10px] md:p-[12px] pb-[40px] md:pb-[50px] shadow-[2px_4px_12px_rgba(0,0,0,0.15)] border border-[#eaeaea] rotate-[12deg] z-0 cursor-grab active:cursor-grabbing"
+          className="absolute top-[30px] right-[-40px] md:right-[-100px] w-[180px] md:w-[220px] h-[220px] md:h-[260px] bg-[#fdfdfd] p-[10px] md:p-[12px] pb-[40px] md:pb-[50px] border-[2px] border-[#22241a] shadow-[4px_4px_0_rgba(0,0,0,1)] rounded-[4px] rotate-[12deg] z-0 cursor-grab active:cursor-grabbing flex flex-col"
           drag
           dragConstraints={containerRef}
           dragElastic={0.1}
@@ -29,10 +29,10 @@ export function ContactSection() {
           whileHover={{ scale: 1.05 }}
           whileDrag={{ scale: 1.1, zIndex: 50, rotate: 0 }}
         >
-          <div className="relative w-full h-full bg-[#2a2a2a] overflow-hidden">
-            <Image src="/me-real.JPG" alt="Me" fill className="object-cover" sizes="220px" />
+          <div className="relative w-full h-full bg-[#2a2a2a] overflow-hidden border-[1px] border-[#22241a]/20 pointer-events-none">
+            <Image src="/me-real.JPG" alt="Me" fill className="object-cover" sizes="220px" draggable={false} />
           </div>
-          <div className="absolute bottom-[10px] md:bottom-[15px] w-full text-center left-0 font-kalam text-[#2a2a2a] text-[14px] md:text-[18px]">
+          <div className="absolute bottom-[10px] md:bottom-[15px] w-full text-center left-0 font-kalam text-[#2a2a2a] text-[14px] md:text-[18px] pointer-events-none">
             me irl
           </div>
         </motion.div>
