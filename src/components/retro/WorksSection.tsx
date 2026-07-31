@@ -15,7 +15,7 @@ export function WorksSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute top-[5%] md:top-[8%] left-1/2 -translate-x-1/2 w-[140px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute top-[10%] md:top-[15%] left-1/2 -translate-x-1/2 w-[160px] md:w-[290px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Right Decoration (8) */}
