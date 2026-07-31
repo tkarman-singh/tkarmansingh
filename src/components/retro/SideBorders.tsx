@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 
 export function SideBorders() {
-  // 80 icons is enough to cover up to 4800px height (at 60px each), providing plenty of coverage.
+  // 150 icons ensures the borders reach the bottom of the page even on tall content.
   // We don't use overflow-hidden on the container so the slide-out text can overflow sideways.
-  const icons = Array.from({ length: 80 });
+  const icons = Array.from({ length: 150 });
 
   const iconData = [
     { src: '/ka-icon.png', text: 'karman' },
