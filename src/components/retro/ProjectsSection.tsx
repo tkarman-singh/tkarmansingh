@@ -39,7 +39,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute top-[10%] md:top-[15%] left-[5%] md:left-[10%] w-[180px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute top-[5%] md:top-[8%] left-[5%] md:left-[10%] w-[180px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm rotate-[30deg]"
       />
 
       {/* Right Middle Decoration (11) */}
@@ -48,7 +48,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={200}
         height={200}
-        className="absolute top-[35%] md:top-[40%] right-[2%] md:right-[8%] w-[120px] md:w-[180px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute top-[25%] md:top-[30%] right-[2%] md:right-[8%] w-[120px] md:w-[180px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Right Decoration (10) */}
