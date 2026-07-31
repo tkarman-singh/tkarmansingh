@@ -1,6 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 
+import Image from 'next/image';
+
 export function FooterMarquee() {
   const [isHovered, setIsHovered] = useState(false);
   const lyrics = "Almost heaven, West Virginia.      Blue Ridge Mountains Shenandoah River.      Life is old there.      Older than the trees.      Younger than the mountains.      Growin like a breeze Country Roads, take me home.      To the place I belong West Virginia, mountain momma.      Take me home, country roads.      ";
@@ -12,7 +14,9 @@ export function FooterMarquee() {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => document.getElementById('hero-section')?.scrollIntoView({ behavior: 'smooth' })}
     >
-      <span className={`text-[18px] md:text-[22px] shrink-0 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>🎶</span>
+      <div className={`shrink-0 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'} w-[35px] md:w-[50px]`}>
+        <Image src="/monster-mouth.png" alt="Monster Mouth" width={50} height={50} className="w-full h-auto object-contain" />
+      </div>
       
       <div className="overflow-hidden flex flex-1 relative h-[30px] md:h-[35px] items-center">
         <div 
