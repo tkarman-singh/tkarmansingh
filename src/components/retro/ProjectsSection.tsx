@@ -57,7 +57,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={250}
         height={250}
-        className="absolute bottom-[10%] md:bottom-[15%] right-[2%] md:right-[10%] w-[160px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-[25] drop-shadow-sm"
+        className="absolute bottom-[10%] md:bottom-[15%] right-[2%] md:right-[10%] w-[160px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm"
       />
 
       {/* Bottom Left Decoration (12) */}
