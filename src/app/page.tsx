@@ -32,20 +32,24 @@ export default function Home() {
           className="absolute top-[40%] -translate-y-1/2 left-[5%] md:left-[15%] w-[120px] md:w-[200px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
         />
 
-        {/* Right Decoration (16) */}
-        <Image 
-          src="/16.png" 
-          alt="Decoration" 
-          width={250}
-          height={250}
-          className="absolute top-[40%] -translate-y-1/2 right-[5%] md:right-[15%] w-[120px] md:w-[200px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
-        />
-        
         <FooterMarquee />
       </div>
       <footer className="text-center pt-[50px] pb-[70px] px-[20px] text-[11px] text-[#6b6a56] tracking-[.08em] font-mono">
         © 2026 Karman Singh. Built with Next.js & Tailwind.
       </footer>
+      {/* 16.png and Text Decoration at Bottom Right Corner */}
+      <div className="absolute bottom-[20px] right-[20px] md:bottom-[40px] md:right-[40px] flex flex-col items-center pointer-events-none z-10">
+        <span className="font-kalam text-[#5a5a5a] text-[14px] md:text-[18px] mb-[10px] -rotate-6">
+          The song will take you home
+        </span>
+        <Image 
+          src="/16.png" 
+          alt="Decoration" 
+          width={200}
+          height={200}
+          className="w-[100px] md:w-[150px] h-auto object-contain select-none drop-shadow-sm"
+        />
+      </div>
     </main>
   );
 }
