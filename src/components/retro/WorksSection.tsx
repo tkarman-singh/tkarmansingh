@@ -1,5 +1,6 @@
 import React from 'react';
 import { WorkNote } from './WorkNote';
+import Image from 'next/image';
 
 export function WorksSection() {
   return (
@@ -7,6 +8,33 @@ export function WorksSection() {
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         03 · works
       </span>
+
+      {/* Top Middle Decoration (7) */}
+      <Image 
+        src="/7.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute top-[10%] md:top-[15%] left-1/2 -translate-x-1/2 w-[180px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Right Decoration (8) */}
+      <Image 
+        src="/8.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Left Decoration (9) */}
+      <Image 
+        src="/9.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[10%] left-[2%] md:left-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
       
       <div className="w-full max-w-[1000px] mt-[60px] flex flex-col md:flex-row items-center justify-center gap-[80px] md:gap-[60px]">
         <WorkNote 
