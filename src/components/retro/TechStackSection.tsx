@@ -76,6 +76,15 @@ export function TechStackSection() {
         02 · tech stack
       </span>
 
+      {/* Top Left Decoration (1-1) */}
+      <Image 
+        src="/1-1.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute top-[5%] md:top-[10%] left-[2%] md:left-[5%] w-[140px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm"
+      />
+
       {/* Top Right Decoration (3) */}
       <Image 
         src="/3.png" 
