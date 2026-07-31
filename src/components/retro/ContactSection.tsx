@@ -21,19 +21,19 @@ export function ContactSection() {
 
         {/* The Polaroid */}
         <motion.div 
-          className="absolute top-[30px] right-[-40px] md:right-[-100px] w-[180px] md:w-[220px] h-[220px] md:h-[260px] bg-[#fdfdfd] p-[10px] md:p-[12px] pb-[40px] md:pb-[50px] border-[2px] border-[#22241a] shadow-[4px_4px_0_rgba(0,0,0,1)] rounded-[4px] rotate-[12deg] z-0 cursor-grab active:cursor-grabbing flex flex-col"
+          className="absolute top-[30px] right-[-40px] md:right-[-100px] w-[180px] md:w-[240px] h-[220px] md:h-[290px] bg-[#f5ede0] p-[10px] md:p-[16px] pb-[40px] md:pb-[70px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] rounded-[12px] rotate-[12deg] z-0 cursor-grab active:cursor-grabbing flex flex-col"
           drag
           dragConstraints={containerRef}
           dragElastic={0.1}
           dragMomentum={false}
-          whileHover={{ scale: 1.05 }}
-          whileDrag={{ scale: 1.1, zIndex: 50, rotate: 0 }}
+          whileHover={{ scale: 1.02 }}
+          whileDrag={{ scale: 1.05, zIndex: 50, rotate: 5 }}
         >
-          <div className="relative w-full h-full bg-[#2a2a2a] overflow-hidden border-[1px] border-[#22241a]/20 pointer-events-none">
-            <Image src="/me-real.JPG" alt="Me" fill className="object-cover" sizes="220px" draggable={false} />
+          <div className="relative w-full h-full bg-[#1a1a1a] overflow-hidden rounded-[4px] pointer-events-none">
+            <Image src="/me-real.JPG" alt="Me" fill className="object-cover" sizes="240px" draggable={false} />
           </div>
-          <div className="absolute bottom-[10px] md:bottom-[15px] w-full text-center left-0 font-kalam text-[#2a2a2a] text-[14px] md:text-[18px] pointer-events-none">
-            me irl
+          <div className="absolute bottom-[15px] md:bottom-[20px] w-full text-center left-0 font-caveat font-bold text-[#e13a3a] text-[24px] md:text-[32px] pointer-events-none -rotate-2">
+            karman
           </div>
         </motion.div>
 
