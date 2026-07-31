@@ -24,18 +24,18 @@ export function ProfileSection() {
       <Image 
         src="/1.png" 
         alt="Decoration" 
-        width={300}
-        height={300}
-        className="absolute top-[15%] right-[5%] md:right-[12%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        width={150}
+        height={150}
+        className="absolute top-[15%] right-[5%] md:right-[12%] w-[80px] md:w-[150px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Left Decoration */}
       <Image 
         src="/2.png" 
         alt="Decoration" 
-        width={300}
-        height={300}
-        className="absolute bottom-[10%] left-[5%] md:left-[12%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        width={150}
+        height={150}
+        className="absolute bottom-[10%] left-[5%] md:left-[12%] w-[80px] md:w-[150px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
       
       <motion.div 
