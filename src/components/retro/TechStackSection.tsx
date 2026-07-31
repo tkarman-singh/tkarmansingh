@@ -125,7 +125,7 @@ export function TechStackSection() {
           alt="Decoration" 
           width={150}
           height={150}
-          className="absolute top-[30%] md:top-[40%] -left-[30px] md:-left-[60px] w-[80px] md:w-[140px] h-auto object-contain pointer-events-none select-none z-[40] -scale-x-100 drop-shadow-md"
+          className="absolute -top-[30px] md:-top-[60px] -left-[30px] md:-left-[60px] w-[80px] md:w-[140px] h-auto object-contain pointer-events-none select-none z-[40] -scale-x-100 drop-shadow-md"
         />
 
         {/* Back White Paper */}
