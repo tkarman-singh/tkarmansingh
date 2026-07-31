@@ -76,15 +76,6 @@ export function TechStackSection() {
         02 · tech stack
       </span>
 
-      {/* Top Left Decoration (1-1) */}
-      <Image 
-        src="/1-1.png" 
-        alt="Decoration" 
-        width={300}
-        height={300}
-        className="absolute top-[5%] md:top-[10%] left-[2%] md:left-[5%] w-[140px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm"
-      />
-
       {/* Top Right Decoration (3) */}
       <Image 
         src="/3.png" 
@@ -128,6 +119,15 @@ export function TechStackSection() {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
       >
+        {/* Over-the-edge Decoration (1-1) */}
+        <Image 
+          src="/1-1.png" 
+          alt="Decoration" 
+          width={150}
+          height={150}
+          className="absolute -top-[20px] md:-top-[40px] -left-[20px] md:-left-[50px] w-[70px] md:w-[125px] h-auto object-contain pointer-events-none select-none z-[40] -scale-x-100 drop-shadow-md"
+        />
+
         {/* Back White Paper */}
         <div className="absolute inset-[-10px] md:inset-[-20px] bg-white shadow-2xl rotate-[-2deg] rounded-sm z-0" />
         
