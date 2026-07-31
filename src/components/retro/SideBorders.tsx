@@ -1,9 +1,9 @@
 import React from 'react';
 
 export function SideBorders() {
-  // 200 icons is enough to cover up to 9000px height (at 45px each).
-  // We don't use overflow-hidden on the container so the slide-out text can overflow sideways.
-  const icons = Array.from({ length: 200 });
+  // 30 icons is enough to cover the screen height (at 45-75px each).
+  // By using fixed positioning, we don't need 200 items, massively improving scroll performance.
+  const icons = Array.from({ length: 30 });
 
   const iconData = [
     { src: '/ka-icon.png', text: 'karman' },
@@ -16,7 +16,7 @@ export function SideBorders() {
   ];
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-[60]">
+    <div className="fixed inset-0 w-full h-screen pointer-events-none z-[60]">
       {/* Left Border */}
       <div className="absolute top-0 left-0 w-[50px] md:w-[75px] h-full flex flex-col pointer-events-none">
         {icons.map((_, i) => {
