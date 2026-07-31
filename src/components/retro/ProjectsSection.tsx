@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Code } from 'lucide-react';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -31,6 +32,42 @@ export function ProjectsSection() {
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         04 · projects
       </span>
+
+      {/* Top Left Decoration (10) */}
+      <Image 
+        src="/10.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute top-[10%] left-[2%] md:left-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Top Right Decoration (11) */}
+      <Image 
+        src="/11.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute top-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Right Decoration (12) */}
+      <Image 
+        src="/12.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Left Decoration (13) */}
+      <Image 
+        src="/13.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[10%] left-[2%] md:left-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
       
       {/* Large bounding box for drag constraints so you can pull the cards anywhere nearby */}
       <div className="w-full max-w-[1200px] h-[600px] mt-[40px] flex items-center justify-center relative pointer-events-none" ref={containerRef}>
