@@ -19,6 +19,24 @@ export function ProfileSection() {
         height={150}
         className="absolute z-0 w-[75px] md:w-[110px] h-auto object-contain pointer-events-none select-none"
       />
+
+      {/* Top Right Decoration */}
+      <Image 
+        src="/1.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute top-[15%] right-[5%] md:right-[12%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Left Decoration */}
+      <Image 
+        src="/2.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[10%] left-[5%] md:left-[12%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
       
       <motion.div 
         className="relative z-10 w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px] cursor-grab active:cursor-grabbing"

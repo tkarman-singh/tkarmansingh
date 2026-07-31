@@ -1,13 +1,8 @@
-"use client";
-
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import React from 'react';
 
 export function ContactSection() {
-  const containerRef = useRef<HTMLElement>(null);
   return (
-    <section ref={containerRef} className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen flex flex-col items-center justify-center py-[90px] px-[24px] md:px-[60px] relative overflow-hidden" id="contact-section">
+    <section className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen flex flex-col items-center justify-center py-[90px] px-[24px] md:px-[60px] relative" id="contact-section">
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         05 · contact
       </span>
@@ -15,30 +10,12 @@ export function ContactSection() {
       {/* Postcard Container */}
       <div className="relative w-full max-w-[600px] mt-[60px]">
         {/* The Tape */}
-        <div className="absolute -top-[15px] left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-[#e8e4d3]/70 backdrop-blur-[2px] z-30 shadow-[1px_2px_4px_rgba(0,0,0,0.05)] rotate-[-3deg]">
-          {/* Jagged tape edges */}
+        <div className="absolute -top-[15px] left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-[#e8e4d3]/70 backdrop-blur-[2px] z-20 shadow-[1px_2px_4px_rgba(0,0,0,0.05)] rotate-[-3deg]">
+          {/* Jagged tape edges (simple pseudo-element simulation or just straight cut is fine for retro masking tape) */}
         </div>
 
-        {/* The Polaroid */}
-        <motion.div 
-          className="absolute top-[30px] right-[-40px] md:right-[-100px] w-[180px] md:w-[240px] h-[220px] md:h-[290px] bg-[#f5ede0] p-[10px] md:p-[16px] pb-[40px] md:pb-[70px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] rounded-[12px] rotate-[12deg] z-0 cursor-grab active:cursor-grabbing flex flex-col"
-          drag
-          dragConstraints={containerRef}
-          dragElastic={0.1}
-          dragMomentum={false}
-          whileHover={{ scale: 1.02 }}
-          whileDrag={{ scale: 1.05, zIndex: 50, rotate: 5 }}
-        >
-          <div className="relative w-full h-full bg-[#1a1a1a] overflow-hidden rounded-[4px] pointer-events-none">
-            <Image src="/me-real.JPG" alt="Me" fill className="object-cover" sizes="240px" draggable={false} />
-          </div>
-          <div className="absolute bottom-[15px] md:bottom-[20px] w-full text-center left-0 font-caveat font-bold text-[#e13a3a] text-[24px] md:text-[32px] pointer-events-none -rotate-2">
-            karman
-          </div>
-        </motion.div>
-
         {/* The Card */}
-        <div className="bg-[#fdf9f1] border-[1.5px] border-[#22241a] rounded-[4px] p-[40px] md:p-[60px] relative z-10 shadow-[6px_6px_0_rgba(0,0,0,1)] rotate-[1deg] hover:rotate-[0deg] transition-transform duration-300">
+        <div className="bg-[#fdf9f1] border-[1.5px] border-[#22241a] rounded-[4px] p-[40px] md:p-[60px] relative shadow-[6px_6px_0_rgba(0,0,0,1)] rotate-[1deg] hover:rotate-[0deg] transition-transform duration-300">
           
           {/* Decorative Postmark / Stamp */}
           <div className="absolute top-[30px] right-[40px] w-[60px] h-[60px] rounded-full border-[2px] border-dashed border-[#df7a3e]/40 flex items-center justify-center opacity-70 rotate-[15deg] pointer-events-none hidden md:flex">
