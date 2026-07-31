@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export function ContactSection() {
   return (
@@ -6,6 +7,24 @@ export function ContactSection() {
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         05 · contact
       </span>
+
+      {/* Top Left Decoration (14) */}
+      <Image 
+        src="/14.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute top-[15%] md:top-[20%] left-[5%] md:left-[15%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Right Decoration (15) */}
+      <Image 
+        src="/15.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[10%] md:bottom-[20%] right-[5%] md:right-[15%] w-[150px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
       
       {/* Postcard Container */}
       <div className="relative w-full max-w-[600px] mt-[60px]">
