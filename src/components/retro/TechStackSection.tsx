@@ -137,7 +137,7 @@ export function TechStackSection() {
                           <span>{skill.name}</span>
                         </>
                       );
-                      const baseClass = "flex items-center gap-[8px] px-[14px] py-[6px] md:px-[18px] md:py-[8px] border-[1.5px] border-[#2a2a2a] rounded-[24px] text-[11px] md:text-[12.5px] tracking-[0.05em] font-medium text-[#2a2a2a] hover:bg-[#2a2a2a] hover:text-[#f8f9fa] transition-colors bg-transparent ";
+                      const baseClass = "flex items-center gap-[8px] px-[14px] py-[6px] md:px-[18px] md:py-[8px] border-[1.5px] border-[#2a2a2a] rounded-[24px] text-[11px] md:text-[12.5px] tracking-[0.05em] font-medium text-[#2a2a2a] hover:bg-[#3b1c4a] hover:border-[#3b1c4a] hover:text-[#f8f9fa] transition-colors bg-transparent ";
                       const className = baseClass + (skill.url ? "cursor-pointer" : "cursor-default");
 
                       return skill.url ? (
