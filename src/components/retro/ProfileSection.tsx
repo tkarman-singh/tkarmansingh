@@ -10,6 +10,15 @@ export function ProfileSection() {
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         01 · about
       </span>
+
+      {/* Top Left Decoration (1-1) */}
+      <Image 
+        src="/1-1.png" 
+        alt="Decoration" 
+        width={150}
+        height={150}
+        className="absolute top-[15%] md:top-[20%] left-[5%] md:left-[12%] w-[80px] md:w-[140px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm"
+      />
       
       {/* Boo hidden behind the note */}
       <Image 

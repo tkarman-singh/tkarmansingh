@@ -119,15 +119,6 @@ export function TechStackSection() {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
       >
-        {/* Over-the-edge Decoration (1-1) */}
-        <Image 
-          src="/1-1.png" 
-          alt="Decoration" 
-          width={150}
-          height={150}
-          className="absolute -top-[30px] md:-top-[60px] -left-[30px] md:-left-[60px] w-[80px] md:w-[140px] h-auto object-contain pointer-events-none select-none z-[40] -scale-x-100 drop-shadow-md"
-        />
-
         {/* Back White Paper */}
         <div className="absolute inset-[-10px] md:inset-[-20px] bg-white shadow-2xl rotate-[-2deg] rounded-sm z-0" />
         
