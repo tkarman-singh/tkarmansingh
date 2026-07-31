@@ -33,40 +33,40 @@ export function ProjectsSection() {
         04 · projects
       </span>
 
-      {/* Top Left Decoration (10) */}
-      <Image 
-        src="/10.png" 
-        alt="Decoration" 
-        width={300}
-        height={300}
-        className="absolute top-[10%] left-[2%] md:left-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
-      />
-
-      {/* Top Right Decoration (11) */}
-      <Image 
-        src="/11.png" 
-        alt="Decoration" 
-        width={300}
-        height={300}
-        className="absolute top-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
-      />
-
-      {/* Bottom Right Decoration (12) */}
-      <Image 
-        src="/12.png" 
-        alt="Decoration" 
-        width={300}
-        height={300}
-        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
-      />
-
-      {/* Bottom Left Decoration (13) */}
+      {/* Top Left Decoration (13) */}
       <Image 
         src="/13.png" 
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[10%] left-[2%] md:left-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute top-[10%] md:top-[15%] left-[5%] md:left-[10%] w-[180px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Right Middle Decoration (11) */}
+      <Image 
+        src="/11.png" 
+        alt="Decoration" 
+        width={200}
+        height={200}
+        className="absolute top-[35%] md:top-[40%] right-[2%] md:right-[8%] w-[120px] md:w-[180px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Right Decoration (10) */}
+      <Image 
+        src="/10.png" 
+        alt="Decoration" 
+        width={250}
+        height={250}
+        className="absolute bottom-[10%] md:bottom-[15%] right-[2%] md:right-[10%] w-[160px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-[25] drop-shadow-sm"
+      />
+
+      {/* Bottom Left Decoration (12) */}
+      <Image 
+        src="/12.png" 
+        alt="Decoration" 
+        width={300}
+        height={300}
+        className="absolute bottom-[5%] md:bottom-[10%] left-[2%] md:left-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
       
       {/* Large bounding box for drag constraints so you can pull the cards anywhere nearby */}
