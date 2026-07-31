@@ -109,7 +109,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[15%] left-[2%] md:left-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute bottom-[15%] left-[2%] md:left-[5%] w-[190px] md:w-[335px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
       
       <motion.div 
