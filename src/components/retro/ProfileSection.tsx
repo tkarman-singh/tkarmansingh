@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { RetroWindow } from './RetroWindow';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export function ProfileSection() {
   return (
@@ -12,9 +12,11 @@ export function ProfileSection() {
       </span>
       
       {/* Boo hidden behind the note */}
-      <img 
+      <Image 
         src="/boo.png" 
         alt="Boo" 
+        width={150}
+        height={150}
         className="absolute z-0 w-[75px] md:w-[110px] h-auto object-contain pointer-events-none select-none"
       />
       
@@ -28,10 +30,12 @@ export function ProfileSection() {
         whileDrag={{ scale: 1.05, zIndex: 50, rotate: 2 }}
       >
         {/* Sticky Note Background */}
-        <img 
+        <Image 
           src="/about-note.png" 
           alt="Sticky Note" 
-          className="absolute inset-0 w-full h-full object-fill z-0 drop-shadow-xl pointer-events-none"
+          fill
+          sizes="(max-width: 768px) 100vw, 620px"
+          className="object-fill z-0 drop-shadow-xl pointer-events-none"
         />
         
         {/* Content */}

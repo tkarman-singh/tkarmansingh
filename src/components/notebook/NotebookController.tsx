@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Notebook } from "./Notebook";
+import Image from 'next/image';
 
 export function NotebookController() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -47,7 +48,7 @@ export function NotebookController() {
                <div className="absolute left-4 md:left-6 group-hover:left-10 md:group-hover:left-16 text-[#bd4bd4] font-caveat text-xl md:text-2xl flex items-center transition-all duration-300 ease-out -z-10 opacity-0 group-hover:opacity-100 whitespace-nowrap">
                  {isPizza ? 'pizza adict' : 'karman'}
                </div>
-               <img src={isPizza ? "/pizza-icon.png" : "/ka-icon.png"} className="relative w-10 h-10 md:w-14 md:h-14 object-contain z-10 drop-shadow-sm" alt="" />
+               <Image src={isPizza ? "/pizza-icon.png" : "/ka-icon.png"} width={56} height={56} className="relative w-10 h-10 md:w-14 md:h-14 object-contain z-10 drop-shadow-sm" alt="" />
             </div>
           )})}
         </div>
@@ -61,7 +62,7 @@ export function NotebookController() {
                <div className="absolute right-4 md:right-6 group-hover:right-10 md:group-hover:right-16 text-[#bd4bd4] font-caveat text-xl md:text-2xl flex items-center transition-all duration-300 ease-out -z-10 opacity-0 group-hover:opacity-100 whitespace-nowrap">
                  {isPizza ? 'pizza adict' : 'karman'}
                </div>
-               <img src={isPizza ? "/pizza-icon.png" : "/ka-icon.png"} className="relative w-10 h-10 md:w-14 md:h-14 object-contain z-10 drop-shadow-sm" alt="" />
+               <Image src={isPizza ? "/pizza-icon.png" : "/ka-icon.png"} width={56} height={56} className="relative w-10 h-10 md:w-14 md:h-14 object-contain z-10 drop-shadow-sm" alt="" />
             </div>
           )})}
         </div>

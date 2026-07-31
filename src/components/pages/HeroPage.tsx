@@ -1,5 +1,7 @@
 "use client";
 
+import Image from 'next/image';
+
 export function HeroPage() {
   return (
     <div className="w-full h-full flex flex-col font-caveat text-gray-900 pt-6">
@@ -37,7 +39,7 @@ export function HeroPage() {
       {/* Absolute positioning for a taped polaroid photo or doodle */}
       <div className="absolute top-12 right-12 w-48 h-56 bg-white p-3 shadow-lg transform rotate-6 border border-gray-200 hidden md:block">
         <div className="w-full h-40 bg-gray-200 mb-2 overflow-hidden relative">
-          <img src="/profile.jpg" alt="Karman Singh" className="w-full h-full object-cover" />
+          <Image src="/profile.jpg" alt="Karman Singh" fill sizes="(max-width: 768px) 100vw, 200px" className="object-cover" />
         </div>
         <p className="text-center text-xl font-bold">Me!</p>
         {/* Tape */}

@@ -23,9 +23,11 @@ export function WorkNote({
 
       {/* Slide-out image */}
       {slideOutImage && (
-        <img 
+        <Image 
           src={slideOutImage} 
           alt="Decoration" 
+          width={250}
+          height={250}
           className="absolute top-[25%] left-[16%] w-[35%] h-auto z-[5] transition-all duration-500 ease-out transform translate-y-0 -scale-x-100 group-hover:-translate-y-[120%] pointer-events-none drop-shadow-md group-hover:drop-shadow-xl"
         />
       )}

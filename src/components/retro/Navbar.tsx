@@ -141,24 +141,32 @@ export function Navbar() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isNavHovered, setIsNavHovered] = useState(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsAtTop(window.scrollY < 50);
-      setIsScrolling(true);
-
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
+      if (rafRef.current) return;
       
-      scrollTimeout.current = setTimeout(() => {
-        setIsScrolling(false);
-      }, 1500); // Navbar hides after 1.5 seconds of not scrolling
+      rafRef.current = requestAnimationFrame(() => {
+        setIsAtTop(window.scrollY < 50);
+        setIsScrolling(true);
+
+        if (scrollTimeout.current) {
+          clearTimeout(scrollTimeout.current);
+        }
+        
+        scrollTimeout.current = setTimeout(() => {
+          setIsScrolling(false);
+        }, 1500); // Navbar hides after 1.5 seconds of not scrolling
+        
+        rafRef.current = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
   }, []);

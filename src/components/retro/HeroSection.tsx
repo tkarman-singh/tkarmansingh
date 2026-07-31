@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const names = ["Karman", "करमन", "カルマン", "ਕਰਮਨ", "Карман", "കർമ്മൻ", "కర్మన్", "卡曼"];
 
@@ -48,9 +49,11 @@ export function HeroSection() {
 
         {/* Right Doodle Character */}
         <div className="hidden md:block absolute bottom-0 right-[2%] lg:right-[5%] w-[45%] max-w-[550px] z-0">
-          <img 
+          <Image 
             src="/doodle-me.png" 
             alt="Doodle character" 
+            width={800}
+            height={800}
             className="w-full h-auto object-contain object-bottom drop-shadow-sm" 
           />
         </div>
@@ -63,9 +66,11 @@ export function HeroSection() {
 
       {/* Plane Separator */}
       <div className="w-full flex justify-center py-[40px] relative z-20 overflow-hidden">
-        <img 
+        <Image 
           src="/plane.png" 
           alt="Separator" 
+          width={600}
+          height={300}
           className="w-[200px] md:w-[350px] h-auto object-contain pointer-events-none opacity-70 mix-blend-multiply" 
         />
       </div>
