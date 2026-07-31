@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, 
   SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiDocker, SiKubernetes, SiJenkins, SiTerraform, SiGithubactions,
@@ -74,6 +75,42 @@ export function TechStackSection() {
       <span className="absolute top-[40px] left-1/2 -translate-x-1/2 text-[13px] md:text-[16px] tracking-[.3em] uppercase text-[#6b6a56]">
         02 · tech stack
       </span>
+
+      {/* Top Right Decoration (3) */}
+      <Image 
+        src="/3.png" 
+        alt="Decoration" 
+        width={250}
+        height={250}
+        className="absolute top-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Right Decoration (6) */}
+      <Image 
+        src="/6.png" 
+        alt="Decoration" 
+        width={250}
+        height={250}
+        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Middle Left Decoration (5) */}
+      <Image 
+        src="/5.png" 
+        alt="Decoration" 
+        width={150}
+        height={150}
+        className="absolute top-[40%] left-[2%] md:left-[8%] w-[80px] md:w-[130px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
+
+      {/* Bottom Left Decoration (4) */}
+      <Image 
+        src="/4.png" 
+        alt="Decoration" 
+        width={250}
+        height={250}
+        className="absolute bottom-[15%] left-[2%] md:left-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+      />
       
       <motion.div 
         className="w-full max-w-[800px] mt-[80px] relative mx-auto cursor-default"
