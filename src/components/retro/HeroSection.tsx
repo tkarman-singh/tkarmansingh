@@ -49,6 +49,15 @@ export function HeroSection() {
 
         {/* Right Doodle Character */}
         <div className="hidden md:block absolute bottom-0 right-[2%] lg:right-[5%] w-[45%] max-w-[550px] z-0">
+          
+          {/* Thought Bubble */}
+          <div className="absolute top-[8%] left-[55%] bg-white border-[2px] border-[#22241a] rounded-[20px] px-4 py-2 shadow-[4px_4px_0_rgba(0,0,0,1)] z-10 font-kalam text-[#2a2a2a] text-sm md:text-base animate-[bounce_3s_ease-in-out_infinite] rotate-2 cursor-pointer hover:scale-105 transition-transform">
+            <span>Woof! Put your text here!</span>
+            {/* Thought bubbles leading to dog */}
+            <div className="absolute -bottom-[12px] left-[20px] w-4 h-4 bg-white border-[2px] border-[#22241a] rounded-full"></div>
+            <div className="absolute -bottom-[22px] left-[10px] w-2 h-2 bg-white border-[2px] border-[#22241a] rounded-full"></div>
+          </div>
+
           <Image 
             src="/doodle-me.png" 
             alt="Doodle character" 
