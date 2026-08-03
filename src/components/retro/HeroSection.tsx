@@ -52,7 +52,7 @@ export function HeroSection() {
           
           {/* Ellipse Thought Bubble */}
           <div 
-            className="absolute -top-[20%] md:-top-[30%] -left-[20%] md:-left-[15%] w-[280px] h-[140px] z-10 animate-float rotate-[-5deg]"
+            className="absolute -top-[10%] md:-top-[10%] -left-[10%] md:-left-[5%] w-[280px] h-[140px] z-10 animate-float rotate-[-5deg]"
             style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
           >
             {/* Ellipse Shape */}
