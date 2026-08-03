@@ -61,7 +61,7 @@ export function HeroSection() {
             {/* Text */}
             <div className="absolute inset-0 flex items-center justify-center px-[45px]">
               <div className="relative z-10 text-[#2a2a2a] text-[15px] md:text-[17px] font-kalam font-bold text-left leading-snug">
-                Holy Moly! I am sitting on top of :<br/>
+                Holy Moly! I am sitting on the top of :<br/>
                 - A Fullstack and DevOps Engineer<br/>
                 - who is learning AI/ML
               </div>
