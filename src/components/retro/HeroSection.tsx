@@ -52,24 +52,28 @@ export function HeroSection() {
           
           {/* Cloud Thought Bubble */}
           <div 
-            className="absolute -top-[10%] md:-top-[5%] left-[5%] md:left-[10%] w-[160px] h-[100px] z-10 scale-[1.2] md:scale-[1.4] origin-bottom-right rotate-[-5deg] cursor-pointer hover:scale-[1.3] md:hover:scale-[1.5] transition-transform"
+            className="absolute -top-[10%] md:-top-[5%] left-[5%] md:left-[10%] w-[190px] h-[120px] z-10 scale-[0.8] md:scale-[1.0] origin-bottom-right rotate-[-5deg]"
             style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
           >
             {/* Merged Cloud Shape */}
-            <div className="absolute top-[40px] left-[15px] w-[130px] h-[45px] bg-white rounded-full"></div>
-            <div className="absolute top-[20px] left-[30px] w-[50px] h-[50px] bg-white rounded-full"></div>
-            <div className="absolute top-[10px] left-[70px] w-[65px] h-[65px] bg-white rounded-full"></div>
+            <div className="absolute top-[45px] left-[15px] w-[160px] h-[55px] bg-white rounded-full"></div>
+            <div className="absolute top-[20px] left-[35px] w-[60px] h-[60px] bg-white rounded-full"></div>
+            <div className="absolute top-[10px] left-[85px] w-[75px] h-[75px] bg-white rounded-full"></div>
             
             {/* Text */}
-            <div className="absolute inset-0 flex items-center justify-center pt-[15px]">
-              <span className="relative z-10 text-[#2a2a2a] text-sm md:text-base font-kalam font-bold text-center leading-tight px-2">
-                Woof! Put your<br/>text here!
-              </span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center pt-[15px]">
+              <div className="relative z-10 text-[#2a2a2a] text-[10px] md:text-xs font-kalam font-bold text-left leading-[1.2] px-4 w-full">
+                Score! I am sitting on top of:
+                <ul className="list-disc pl-3 mt-1">
+                  <li>A Fullstack and DevOps Engineer</li>
+                  <li>who is learning AI/ML</li>
+                </ul>
+              </div>
             </div>
 
             {/* Trailing bubbles pointing towards dog */}
-            <div className="absolute -bottom-[5px] right-[45px] w-4 h-4 bg-white rounded-full"></div>
-            <div className="absolute -bottom-[20px] right-[30px] w-2 h-2 bg-white rounded-full"></div>
+            <div className="absolute -bottom-[5px] right-[55px] w-4 h-4 bg-white rounded-full"></div>
+            <div className="absolute -bottom-[20px] right-[40px] w-2 h-2 bg-white rounded-full"></div>
           </div>
 
           <Image 
