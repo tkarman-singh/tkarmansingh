@@ -50,12 +50,26 @@ export function HeroSection() {
         {/* Right Doodle Character */}
         <div className="hidden md:block absolute bottom-0 right-[2%] lg:right-[5%] w-[45%] max-w-[550px] z-0">
           
-          {/* Thought Bubble */}
-          <div className="absolute top-[8%] left-[15%] md:left-[25%] bg-white border-[2px] border-[#22241a] rounded-[20px] px-4 py-2 shadow-[4px_4px_0_rgba(0,0,0,1)] z-10 font-kalam text-[#2a2a2a] text-sm md:text-base animate-[bounce_3s_ease-in-out_infinite] rotate-2 cursor-pointer hover:scale-105 transition-transform">
-            <span>Woof! Put your text here!</span>
-            {/* Thought bubbles leading to dog */}
-            <div className="absolute -bottom-[12px] right-[30px] w-4 h-4 bg-white border-[2px] border-[#22241a] rounded-full"></div>
-            <div className="absolute -bottom-[22px] right-[15px] w-2 h-2 bg-white border-[2px] border-[#22241a] rounded-full"></div>
+          {/* Cloud Thought Bubble */}
+          <div 
+            className="absolute top-[10%] left-[5%] md:left-[10%] w-[160px] h-[100px] z-10 animate-[bounce_3s_ease-in-out_infinite] rotate-[-5deg] cursor-pointer hover:scale-105 transition-transform"
+            style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
+          >
+            {/* Merged Cloud Shape */}
+            <div className="absolute top-[40px] left-[15px] w-[130px] h-[45px] bg-white rounded-full"></div>
+            <div className="absolute top-[20px] left-[30px] w-[50px] h-[50px] bg-white rounded-full"></div>
+            <div className="absolute top-[10px] left-[70px] w-[65px] h-[65px] bg-white rounded-full"></div>
+            
+            {/* Text */}
+            <div className="absolute inset-0 flex items-center justify-center pt-[15px]">
+              <span className="relative z-10 text-[#2a2a2a] text-sm md:text-base font-kalam font-bold text-center leading-tight px-2">
+                Woof! Put your<br/>text here!
+              </span>
+            </div>
+
+            {/* Trailing bubbles pointing towards dog */}
+            <div className="absolute -bottom-[5px] right-[45px] w-4 h-4 bg-white rounded-full"></div>
+            <div className="absolute -bottom-[20px] right-[30px] w-2 h-2 bg-white rounded-full"></div>
           </div>
 
           <Image 
