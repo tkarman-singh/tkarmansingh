@@ -52,15 +52,15 @@ export function HeroSection() {
           
           {/* Ellipse Thought Bubble */}
           <div 
-            className="absolute -top-[10%] md:-top-[10%] -left-[10%] md:-left-[5%] w-[280px] h-[140px] z-10 animate-float rotate-[-5deg]"
+            className="absolute -top-[10%] md:-top-[15%] -left-[10%] md:-left-[5%] w-[320px] h-[160px] z-10 animate-float rotate-[-5deg]"
             style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
           >
             {/* Ellipse Shape */}
             <div className="absolute inset-0 bg-white rounded-[50%]"></div>
             
             {/* Text */}
-            <div className="absolute inset-0 flex items-center justify-center px-[35px]">
-              <div className="relative z-10 text-[#2a2a2a] text-[12px] md:text-[14px] font-kalam font-bold text-left leading-tight">
+            <div className="absolute inset-0 flex items-center justify-center px-[45px]">
+              <div className="relative z-10 text-[#2a2a2a] text-[15px] md:text-[17px] font-kalam font-bold text-left leading-snug">
                 Holy Moly! I am sitting on top of :<br/>
                 - A Fullstack and DevOps Engineer<br/>
                 - who is learning AI/ML
@@ -68,8 +68,8 @@ export function HeroSection() {
             </div>
 
             {/* Trailing bubbles pointing towards dog */}
-            <div className="absolute top-[120px] left-[210px] w-[20px] h-[20px] bg-white rounded-full"></div>
-            <div className="absolute top-[135px] left-[225px] w-[10px] h-[10px] bg-white rounded-full"></div>
+            <div className="absolute top-[140px] left-[230px] w-[20px] h-[20px] bg-white rounded-full"></div>
+            <div className="absolute top-[155px] left-[245px] w-[10px] h-[10px] bg-white rounded-full"></div>
           </div>
 
           <Image 
