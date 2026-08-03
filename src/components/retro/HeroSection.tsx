@@ -52,7 +52,7 @@ export function HeroSection() {
           
           {/* Cloud Thought Bubble */}
           <div 
-            className="absolute top-[10%] left-[5%] md:left-[10%] w-[160px] h-[100px] z-10 animate-[bounce_3s_ease-in-out_infinite] rotate-[-5deg] cursor-pointer hover:scale-105 transition-transform"
+            className="absolute top-[5%] left-[5%] md:left-[10%] w-[160px] h-[100px] z-10 rotate-[-5deg] cursor-pointer hover:scale-105 transition-transform"
             style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
           >
             {/* Merged Cloud Shape */}
