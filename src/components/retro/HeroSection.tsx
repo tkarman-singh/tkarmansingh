@@ -50,19 +50,16 @@ export function HeroSection() {
         {/* Right Doodle Character */}
         <div className="hidden md:block absolute bottom-0 right-[2%] lg:right-[5%] w-[45%] max-w-[550px] z-0">
           
-          {/* Cloud Thought Bubble */}
+          {/* Ellipse Thought Bubble */}
           <div 
-            className="absolute top-[0%] left-[0%] md:left-[5%] w-[260px] h-[140px] z-10 animate-float rotate-[-5deg]"
+            className="absolute top-[0%] left-[0%] md:left-[5%] w-[280px] h-[140px] z-10 animate-float rotate-[-5deg]"
             style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
           >
-            {/* Merged Cloud Shape */}
-            <div className="absolute top-[60px] left-[20px] w-[220px] h-[60px] bg-white rounded-full"></div>
-            <div className="absolute top-[25px] left-[40px] w-[70px] h-[70px] bg-white rounded-full"></div>
-            <div className="absolute top-[10px] left-[85px] w-[100px] h-[100px] bg-white rounded-full"></div>
-            <div className="absolute top-[20px] left-[150px] w-[80px] h-[80px] bg-white rounded-full"></div>
+            {/* Ellipse Shape */}
+            <div className="absolute inset-0 bg-white rounded-[50%]"></div>
             
             {/* Text */}
-            <div className="absolute inset-0 flex items-center justify-center pt-[15px] px-[25px]">
+            <div className="absolute inset-0 flex items-center justify-center px-[35px]">
               <div className="relative z-10 text-[#2a2a2a] text-[12px] md:text-[14px] font-kalam font-bold text-left leading-tight">
                 Score! I am sitting on top of :<br/>
                 - A Fullstack and DevOps Engineer<br/>
@@ -71,8 +68,8 @@ export function HeroSection() {
             </div>
 
             {/* Trailing bubbles pointing towards dog */}
-            <div className="absolute -bottom-[5px] right-[65px] w-[22px] h-[22px] bg-white rounded-full"></div>
-            <div className="absolute -bottom-[25px] right-[40px] w-[12px] h-[12px] bg-white rounded-full"></div>
+            <div className="absolute top-[125px] left-[200px] w-[22px] h-[22px] bg-white rounded-full"></div>
+            <div className="absolute top-[150px] left-[230px] w-[12px] h-[12px] bg-white rounded-full"></div>
           </div>
 
           <Image 
