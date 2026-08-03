@@ -68,8 +68,8 @@ export function HeroSection() {
             </div>
 
             {/* Trailing bubbles pointing towards dog */}
-            <div className="absolute top-[125px] left-[220px] w-[22px] h-[22px] bg-white rounded-full"></div>
-            <div className="absolute top-[155px] left-[250px] w-[12px] h-[12px] bg-white rounded-full"></div>
+            <div className="absolute top-[120px] left-[210px] w-[20px] h-[20px] bg-white rounded-full"></div>
+            <div className="absolute top-[135px] left-[225px] w-[10px] h-[10px] bg-white rounded-full"></div>
           </div>
 
           <Image 
