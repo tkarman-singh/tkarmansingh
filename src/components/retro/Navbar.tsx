@@ -185,7 +185,7 @@ export function Navbar() {
       onMouseLeave={() => setIsNavHovered(false)}
       style={{ borderBottom: (!isAtTop && (isScrolling || isNavHovered)) ? '1px solid rgba(201, 194, 163, 0.4)' : '1px solid transparent' }}
     >
-      <div className={`flex items-center justify-center gap-[40px] md:gap-[60px] transition-all duration-300 ${isAtTop ? 'py-[30px] md:py-[50px]' : 'py-[15px] md:py-[20px]'}`}>
+      <div className={`flex items-center justify-start md:justify-center gap-[24px] md:gap-[60px] px-[24px] md:px-0 overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] transition-all duration-300 ${isAtTop ? 'py-[30px] md:py-[50px]' : 'py-[15px] md:py-[20px]'}`}>
         <NavItem label=":)" targetId="hero-section" isSmiley={true} />
         <NavItem label="about" targetId="profile-section" />
         <NavItem label="skills" targetId="tech-stack-section" />

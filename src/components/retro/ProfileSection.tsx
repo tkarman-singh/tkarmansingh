@@ -48,7 +48,7 @@ export function ProfileSection() {
       />
       
       <motion.div 
-        className="relative z-10 w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px] cursor-grab active:cursor-grabbing"
+        className="relative z-10 w-full max-w-[620px] aspect-[0.9] md:aspect-[1.2] flex items-center justify-center p-[20px] md:p-[50px] cursor-grab active:cursor-grabbing"
         drag
         dragSnapToOrigin={true}
         dragElastic={0.6}
@@ -66,11 +66,11 @@ export function ProfileSection() {
         />
         
         {/* Content */}
-        <div className="relative z-10 text-left w-full h-full pt-[30px] md:pt-[50px] px-[10px]">
-          <h2 className="font-fraunces text-center text-[32px] md:text-[36px] font-semibold text-[#df7a3e] m-0 mb-3 leading-[1.15]">
+        <div className="relative z-10 text-left w-full h-full pt-[25px] md:pt-[50px] px-[10px]">
+          <h2 className="font-fraunces text-center text-[32px] md:text-[36px] font-semibold text-[#df7a3e] m-0 mb-2 md:mb-3 leading-[1.15]">
             About me
           </h2>
-          <div className="font-kalam text-[15px] md:text-[17px] text-[#3f3f2e] leading-[1.4] m-0 font-medium pl-[30px] md:pl-[50px]">
+          <div className="font-kalam text-[14px] md:text-[17px] text-[#3f3f2e] leading-[1.35] md:leading-[1.4] m-0 font-medium pl-[15px] md:pl-[50px] pr-[5px] md:pr-0">
             I am a passionate Software and DevOps Engineer with a strong foundation in Computer Science. I specialize in building scalable web applications, designing cloud-native infrastructures, and developing efficient, production-ready solutions. With experience in AI/ML, I enjoy solving complex real-world problems through intelligent systems and clean, maintainable code. I am always eager to learn emerging technologies, embrace new challenges, and create impactful software that delivers exceptional user experiences.
           </div>
         </div>
