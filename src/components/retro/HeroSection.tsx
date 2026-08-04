@@ -18,16 +18,16 @@ export function HeroSection() {
 
   return (
     <>
-      <section id="hero-section" className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen relative flex flex-col md:flex-row items-center justify-center pt-[100px] md:pt-0 overflow-hidden">
+      <section id="hero-section" className="scroll-mt-[80px] md:scroll-mt-[100px] min-h-screen relative flex items-center overflow-hidden">
         
         {/* Left Content */}
         <div className="flex flex-col text-left px-[24px] md:px-[8%] pt-[20px] md:pt-[0px] relative z-10 w-full md:w-3/5">
-          <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[42px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
+          <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
             Namaste,<br/>
             my name is
           </h1>
-          <h2 className="text-[#d351f7] font-sans font-extrabold text-[42px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
-            <span className="relative inline-flex items-center overflow-hidden h-[1.1em] min-w-[170px] md:min-w-[350px] lg:min-w-[450px] align-bottom pb-[0.1em]">
+          <h2 className="text-[#d351f7] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
+            <span className="relative inline-flex items-center overflow-hidden h-[1.1em] min-w-[230px] md:min-w-[350px] lg:min-w-[450px] align-bottom pb-[0.1em]">
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={nameIndex}
@@ -48,7 +48,7 @@ export function HeroSection() {
         </div>
 
         {/* Right Doodle Character */}
-        <div className="relative md:absolute mt-[60px] md:mt-0 bottom-0 md:right-[2%] lg:right-[5%] w-[85%] md:w-[45%] max-w-[550px] z-0">
+        <div className="hidden md:block absolute bottom-0 right-[2%] lg:right-[5%] w-[45%] max-w-[550px] z-0">
           
           {/* Ellipse Thought Bubble */}
           <div 

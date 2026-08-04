@@ -34,7 +34,7 @@ export function ContactSection() {
         </div>
 
         {/* The Card */}
-        <div className="bg-[#fdf9f1] border-[1.5px] border-[#22241a] rounded-[4px] p-[25px] md:p-[60px] relative shadow-[6px_6px_0_rgba(0,0,0,1)] rotate-[1deg] hover:rotate-[0deg] transition-transform duration-300">
+        <div className="bg-[#fdf9f1] border-[1.5px] border-[#22241a] rounded-[4px] p-[40px] md:p-[60px] relative shadow-[6px_6px_0_rgba(0,0,0,1)] rotate-[1deg] hover:rotate-[0deg] transition-transform duration-300">
           
           {/* Decorative Postmark / Stamp */}
           <div className="absolute top-[30px] right-[40px] w-[60px] h-[60px] rounded-full border-[2px] border-dashed border-[#df7a3e]/40 flex items-center justify-center opacity-70 rotate-[15deg] pointer-events-none hidden md:flex">
@@ -43,39 +43,39 @@ export function ContactSection() {
             </span>
           </div>
 
-          <h2 className="font-great-vibes text-[#d351f7] text-[40px] md:text-[70px] leading-none mb-[20px]">
+          <h2 className="font-great-vibes text-[#d351f7] text-[50px] md:text-[70px] leading-none mb-[20px]">
             Let&apos;s connect!
           </h2>
           
-          <p className="font-kalam text-[#5a5a5a] text-[16px] md:text-[22px] leading-[1.6] mb-[40px] max-w-[85%]">
+          <p className="font-kalam text-[#5a5a5a] text-[18px] md:text-[22px] leading-[1.6] mb-[40px] max-w-[85%]">
             I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Drop me a line!
           </p>
 
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
               <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">Email</span>
-              <a href="mailto:t.karman.singh@gmail.com" className="font-kalam text-[#2a2a2a] text-[16px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#df7a3e] hover:border-[#df7a3e] transition-colors w-fit">
+              <a href="mailto:t.karman.singh@gmail.com" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#df7a3e] hover:border-[#df7a3e] transition-colors w-fit">
                 t.karman.singh@gmail.com
               </a>
             </div>
             
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
               <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">LinkedIn</span>
-              <a href="https://www.linkedin.com/in/t-karman-singh/" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[16px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#d351f7] hover:border-[#d351f7] transition-colors w-fit">
+              <a href="https://www.linkedin.com/in/t-karman-singh/" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#d351f7] hover:border-[#d351f7] transition-colors w-fit">
                 /in/t-karman-singh
               </a>
             </div>
             
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
               <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">GitHub</span>
-              <a href="https://github.com/tkarman-singh" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[16px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#df7a3e] hover:border-[#df7a3e] transition-colors w-fit">
+              <a href="https://github.com/tkarman-singh" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#df7a3e] hover:border-[#df7a3e] transition-colors w-fit">
                 @tkarman-singh
               </a>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-baseline gap-[5px] sm:gap-[15px]">
               <span className="font-sans font-bold text-[#6b6a56] text-[12px] tracking-[.1em] uppercase w-[90px]">Resume</span>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[16px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#d351f7] hover:border-[#d351f7] transition-colors w-fit">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-kalam text-[#2a2a2a] text-[20px] md:text-[24px] border-b-[2px] border-dashed border-[#22241a]/30 hover:text-[#d351f7] hover:border-[#d351f7] transition-colors w-fit">
                 Have a peek
               </a>
             </div>

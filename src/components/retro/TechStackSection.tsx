@@ -163,7 +163,7 @@ export function TechStackSection() {
           <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-white/40 backdrop-blur-[2px] shadow-sm rotate-2 z-30 border border-white/50" style={{ clipPath: 'polygon(2% 0, 98% 2%, 100% 100%, 0 98%)' }} />
 
           {/* Content */}
-          <div className="relative z-10 p-[20px] md:p-[50px] pb-[60px] md:pb-[80px] flex-1">
+          <div className="relative z-10 p-[30px] md:p-[50px] pb-[80px] flex-1">
             <h2 className="text-[28px] md:text-[36px] font-bold text-[#1a1a1a] mb-8 tracking-tight lowercase">
               technical stack
             </h2>

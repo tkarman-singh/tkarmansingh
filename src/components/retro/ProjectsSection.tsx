@@ -137,7 +137,7 @@ export function ProjectsSection() {
             {/* Stitched inner border */}
             <div className="absolute inset-[10px] border-[2px] border-dashed border-[#d351f7] rounded-b-[10px] rounded-t-[2px]"></div>
             
-            <h2 className="font-great-vibes text-[#fdf9f1] text-[40px] md:text-[80px] opacity-90 -rotate-2 select-none tracking-wide">
+            <h2 className="font-great-vibes text-[#fdf9f1] text-[60px] md:text-[80px] opacity-90 -rotate-2 select-none tracking-wide">
               Ciao
             </h2>
           </div>

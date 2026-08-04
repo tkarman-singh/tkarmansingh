@@ -19,7 +19,7 @@ export function SideBorders() {
   return (
     <>
       {/* Left Border */}
-      <div className="absolute top-0 left-0 w-[25px] md:w-[75px] h-full overflow-y-clip overflow-x-visible z-[60] flex flex-col pointer-events-none">
+      <div className="absolute top-0 left-0 w-[50px] md:w-[75px] h-full overflow-y-clip overflow-x-visible z-[60] flex flex-col pointer-events-none">
         {icons.map((_, i) => {
           const currentIcon = iconData[i % iconData.length];
           return (
@@ -34,7 +34,7 @@ export function SideBorders() {
       </div>
 
       {/* Right Border */}
-      <div className="absolute top-0 right-0 w-[25px] md:w-[75px] h-full overflow-y-clip overflow-x-visible z-[60] flex flex-col pointer-events-none">
+      <div className="absolute top-0 right-0 w-[50px] md:w-[75px] h-full overflow-y-clip overflow-x-visible z-[60] flex flex-col pointer-events-none">
         {icons.map((_, i) => {
           const currentIcon = iconData[i % iconData.length];
           return (
