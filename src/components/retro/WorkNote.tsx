@@ -7,6 +7,7 @@ interface WorkNoteProps {
   duration: string;
   description: string;
   slideOutImage?: string;
+  certificateLink?: string;
 }
 
 export function WorkNote({ 
@@ -14,7 +15,8 @@ export function WorkNote({
   company, 
   duration, 
   description,
-  slideOutImage
+  slideOutImage,
+  certificateLink
 }: WorkNoteProps) {
   return (
     <div className="relative w-[85%] md:w-full max-w-[450px] cursor-pointer group mt-[40px] md:mt-0">
@@ -45,10 +47,20 @@ export function WorkNote({
         <div className="absolute inset-0 pt-[37%] pr-[16%] pb-[15%] pl-[20%] flex flex-col pointer-events-none text-left overflow-hidden">
         <div className="flex flex-col gap-[6px] mb-[12px]">
           <h4 className="font-kalam text-[clamp(18px,3.5vw,26px)] font-bold text-[#1f2328] leading-[1.1] m-0">{role}</h4>
-          <div className="self-start">
+          <div className="self-start flex flex-wrap gap-[8px] items-center">
             <span className="font-fraunces text-[clamp(10px,1.8vw,13px)] font-bold text-[#1f2328] bg-[#fdf0bc] px-[8px] py-[3px] rounded-[3px] shadow-sm tracking-wide">
               {company}
             </span>
+            {certificateLink && (
+              <a 
+                href={certificateLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="pointer-events-auto font-kalam text-[clamp(11px,1.8vw,14px)] text-[#bf00ff] hover:text-[#9000cc] hover:underline underline-offset-[3px] transition-colors flex items-center gap-[2px] font-bold"
+              >
+                Certificate ↗
+              </a>
+            )}
           </div>
         </div>
         <p className="font-fraunces italic text-[clamp(12px,2vw,16px)] text-[#6b6a56] mb-[12px] m-0">{duration}</p>
