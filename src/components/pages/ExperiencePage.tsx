@@ -6,7 +6,7 @@ export function ExperiencePage() {
   const experiences = [
     {
       role: "Summer Software Intern",
-      company: "IIRS, ISRO",
+      company: "ISRO",
       date: "June 2026 – July 2026",
       points: [
         "Developing a Java 21 application to automate processing of Sentinel-2 Level-2A multispectral satellite imagery for large-scale vegetation analysis.",

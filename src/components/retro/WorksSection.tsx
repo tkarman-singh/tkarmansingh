@@ -39,7 +39,7 @@ export function WorksSection() {
       <div className="w-full max-w-[1000px] mt-[60px] flex flex-col md:flex-row items-center justify-center gap-[80px] md:gap-[60px]">
         <WorkNote 
           role="Summer Software Intern"
-          company="IIRS, ISRO"
+          company="ISRO"
           duration="June 2026 – July 2026"
           description="Developing a Java 21 application to automate processing of Sentinel-2 Level-2A multispectral satellite imagery for large-scale vegetation analysis."
           slideOutImage="/cute-pc.png"
