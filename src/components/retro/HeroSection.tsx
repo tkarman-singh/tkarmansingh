@@ -22,12 +22,12 @@ export function HeroSection() {
         
         {/* Left Content */}
         <div className="flex flex-col text-left px-[24px] md:px-[8%] pt-[20px] md:pt-[0px] relative z-10 w-full md:w-3/5">
-          <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
+          <h1 className="text-[#e0e0e0] font-sans font-extrabold text-[42px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05]">
             Namaste,<br/>
             my name is
           </h1>
-          <h2 className="text-[#d351f7] font-sans font-extrabold text-[56px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
-            <span className="relative inline-flex items-center overflow-hidden h-[1.1em] min-w-[230px] md:min-w-[350px] lg:min-w-[450px] align-bottom pb-[0.1em]">
+          <h2 className="text-[#d351f7] font-sans font-extrabold text-[42px] md:text-[85px] lg:text-[110px] tracking-tight m-0 leading-[1.05] mt-1 md:mt-2">
+            <span className="relative inline-flex items-center overflow-hidden h-[1.1em] min-w-[180px] md:min-w-[350px] lg:min-w-[450px] align-bottom pb-[0.1em]">
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={nameIndex}
@@ -48,11 +48,11 @@ export function HeroSection() {
         </div>
 
         {/* Right Doodle Character */}
-        <div className="hidden md:block absolute bottom-0 right-[2%] lg:right-[5%] w-[45%] max-w-[550px] z-0">
+        <div className="absolute bottom-0 -right-[20%] md:right-[2%] lg:right-[5%] w-[80%] md:w-[45%] max-w-[550px] z-0 opacity-20 md:opacity-100 pointer-events-none md:pointer-events-auto">
           
           {/* Ellipse Thought Bubble */}
           <div 
-            className="absolute -top-[10%] md:-top-[15%] -left-[10%] md:-left-[5%] w-[320px] h-[160px] z-10 animate-float rotate-[-5deg]"
+            className="hidden md:block absolute -top-[10%] md:-top-[15%] -left-[10%] md:-left-[5%] w-[320px] h-[160px] z-10 animate-float rotate-[-5deg]"
             style={{ filter: "drop-shadow(2px 0 0 #22241a) drop-shadow(0 2px 0 #22241a) drop-shadow(-2px 0 0 #22241a) drop-shadow(0 -2px 0 #22241a) drop-shadow(4px 4px 0 rgba(0,0,0,1))" }}
           >
             {/* Ellipse Shape */}

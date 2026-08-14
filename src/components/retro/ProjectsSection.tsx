@@ -39,7 +39,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute top-[5%] md:top-[8%] left-[5%] md:left-[10%] w-[180px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm rotate-[30deg]"
+        className="absolute top-[5%] md:top-[8%] left-[2%] md:left-[10%] w-[80px] md:w-[320px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm rotate-[30deg] opacity-40 md:opacity-100"
       />
 
       {/* Right Middle Decoration (11) */}
@@ -48,7 +48,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={200}
         height={200}
-        className="absolute top-[25%] md:top-[30%] right-[2%] md:right-[8%] w-[120px] md:w-[180px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute top-[25%] md:top-[30%] right-[2%] md:right-[8%] w-[60px] md:w-[180px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
       />
 
       {/* Bottom Right Decoration (10) */}
@@ -57,7 +57,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={250}
         height={250}
-        className="absolute bottom-[10%] md:bottom-[15%] right-[2%] md:right-[10%] w-[160px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm"
+        className="absolute bottom-[10%] md:bottom-[15%] right-[2%] md:right-[10%] w-[80px] md:w-[250px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm opacity-40 md:opacity-100"
       />
 
       {/* Bottom Left Decoration (12) */}
@@ -66,7 +66,7 @@ export function ProjectsSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[5%] md:bottom-[10%] left-[2%] md:left-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute bottom-[5%] md:bottom-[10%] left-[2%] md:left-[5%] w-[80px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
       />
       
       {/* Large bounding box for drag constraints so you can pull the cards anywhere nearby */}

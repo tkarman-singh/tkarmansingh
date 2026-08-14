@@ -17,7 +17,7 @@ export function ProfileSection() {
         alt="Decoration" 
         width={150}
         height={150}
-        className="absolute top-[15%] md:top-[20%] left-[5%] md:left-[12%] w-[80px] md:w-[140px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm"
+        className="absolute top-[15%] md:top-[20%] left-[2%] md:left-[12%] w-[50px] md:w-[140px] h-auto object-contain pointer-events-none select-none z-0 -scale-x-100 drop-shadow-sm opacity-40 md:opacity-100"
       />
       
       {/* Boo hidden behind the note */}
@@ -26,7 +26,7 @@ export function ProfileSection() {
         alt="Boo" 
         width={150}
         height={150}
-        className="absolute z-0 w-[75px] md:w-[110px] h-auto object-contain pointer-events-none select-none"
+        className="absolute z-0 w-[50px] md:w-[110px] h-auto object-contain pointer-events-none select-none opacity-40 md:opacity-100"
       />
 
       {/* Top Right Decoration */}
@@ -35,7 +35,7 @@ export function ProfileSection() {
         alt="Decoration" 
         width={150}
         height={150}
-        className="absolute top-[15%] right-[5%] md:right-[12%] w-[80px] md:w-[150px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute top-[15%] right-[2%] md:right-[12%] w-[50px] md:w-[150px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
       />
 
       {/* Bottom Left Decoration */}
@@ -44,11 +44,11 @@ export function ProfileSection() {
         alt="Decoration" 
         width={150}
         height={150}
-        className="absolute bottom-[10%] left-[5%] md:left-[12%] w-[80px] md:w-[150px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
+        className="absolute bottom-[10%] left-[2%] md:left-[12%] w-[50px] md:w-[150px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
       />
       
       <motion.div 
-        className="relative z-10 w-full max-w-[620px] aspect-[1.2] flex items-center justify-center p-[30px] md:p-[50px] cursor-grab active:cursor-grabbing"
+        className="relative z-10 w-full max-w-[620px] aspect-[0.9] md:aspect-[1.2] flex items-center justify-center p-[20px] md:p-[50px] cursor-grab active:cursor-grabbing"
         drag
         dragSnapToOrigin={true}
         dragElastic={0.6}
@@ -66,11 +66,11 @@ export function ProfileSection() {
         />
         
         {/* Content */}
-        <div className="relative z-10 text-left w-full h-full pt-[30px] md:pt-[50px] px-[10px]">
-          <h2 className="font-fraunces text-center text-[32px] md:text-[36px] font-semibold text-[#df7a3e] m-0 mb-3 leading-[1.15]">
+        <div className="relative z-10 text-left w-full h-full pt-[40px] md:pt-[50px] px-[5px] md:px-[10px]">
+          <h2 className="font-fraunces text-center text-[28px] md:text-[36px] font-semibold text-[#df7a3e] m-0 mb-2 md:mb-3 leading-[1.15]">
             About me
           </h2>
-          <div className="font-kalam text-[15px] md:text-[17px] text-[#3f3f2e] leading-[1.4] m-0 font-medium pl-[30px] md:pl-[50px]">
+          <div className="font-kalam text-[14px] md:text-[17px] text-[#3f3f2e] leading-[1.35] md:leading-[1.4] m-0 font-medium pl-[20px] md:pl-[50px] pr-[10px]">
             I am a passionate Software and DevOps Engineer with a strong foundation in Computer Science. I specialize in building scalable web applications, designing cloud-native infrastructures, and developing efficient, production-ready solutions. With experience in AI/ML, I enjoy solving complex real-world problems through intelligent systems and clean, maintainable code. I am always eager to learn emerging technologies, embrace new challenges, and create impactful software that delivers exceptional user experiences.
           </div>
         </div>
