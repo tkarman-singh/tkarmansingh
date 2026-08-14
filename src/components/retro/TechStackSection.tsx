@@ -82,7 +82,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute top-[10%] md:top-[15%] left-[2%] md:left-[10%] w-[60px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute top-[10%] md:top-[15%] left-[5%] md:left-[10%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Top Right Decoration (3) */}
@@ -91,7 +91,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={250}
         height={250}
-        className="absolute top-[10%] right-[2%] md:right-[5%] w-[60px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute top-[10%] right-[2%] md:right-[5%] w-[120px] md:w-[220px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Right Decoration (6) */}
@@ -100,7 +100,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[80px] md:w-[325px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[180px] md:w-[325px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Middle Left Decoration (5) */}
@@ -109,7 +109,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={150}
         height={150}
-        className="absolute bottom-[38%] left-[2%] md:left-[5%] w-[50px] md:w-[130px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute bottom-[38%] left-[2%] md:left-[5%] w-[80px] md:w-[130px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Left Decoration (4) */}
@@ -118,7 +118,7 @@ export function TechStackSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[15%] left-[2%] md:left-[5%] w-[80px] md:w-[335px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute bottom-[15%] left-[2%] md:left-[5%] w-[190px] md:w-[335px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
       
       <motion.div 
@@ -134,11 +134,11 @@ export function TechStackSection() {
         {/* Yellow Folder */}
         <div className="absolute inset-0 bg-[#e8ce90] shadow-lg rounded-sm z-10">
           {/* Tabs */}
-          <div className="absolute top-[-25px] right-[2%] md:right-[10%] flex gap-[2px] md:gap-[6px]">
+          <div className="absolute top-[-25px] right-[10%] flex gap-[4px] md:gap-[6px]">
             {tabs.map((tab) => (
               <div 
                 key={tab} 
-                className="bg-[#e8ce90] w-[28px] md:w-[45px] h-[30px] rounded-t-[4px] flex flex-col items-center justify-end pb-1 text-[9px] md:text-[11px] font-mono text-[#3a3a3a]"
+                className="bg-[#e8ce90] w-[35px] md:w-[45px] h-[30px] rounded-t-[4px] flex flex-col items-center justify-end pb-1 text-[10px] md:text-[11px] font-mono text-[#3a3a3a]"
                 style={{
                   clipPath: 'polygon(15% 0, 85% 0, 100% 100%, 0% 100%)'
                 }}

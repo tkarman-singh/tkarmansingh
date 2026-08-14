@@ -185,7 +185,7 @@ export function Navbar() {
       onMouseLeave={() => setIsNavHovered(false)}
       style={{ borderBottom: (!isAtTop && (isScrolling || isNavHovered)) ? '1px solid rgba(201, 194, 163, 0.4)' : '1px solid transparent' }}
     >
-      <div className={`flex flex-wrap items-center justify-center gap-x-[15px] gap-y-[10px] md:gap-[60px] transition-all duration-300 ${isAtTop ? 'py-[15px] md:py-[50px]' : 'py-[10px] md:py-[20px]'} px-4`}>
+      <div className={`flex items-center justify-center gap-[40px] md:gap-[60px] transition-all duration-300 ${isAtTop ? 'py-[30px] md:py-[50px]' : 'py-[15px] md:py-[20px]'}`}>
         <NavItem label=":)" targetId="hero-section" isSmiley={true} />
         <NavItem label="about" targetId="profile-section" />
         <NavItem label="skills" targetId="tech-stack-section" />

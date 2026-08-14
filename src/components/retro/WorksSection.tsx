@@ -15,7 +15,7 @@ export function WorksSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute top-[10%] md:top-[15%] left-1/2 -translate-x-1/2 w-[80px] md:w-[290px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute top-[10%] md:top-[15%] left-1/2 -translate-x-1/2 w-[160px] md:w-[290px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Right Decoration (8) */}
@@ -24,7 +24,7 @@ export function WorksSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[80px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute bottom-[10%] right-[2%] md:right-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
 
       {/* Bottom Left Decoration (9) */}
@@ -33,7 +33,7 @@ export function WorksSection() {
         alt="Decoration" 
         width={300}
         height={300}
-        className="absolute bottom-[10%] left-[2%] md:left-[5%] w-[80px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm opacity-40 md:opacity-100"
+        className="absolute bottom-[10%] left-[2%] md:left-[5%] w-[160px] md:w-[280px] h-auto object-contain pointer-events-none select-none z-0 drop-shadow-sm"
       />
       
       <div className="w-full max-w-[1000px] mt-[60px] flex flex-col md:flex-row items-center justify-center gap-[80px] md:gap-[60px]">
