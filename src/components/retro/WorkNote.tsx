@@ -19,7 +19,7 @@ export function WorkNote({
   certificateLink
 }: WorkNoteProps) {
   return (
-    <div className="relative w-[85%] md:w-full max-w-[450px] cursor-pointer group mt-[40px] md:mt-0">
+    <div tabIndex={0} className="relative w-[85%] md:w-full max-w-[450px] cursor-pointer group mt-[40px] md:mt-0 outline-none">
       {/* Stationary Purple Background Square */}
       <div className="absolute top-1/2 left-1/2 w-[95%] aspect-square bg-[#bf00ff] -translate-x-1/2 -translate-y-[45%] -rotate-[12deg] z-0 pointer-events-none shadow-sm"></div>
 
@@ -30,12 +30,12 @@ export function WorkNote({
           alt="Decoration" 
           width={250}
           height={250}
-          className="absolute top-[25%] left-[16%] w-[35%] h-auto z-[5] transition-all duration-500 ease-out transform translate-y-0 -scale-x-100 group-hover:-translate-y-[120%] pointer-events-none drop-shadow-md group-hover:drop-shadow-xl"
+          className="absolute top-[25%] left-[16%] w-[35%] h-auto z-[5] transition-all duration-500 ease-out transform translate-y-0 -scale-x-100 group-hover:-translate-y-[120%] group-focus:-translate-y-[120%] group-active:-translate-y-[120%] pointer-events-none drop-shadow-md group-hover:drop-shadow-xl group-focus:drop-shadow-xl group-active:drop-shadow-xl"
         />
       )}
 
       {/* Animating Paper & Text */}
-      <div className="relative z-10 w-full h-full transition-all duration-300 group-hover:-translate-y-[8px] group-hover:scale-[1.03] drop-shadow-md group-hover:drop-shadow-2xl">
+      <div className="relative z-10 w-full h-full transition-all duration-300 group-hover:-translate-y-[8px] group-focus:-translate-y-[8px] group-active:-translate-y-[8px] group-hover:scale-[1.03] group-focus:scale-[1.03] group-active:scale-[1.03] drop-shadow-md group-hover:drop-shadow-2xl group-focus:drop-shadow-2xl group-active:drop-shadow-2xl">
         <Image 
           src="/work-note.png" 
           alt={`${company} Note`} 

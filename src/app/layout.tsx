@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: 1024,
+};
+
 import { ErrorOverlay } from "@/components/ErrorOverlay";
 
 export default function RootLayout({
@@ -26,7 +30,9 @@ export default function RootLayout({
     <html lang="en" className={`${spaceMono.variable} ${fraunces.variable} ${greatVibes.variable} ${kalam.variable}`}>
       <body className="antialiased min-h-screen">
         <ErrorOverlay />
-        {children}
+        <div className="mobile-shift-left">
+          {children}
+        </div>
       </body>
     </html>
   );
