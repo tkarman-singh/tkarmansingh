@@ -96,12 +96,3 @@
     animation: float 4s ease-in-out infinite;
   }
 }
-
-@media (hover: none) and (pointer: coarse) {
-  .mobile-hide {
-    display: none !important;
-  }
-  .mobile-shift-left {
-    transform: translateX(-25px);
-  }
-}

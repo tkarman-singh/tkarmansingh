@@ -30,9 +30,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceMono.variable} ${fraunces.variable} ${greatVibes.variable} ${kalam.variable}`}>
       <body className="antialiased min-h-screen">
         <ErrorOverlay />
-        <div className="mobile-shift-left">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
