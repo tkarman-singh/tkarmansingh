@@ -10,17 +10,25 @@ const projects = [
     title: "MindMate",
     summary: "AI mental wellness platform with sentiment analysis and mood tracking.",
     github: "https://github.com/tkarman-singh/MindMate",
-    classes: "left-1/2 -ml-[130px] md:left-[20%] md:ml-0 top-[40px] md:top-[10px] z-[11]",
+    classes: "left-1/2 -ml-[130px] md:left-[15%] md:ml-0 top-[10px] md:top-[20px] z-[11]",
     color: "bg-[#fdfdfd]",
-    rotation: -4,
+    rotation: -5,
+  },
+  {
+    title: "Lunora",
+    summary: "A live TMDB movie recommender powered by genre-vector cosine similarity.",
+    github: "https://github.com/tkarman-singh/Lunora",
+    classes: "left-1/2 -ml-[140px] md:left-[40%] md:ml-0 top-[30px] md:top-[5px] z-[12]",
+    color: "bg-[#f4f7fe]",
+    rotation: 2,
   },
   {
     title: "Coming Soon",
     summary: "More exciting projects are in the works and coming soon!",
     github: "#",
-    classes: "left-1/2 -ml-[130px] md:left-[55%] md:ml-0 top-[20px] md:top-[5px] z-[12]",
+    classes: "left-1/2 -ml-[120px] md:left-[65%] md:ml-0 top-[50px] md:top-[15px] z-[13]",
     color: "bg-[#fff5e6]",
-    rotation: 3,
+    rotation: -3,
   }
 ];
 
