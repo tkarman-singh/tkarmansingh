@@ -8,7 +8,7 @@ import Image from 'next/image';
 const projects = [
   {
     title: "MindMate",
-    summary: "AI mental wellness platform with sentiment analysis and mood tracking.",
+    summary: "Enterprise privacy-first mental wellness platform with secure journaling, mood tracking, and personal analytics.",
     github: "https://github.com/tkarman-singh/MindMate",
     classes: "left-1/2 -ml-[130px] md:left-[15%] md:ml-0 top-[10px] md:top-[20px] z-[11]",
     color: "bg-[#fdfdfd]",
