@@ -96,14 +96,11 @@
     animation: float 4s ease-in-out infinite;
   }
 
-  @keyframes eyelid-close {
-    0%, 90% { transform: scaleY(0); }
-    95% { transform: scaleY(1); }
-    100% { transform: scaleY(0); }
+  @keyframes blink {
+    0%, 90%, 94%, 98%, 100% { opacity: 0; }
+    92%, 96% { opacity: 1; } /* Double blink */
   }
-
-  .animate-eyelid {
-    animation: eyelid-close 4s infinite;
-    transform-origin: top;
+  .animate-blink {
+    animation: blink 5s infinite;
   }
 }
