@@ -72,13 +72,18 @@ export function HeroSection() {
             <div className="absolute top-[155px] left-[245px] w-[10px] h-[10px] bg-white rounded-full"></div>
           </div>
 
-          <Image 
-            src="/doodle-me.png" 
-            alt="Doodle character" 
-            width={800}
-            height={800}
-            className="w-full h-auto object-contain object-bottom drop-shadow-sm" 
-          />
+          <div className="relative inline-block w-full">
+            <Image 
+              src="/doodle-me.png" 
+              alt="Doodle character" 
+              width={800}
+              height={800}
+              className="w-full h-auto object-contain object-bottom drop-shadow-sm" 
+            />
+            {/* Blinking Eyelids (Adjust top, left, width, height, and color based on your doodle) */}
+            <div className="absolute top-[35%] left-[42%] w-[5%] h-[3%] bg-[#f4d4b1] animate-blink-eyelid rounded-full z-10"></div>
+            <div className="absolute top-[35%] left-[53%] w-[5%] h-[3%] bg-[#f4d4b1] animate-blink-eyelid rounded-full z-10"></div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
