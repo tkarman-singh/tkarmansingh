@@ -95,14 +95,4 @@
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
-
-  @keyframes blink-eyelid {
-    0%, 90%, 100% { transform: scaleY(0); }
-    95% { transform: scaleY(1); }
-  }
-
-  .animate-blink-eyelid {
-    animation: blink-eyelid 5s infinite;
-    transform-origin: top;
-  }
 }
