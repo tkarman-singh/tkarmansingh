@@ -72,22 +72,13 @@ export function HeroSection() {
             <div className="absolute top-[155px] left-[245px] w-[10px] h-[10px] bg-white rounded-full"></div>
           </div>
 
-          <div className="relative w-full h-auto">
-            <Image 
-              src="/doodle-me.png" 
-              alt="Doodle character" 
-              width={800}
-              height={800}
-              className="w-full h-auto object-contain object-bottom drop-shadow-sm" 
-            />
-            <Image 
-              src="/me-close-eye.png" 
-              alt="Doodle character blinking" 
-              width={800}
-              height={800}
-              className="w-full h-auto object-contain object-bottom absolute inset-0 animate-blink" 
-            />
-          </div>
+          <Image 
+            src="/doodle-me.png" 
+            alt="Doodle character" 
+            width={800}
+            height={800}
+            className="w-full h-auto object-contain object-bottom drop-shadow-sm" 
+          />
         </div>
 
         {/* Scroll Indicator */}

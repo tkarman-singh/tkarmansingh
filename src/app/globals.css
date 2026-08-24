@@ -95,12 +95,4 @@
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
-
-  @keyframes blink {
-    0%, 90%, 94%, 98%, 100% { opacity: 0; }
-    92%, 96% { opacity: 1; } /* Double blink */
-  }
-  .animate-blink {
-    animation: blink 5s infinite;
-  }
 }
