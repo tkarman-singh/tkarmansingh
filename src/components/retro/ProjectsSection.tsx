@@ -23,9 +23,9 @@ const projects = [
     rotation: 2,
   },
   {
-    title: "Coming Soon",
-    summary: "More exciting projects are in the works and coming soon!",
-    github: "#",
+    title: "Biz Scraper",
+    summary: "Jupyter Notebook using OpenStreetMap & Overpass API to scrape businesses with no official website.",
+    github: "https://github.com/tkarman-singh/No-website-scraper",
     classes: "left-1/2 -ml-[120px] md:left-[65%] md:ml-0 top-[50px] md:top-[15px] z-[13]",
     color: "bg-[#fff5e6]",
     rotation: -3,
