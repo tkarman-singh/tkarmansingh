@@ -30,8 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceMono.variable} ${fraunces.variable} ${greatVibes.variable} ${kalam.variable}`}>
       <body className="antialiased min-h-screen">
-        <RibbonCursor />
         <ErrorOverlay />
+        <RibbonCursor />
         {children}
       </body>
     </html>
