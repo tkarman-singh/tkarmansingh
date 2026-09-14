@@ -20,6 +20,7 @@ export const viewport = {
 };
 
 import { ErrorOverlay } from "@/components/ErrorOverlay";
+import { RibbonCursor } from "@/components/retro/RibbonCursor";
 
 export default function RootLayout({
   children,
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceMono.variable} ${fraunces.variable} ${greatVibes.variable} ${kalam.variable}`}>
       <body className="antialiased min-h-screen">
+        <RibbonCursor />
         <ErrorOverlay />
         {children}
       </body>
