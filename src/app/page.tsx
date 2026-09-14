@@ -8,12 +8,10 @@ import { ProjectsSection } from "@/components/retro/ProjectsSection";
 import { ContactSection } from "@/components/retro/ContactSection";
 import { FooterMarquee } from "@/components/retro/FooterMarquee";
 import { SideBorders } from "@/components/retro/SideBorders";
-import { DoodleCanvasWrapper } from "@/components/retro/DoodleCanvasWrapper";
 
 export default function Home() {
   return (
     <main className="relative w-full overflow-x-hidden selection:bg-[#df7a3e] selection:text-white pb-[70px]">
-      <DoodleCanvasWrapper />
       <SideBorders />
 
       <Navbar />
