@@ -2,14 +2,22 @@
 
 import { useEffect, useRef } from "react";
 
-export function RibbonCursor() {
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  maxLife: number;
+  size: number;
+  hue: number;
+}
+
+export function CustomCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Only run on desktop/devices with a real pointer
-    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-      return;
-    }
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -21,78 +29,115 @@ export function RibbonCursor() {
     canvas.width = width;
     canvas.height = height;
 
-    let mouse = { x: width / 2, y: height / 2 };
-    const numPoints = 25; // Length of the ribbon
-    let points = Array.from({ length: numPoints }, () => ({ x: width / 2, y: height / 2 }));
-    
+    let mx = -200, my = -200;
+    let pmx = -200, pmy = -200;
     let isMoving = false;
-    let timeoutId: NodeJS.Timeout;
+    let moveTimeout: NodeJS.Timeout;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      isMoving = true;
-      
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        isMoving = false;
-      }, 100);
+    const particles: Particle[] = [];
+
+    const spawnParticles = (x: number, y: number, speed: number) => {
+      const count = Math.floor(2 + speed * 0.3);
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const v = 0.3 + Math.random() * 1.5;
+        particles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * v,
+          vy: Math.sin(angle) * v - 0.5,
+          life: 1,
+          maxLife: 30 + Math.random() * 30,
+          size: 1.5 + Math.random() * 3,
+          hue: 270 + Math.random() * 60, // purple to pink range
+        });
+      }
     };
 
-    const handleResize = () => {
+    const onMouseMove = (e: MouseEvent) => {
+      pmx = mx; pmy = my;
+      mx = e.clientX; my = e.clientY;
+
+      const dx = mx - pmx, dy = my - pmy;
+      const speed = Math.sqrt(dx * dx + dy * dy);
+      if (speed > 2) spawnParticles(mx, my, speed);
+
+      isMoving = true;
+      clearTimeout(moveTimeout);
+      moveTimeout = setTimeout(() => { isMoving = false; }, 80);
+    };
+
+    const onResize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("resize", onResize);
 
-    let animationFrameId: number;
-
-    const render = () => {
+    let raf: number;
+    const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      
-      // Update points
-      // Point 0 follows the mouse exactly so it originates from the cursor tip
-      points[0].x = mouse.x;
-      points[0].y = mouse.y;
 
-      // Subsequent points follow the point ahead of them
-      for (let i = 1; i < numPoints; i++) {
-        points[i].x += (points[i-1].x - points[i].x) * 0.45;
-        points[i].y += (points[i-1].y - points[i].y) * 0.45;
-      }
+      // Update & draw particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.04; // gravity
+        p.life -= 1 / p.maxLife;
 
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
 
-      // Draw the ribbon
-      for (let i = 0; i < numPoints - 1; i++) {
+        const alpha = p.life;
+        const radius = p.size * p.life;
+
+        // Glow
+        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 3);
+        grd.addColorStop(0, `hsla(${p.hue}, 100%, 75%, ${alpha * 0.6})`);
+        grd.addColorStop(1, `hsla(${p.hue}, 100%, 60%, 0)`);
         ctx.beginPath();
-        ctx.moveTo(points[i].x, points[i].y);
-        ctx.lineTo(points[i+1].x, points[i+1].y);
-        
-        // Tapering width
-        ctx.lineWidth = Math.max(1, 8 - (i * 0.3));
-        
-        // Tapering opacity
-        const alpha = 1 - (i / numPoints);
-        ctx.strokeStyle = `rgba(211, 81, 247, ${alpha * 0.8})`; // The #d351f7 purple from your theme
-        ctx.stroke();
+        ctx.fillStyle = grd;
+        ctx.arc(p.x, p.y, radius * 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Core
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${p.hue}, 100%, 90%, ${alpha})`;
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fill();
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      // Draw custom cursor dot (outer ring + inner dot)
+      if (mx > 0) {
+        // Outer ring
+        ctx.beginPath();
+        ctx.arc(mx, my, 10, 0, Math.PI * 2);
+        ctx.strokeStyle = isMoving
+          ? "rgba(211, 81, 247, 0.9)"
+          : "rgba(211, 81, 247, 0.5)";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Inner dot
+        ctx.beginPath();
+        ctx.arc(mx, my, 3, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(draw);
     };
 
-    render();
+    draw();
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
-      clearTimeout(timeoutId);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("resize", onResize);
+      cancelAnimationFrame(raf);
+      clearTimeout(moveTimeout);
     };
   }, []);
 
