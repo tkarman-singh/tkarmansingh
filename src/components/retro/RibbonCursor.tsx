@@ -13,7 +13,7 @@ interface Particle {
   hue: number;
 }
 
-export function CustomCursor() {
+export function RibbonCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
