@@ -35,26 +35,15 @@
     width: 100%;
     min-height: 100%;
     /* Realistic Notebook Page */
-    background-color: #FDF7FF; /* Custom page color */
-    background-image: linear-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px); /* Light blue lines */
-    background-size: 100% 32px; /* Line spacing */
+    background-color: #FDF7FF;
+    background-image: linear-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px);
+    background-size: 100% 32px;
     background-position: 0 32px;
     color: var(--color-ink);
     font-family: var(--font-mono);
     overflow-x: hidden;
     scroll-behavior: smooth;
     position: relative;
-    cursor: none; /* Hide native cursor — custom canvas cursor takes over on desktop */
-  }
-
-  /* Restore cursor on touch devices */
-  @media (hover: none) and (pointer: coarse) {
-    html, body {
-      cursor: auto;
-    }
-    * {
-      cursor: auto !important;
-    }
   }
 
   /* Left Red Vertical Margin */

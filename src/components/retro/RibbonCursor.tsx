@@ -2,16 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  life: number;
-  maxLife: number;
-  size: number;
-  hue: number;
-}
+const POINTS = 28;
+const MAX_WIDTH = 14;
 
 export function RibbonCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -24,109 +16,143 @@ export function RibbonCursor() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+    let W = window.innerWidth;
+    let H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
 
-    let mx = -200, my = -200;
-    let pmx = -200, pmy = -200;
-    let isMoving = false;
-    let moveTimeout: NodeJS.Timeout;
+    // Each point springs toward the one before it
+    const pts = Array.from({ length: POINTS }, () => ({ x: W / 2, y: H / 2 }));
+    let mouse = { x: W / 2, y: H / 2 };
+    let entered = false;
 
-    const particles: Particle[] = [];
-
-    const spawnParticles = (x: number, y: number, speed: number) => {
-      const count = Math.floor(2 + speed * 0.3);
-      for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const v = 0.3 + Math.random() * 1.5;
-        particles.push({
-          x,
-          y,
-          vx: Math.cos(angle) * v,
-          vy: Math.sin(angle) * v - 0.5,
-          life: 1,
-          maxLife: 30 + Math.random() * 30,
-          size: 1.5 + Math.random() * 3,
-          hue: 270 + Math.random() * 60, // purple to pink range
-        });
-      }
+    const onMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      entered = true;
     };
-
-    const onMouseMove = (e: MouseEvent) => {
-      pmx = mx; pmy = my;
-      mx = e.clientX; my = e.clientY;
-
-      const dx = mx - pmx, dy = my - pmy;
-      const speed = Math.sqrt(dx * dx + dy * dy);
-      if (speed > 2) spawnParticles(mx, my, speed);
-
-      isMoving = true;
-      clearTimeout(moveTimeout);
-      moveTimeout = setTimeout(() => { isMoving = false; }, 80);
-    };
-
+    const onLeave = () => { entered = false; };
     const onResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W; canvas.height = H;
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseleave", onLeave);
     window.addEventListener("resize", onResize);
 
     let raf: number;
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
     const draw = () => {
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, W, H);
 
-      // Update & draw particles
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.04; // gravity
-        p.life -= 1 / p.maxLife;
+      if (!entered) { raf = requestAnimationFrame(draw); return; }
 
-        if (p.life <= 0) { particles.splice(i, 1); continue; }
-
-        const alpha = p.life;
-        const radius = p.size * p.life;
-
-        // Glow
-        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 3);
-        grd.addColorStop(0, `hsla(${p.hue}, 100%, 75%, ${alpha * 0.6})`);
-        grd.addColorStop(1, `hsla(${p.hue}, 100%, 60%, 0)`);
-        ctx.beginPath();
-        ctx.fillStyle = grd;
-        ctx.arc(p.x, p.y, radius * 3, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Core
-        ctx.beginPath();
-        ctx.fillStyle = `hsla(${p.hue}, 100%, 90%, ${alpha})`;
-        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-        ctx.fill();
+      // Update chain: head snaps to mouse, each next springs to previous
+      pts[0].x = mouse.x;
+      pts[0].y = mouse.y;
+      for (let i = 1; i < POINTS; i++) {
+        const k = lerp(0.42, 0.28, i / POINTS);
+        pts[i].x += (pts[i - 1].x - pts[i].x) * k;
+        pts[i].y += (pts[i - 1].y - pts[i].y) * k;
       }
 
-      // Draw custom cursor dot (outer ring + inner dot)
-      if (mx > 0) {
-        // Outer ring
-        ctx.beginPath();
-        ctx.arc(mx, my, 10, 0, Math.PI * 2);
-        ctx.strokeStyle = isMoving
-          ? "rgba(211, 81, 247, 0.9)"
-          : "rgba(211, 81, 247, 0.5)";
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        // Inner dot
-        ctx.beginPath();
-        ctx.arc(mx, my, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
-        ctx.fill();
+      // Build smooth path via midpoints (Chaikin-style)
+      const smooth: { x: number; y: number }[] = [{ x: pts[0].x, y: pts[0].y }];
+      for (let i = 0; i < POINTS - 1; i++) {
+        smooth.push({
+          x: (pts[i].x + pts[i + 1].x) / 2,
+          y: (pts[i].y + pts[i + 1].y) / 2,
+        });
       }
+      smooth.push({ x: pts[POINTS - 1].x, y: pts[POINTS - 1].y });
+
+      const N = smooth.length;
+
+      // ---- Draw ribbon as a filled tapered polygon ----
+      // For each segment compute the perpendicular offset
+      const left: { x: number; y: number }[] = [];
+      const right: { x: number; y: number }[] = [];
+
+      for (let i = 0; i < N; i++) {
+        const t = i / (N - 1);
+        const w = MAX_WIDTH * (1 - t) * (1 - t * 0.4); // tapers toward tail
+
+        let dx: number, dy: number;
+        if (i === 0) {
+          dx = smooth[1].x - smooth[0].x;
+          dy = smooth[1].y - smooth[0].y;
+        } else if (i === N - 1) {
+          dx = smooth[N - 1].x - smooth[N - 2].x;
+          dy = smooth[N - 1].y - smooth[N - 2].y;
+        } else {
+          dx = smooth[i + 1].x - smooth[i - 1].x;
+          dy = smooth[i + 1].y - smooth[i - 1].y;
+        }
+        const len = Math.sqrt(dx * dx + dy * dy) || 1;
+        const nx = -dy / len; // perpendicular
+        const ny = dx / len;
+
+        left.push({ x: smooth[i].x + nx * w, y: smooth[i].y + ny * w });
+        right.push({ x: smooth[i].x - nx * w, y: smooth[i].y - ny * w });
+      }
+
+      // Build the ribbon outline polygon
+      ctx.beginPath();
+      ctx.moveTo(left[0].x, left[0].y);
+      for (let i = 1; i < N; i++) {
+        const cp = smooth[i - 1];
+        ctx.quadraticCurveTo(cp.x + (left[i - 1].x - smooth[i-1].x), cp.y + (left[i-1].y - smooth[i-1].y), left[i].x, left[i].y);
+      }
+      // round tip at the tail
+      ctx.arcTo(
+        smooth[N - 1].x, smooth[N - 1].y,
+        right[N - 1].x, right[N - 1].y,
+        2
+      );
+      for (let i = N - 1; i >= 1; i--) {
+        const cp = smooth[i - 1];
+        ctx.quadraticCurveTo(cp.x - (left[i-1].x - smooth[i-1].x), cp.y - (left[i-1].y - smooth[i-1].y), right[i - 1].x, right[i - 1].y);
+      }
+      ctx.closePath();
+
+      // Gradient along the ribbon (head = opaque, tail = transparent)
+      const tailX = smooth[N - 1].x;
+      const tailY = smooth[N - 1].y;
+      const grad = ctx.createLinearGradient(pts[0].x, pts[0].y, tailX, tailY);
+      grad.addColorStop(0,   "rgba(220, 80, 255, 0.95)");
+      grad.addColorStop(0.3, "rgba(180, 60, 255, 0.75)");
+      grad.addColorStop(0.7, "rgba(140, 40, 240, 0.4)");
+      grad.addColorStop(1,   "rgba(100, 20, 220, 0)");
+
+      // Glow pass
+      ctx.save();
+      ctx.filter = "blur(6px)";
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.restore();
+
+      // Crisp pass on top
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Shimmer highlight along top edge
+      ctx.beginPath();
+      ctx.moveTo(left[0].x, left[0].y);
+      for (let i = 1; i < N; i++) {
+        const mx2 = (left[i - 1].x + left[i].x) / 2;
+        const my2 = (left[i - 1].y + left[i].y) / 2;
+        ctx.quadraticCurveTo(left[i - 1].x, left[i - 1].y, mx2, my2);
+      }
+      const highlightGrad = ctx.createLinearGradient(pts[0].x, pts[0].y, tailX, tailY);
+      highlightGrad.addColorStop(0,   "rgba(255,255,255,0.45)");
+      highlightGrad.addColorStop(0.4, "rgba(255,255,255,0.15)");
+      highlightGrad.addColorStop(1,   "rgba(255,255,255,0)");
+      ctx.strokeStyle = highlightGrad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
 
       raf = requestAnimationFrame(draw);
     };
@@ -134,10 +160,10 @@ export function RibbonCursor() {
     draw();
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("resize", onResize);
       cancelAnimationFrame(raf);
-      clearTimeout(moveTimeout);
     };
   }, []);
 
