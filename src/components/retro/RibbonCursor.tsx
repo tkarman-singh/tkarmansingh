@@ -55,9 +55,9 @@ export function RibbonCursor() {
       ctx.clearRect(0, 0, width, height);
       
       // Update points
-      // Point 0 follows the mouse
-      points[0].x += (mouse.x - points[0].x) * 0.6;
-      points[0].y += (mouse.y - points[0].y) * 0.6;
+      // Point 0 follows the mouse exactly so it originates from the cursor tip
+      points[0].x = mouse.x;
+      points[0].y = mouse.y;
 
       // Subsequent points follow the point ahead of them
       for (let i = 1; i < numPoints; i++) {
