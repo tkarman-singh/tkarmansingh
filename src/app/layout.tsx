@@ -16,8 +16,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: 1024,
   initialScale: 1,
+  minimumScale: 0.1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 import { ErrorOverlay } from "@/components/ErrorOverlay";
